@@ -46,10 +46,10 @@ jobs:
         run: |
           cd test || exit 12
           ./scripts/compil.sh
-          ./test-ecs
+          ./build/test-ecs
 
   test-ecs-macos:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     needs: [release-linux]
     steps:
       - name: Checkout
@@ -64,10 +64,10 @@ jobs:
         run: |
           cd test || exit 12
           ./scripts/compil.sh
-          ./test-ecs
+          ./build/test-ecs
 
   test-ecs-windows:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     needs: [release-linux]
     steps:
       - name: Checkout
@@ -77,7 +77,7 @@ jobs:
         run: |
           cd test || exit 12
           ./scripts/compil.sh
-          ./test-ecs.exe
+          ./build/test-ecs.exe
 
   release-linux:
     runs-on: ubuntu-latest
