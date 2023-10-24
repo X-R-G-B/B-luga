@@ -1,3 +1,5 @@
+#!/bin/bash
+
 mkdir b-luga
 
 mv ./CMakeLists.txt ./b-luga
