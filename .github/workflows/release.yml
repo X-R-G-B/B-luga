@@ -42,11 +42,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Change directory
-        run: cd test
-
       - name: Build test
-        run: ./scripts/compil.sh
+        run: |
+          cd test || exit 12
+          ./scripts/compil.sh
+          ./test-ecs
 
   release-linux:
     runs-on: ubuntu-latest
