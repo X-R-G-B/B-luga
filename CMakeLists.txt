@@ -24,6 +24,8 @@ target_include_directories(
     $<INSTALL_INTERFACE:include>
 )
 
+add_subdirectory(deps)
+
 include(CMakePackageConfigHelpers)
 
 install(
