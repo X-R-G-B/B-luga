@@ -1,4 +1,15 @@
 cmake_minimum_required(VERSION 3.20)
+
+set(PROJECT_NAME "test-ecs")
+
+project(
+    ${PROJECT_NAME}
+    VERSION 1.0.0
+    LANGUAGES CXX
+)
+
+add_executable(${PROJECT_NAME})
+
 # ------------------------------
 # ------------------------------
 # ------------------------------
@@ -15,18 +26,10 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(b-luga)
 
+target_link_libraries(${PROJECT_NAME} PRIVATE b-luga)
+
 # ------------------------------
 # ------------------------------
 # ------------------------------
-
-set(PROJECT_NAME "test-ecs")
-
-project(
-    ${PROJECT_NAME}
-    VERSION 1.0.0
-    LANGUAGES CXX
-)
-
-add_executable(${PROJECT_NAME})
 
 add_subdirectory(src)
