@@ -24,7 +24,7 @@ target_include_directories(
     $<INSTALL_INTERFACE:include>
 )
 
-target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_20)
+target_compile_features(${PROJECT_NAME} INTERFACE cxx_std_20)
 
 add_subdirectory(deps)
 
