@@ -1,0 +1,113 @@
+name: Release
+
+on:
+  push:
+    branches: [main, dev]
+
+env:
+  BRANCH: "main"
+  DATE_TAG: "v3.0.1"
+
+jobs:
+  release-create:
+    permissions: write-all
+    runs-on: ubuntu-latest
+
+    outputs:
+      release: ${{ steps.release.outputs.release_tag }}
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - id: release
+      name: Create Release
+      if: github.repository != 'EpitechPromo2026/B-CPP-500-TLS-5-1-rtype-xavier.mitault.git'
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        if [[ "${{ github.ref }}" == 'refs/heads/main' ]]; then
+          export GITHUB_OUTPUT=$GITHUB_OUTPUT
+          bash ./.github/workflows/release.sh "${{ env.BRANCH }}"
+        else
+          echo "release_tag=0.0.0" >> $GITHUB_OUTPUT
+        fi
+
+  test-ecs:
+    runs-on: ubuntu-latest
+    needs: [release-linux]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Change directory
+        run: cd test
+
+      - name: Build test
+        run: ./scripts/compil.sh
+
+  release-linux:
+    runs-on: ubuntu-latest
+    needs: [release-create, date-to-tar]
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Cleanup
+      run: ./scripts/cleanup.sh
+
+    - name: Create tar
+      run: ./scripts/create-tar.sh
+
+    - name: Upload To Release
+      if: github.ref == 'refs/heads/main'
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        gh release upload ${{ needs.release-create.outputs.release }} ./b-luga.tar
+
+    - name: Upload To Artifact
+      if: github.ref != 'refs/heads/main'
+      uses: actions/upload-artifact@v3
+      with:
+        name: b-luga.tar
+        path: ./b-luga.tar
+
+  date-to-tar:
+    runs-on: ubuntu-latest
+    needs: release-create
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Install deps
+      run: sudo apt-get update && sudo apt-get install -y tar git
+
+    - name: Get Date
+      run: |
+        git clone https://github.com/HowardHinnant/date.git date-repo
+        cd date-repo || exit 14
+        git checkout ${{ env.DATE_TAG }}
+        cd ..
+
+    - name: To Tar
+      run: |
+        tar -cvf date.tar date-repo
+
+    - name: Upload To Release
+      if: github.ref == 'refs/heads/main'
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        gh release upload ${{ needs.release-create.outputs.release }} ./date.tar
+
+    - name: Upload To Artifact
+      if: github.ref != 'refs/heads/main'
+      uses: actions/upload-artifact@v3
+      with:
+        name: date.tar
+        path: ./date.tar

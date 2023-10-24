@@ -1,0 +1,11 @@
+name: Test ECS
+
+on:
+  push:
+    branches: [main]
+
+env:
+  BRANCH: "main"
+
+jobs:
+
