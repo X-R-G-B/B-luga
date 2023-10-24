@@ -9,7 +9,7 @@ include(FetchContent)
 
 FetchContent_Declare(
     b-luga
-    URL "https://github.com/X-R-G-B/B-luga/releases/latest/download/raylib.tar"
+    URL "https://github.com/X-R-G-B/B-luga/releases/latest/download/b-luga.tar"
     DOWNLOAD_EXTRACT_TIMESTAMP TRUE
 )
 
