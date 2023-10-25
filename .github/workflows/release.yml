@@ -82,7 +82,7 @@ jobs:
         working-directory: test
 
       - name: Run test
-        run: ./build/test-ecs.exe
+        run: ./build\Debug\test-ecs.exe
         working-directory: test
 
   release-linux:
