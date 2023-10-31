@@ -12,7 +12,7 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(raylib)
 
-target_link_libraries(${PROJECT_NAME} INTERFACE "${CMAKE_CURRENT_BINARY_DIR}/$<TARGET_FILE:raylib>")
+target_link_libraries(${PROJECT_NAME} INTERFACE "$<TARGET_FILE:raylib>")
 
 target_include_directories(
     ${PROJECT_NAME}
