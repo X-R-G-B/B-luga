@@ -1,4 +1,4 @@
 cmake_minimum_required(VERSION 3.20)
 
 add_subdirectory(bluga)
-add_subdirectory(b-luga-graphics)
+add_subdirectory(bluga-graphics)
