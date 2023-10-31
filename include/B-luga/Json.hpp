@@ -188,7 +188,7 @@ class Json {
 
     nlohmann::json getDataByVector(const std::string &dataType, const std::vector<std::string> &indexes)
     {
-        return getDataByVector<nlohmann::json>(indexes, dataType);
+        return getDataByVector<nlohmann::json>(dataType, indexes);
     }
 
 private:
