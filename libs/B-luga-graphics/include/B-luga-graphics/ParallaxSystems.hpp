@@ -7,7 +7,7 @@
 #include "B-luga/Maths/Maths.hpp"
 #include "B-luga/Registry.hpp"
 #include "B-luga/SystemManagers/SystemManagersDirector.hpp"
-
+#include "B-luga-physics/ECSCustomTypes.hpp"
 
 namespace Systems::ParallaxSystems {
 
