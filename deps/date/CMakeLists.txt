@@ -15,5 +15,5 @@ target_include_directories(
     ${PROJECT_NAME}
     INTERFACE
     $<BUILD_INTERFACE:${date_SOURCE_DIR}/include>
-    $<INSTALL_INTERFACE:${date_SOURCE_DIR}/include>
+    $<INSTALL_INTERFACE:include>
 )
