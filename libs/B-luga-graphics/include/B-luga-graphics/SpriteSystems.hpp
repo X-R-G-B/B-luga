@@ -11,6 +11,7 @@
 #include <functional>
 #include <vector>
 #include "B-luga-graphics/GraphicsCustomTypes.hpp"
+#include "B-luga-graphics/AnimRect.hpp"
 #include "B-luga/Logger.hpp"
 #include "B-luga/Maths/Maths.hpp"
 #include "B-luga-graphics/SharedValues.hpp"
