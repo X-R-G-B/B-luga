@@ -17,3 +17,5 @@ target_link_libraries(
     INTERFACE
     raylib
 )
+
+export(PACKAGE raylib)
