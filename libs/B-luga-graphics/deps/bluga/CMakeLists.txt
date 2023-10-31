@@ -12,6 +12,6 @@ FetchContent_MakeAvailable(b-luga)
 
 target_link_libraries(
     ${PROJECT_NAME}
-    PRIVATE
+    INTERFACE
     b-luga
 )
