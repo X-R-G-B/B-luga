@@ -12,13 +12,17 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(raylib)
 
-target_link_libraries(
-    ${PROJECT_NAME}
-    PRIVATE
-    raylib
-)
+# target_link_libraries(
+#     ${PROJECT_NAME}
+#     PRIVATE
+#     $<TARGET_FILE:raylib>
+# )
 
-install(
-    EXPORT raylib
-    DESTINATION ${BLUGA_INCLUDE_INSTALL_DIR}
-)
+add_library(raylib_static STATIC IMPORTED)
+set_property(TARGET raylib_static PROPERTY IMPORTED_LOCATION $<TARGET_FILE:raylib>)
+set_property(TARGET ${PROJECT_NAME} PROPERTY INTERFACE_LINK_LIBRARIES raylib_static)
+
+# install(
+#     EXPORT raylib
+#     DESTINATION ${BLUGA_INCLUDE_INSTALL_DIR}
+# )
