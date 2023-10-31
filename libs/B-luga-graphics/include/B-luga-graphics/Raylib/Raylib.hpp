@@ -7,7 +7,7 @@
 
 #pragma once
 
-#include "Audio.hpp"
-#include "Geometry.hpp"
-#include "Graphics.hpp"
-#include "Inputs.hpp"
+#include "B-luga-graphics/Raylib/Audio/Audio.hpp"
+#include "B-luga-graphics/Raylib/Geometry/Geometry.hpp"
+#include "B-luga-graphics/Raylib/Graphics/Graphics.hpp"
+#include "B-luga-graphics/Raylib/Events/Inputs.hpp"

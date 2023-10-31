@@ -12,11 +12,9 @@ extern "C"
 {
 #include "raylib.h"
 }
-#include "Geometry.hpp"
-#include "Inputs.hpp"
-#include "Registry.hpp"
-#include "Graphics.hpp"
-#include "ResourcesManager.hpp"
+#include "B-luga-graphics/Raylib/Geometry/Geometry.hpp"
+#include "B-luga-graphics/Raylib/Events/Inputs.hpp"
+#include "B-luga/Registry.hpp"
 
 namespace Raylib {
 
@@ -305,7 +303,7 @@ namespace Raylib {
     class RayImage {
         public:
             RayImage(const std::string &fileName)
-                : _image(LoadImage(ECS::ResourcesManager::convertPath(fileName).c_str()))
+                : _image(LoadImage(fileName.c_str()))
             {
                 if (!isImageReady()) {
                     const ::Color badTexture          = {255, 16, 240, 255};
@@ -374,7 +372,7 @@ namespace Raylib {
     class Sprite {
         public:
             Sprite(const std::string &fileName, float width, float height, std::size_t id)
-                : _texture(LoadTexture(ECS::ResourcesManager::convertPath(fileName).c_str())),
+                : _texture(LoadTexture(fileName.c_str())),
                   _width(width),
                   _height(height)
             {

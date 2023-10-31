@@ -8,7 +8,6 @@
 #pragma once
 
 #include <string>
-#include "ResourcesManager.hpp"
 extern "C"
 {
 #include "raylib.h"
@@ -41,8 +40,7 @@ namespace Raylib {
         public:
             Sound(const std::string& fileName, float volume)
                 : _path(fileName),
-                  _realPath(ECS::ResourcesManager::convertPath(fileName)),
-                  _sound(LoadSound(_realPath.c_str()))
+                  _sound(LoadSound(_path.c_str()))
             {
                 SetSoundVolume(_sound, volume);
             }
@@ -112,14 +110,8 @@ namespace Raylib {
                 return _path;
             }
 
-            std::string getRealPath() const
-            {
-                return _realPath;
-            }
-
         private:
             std::string _path;
-            std::string _realPath;
             ::Sound _sound;
             bool _needToPlay {false};
     };
@@ -128,8 +120,7 @@ namespace Raylib {
         public:
             Music(const std::string& fileName, float volume)
                 : _path(fileName),
-                  _realPath(ECS::ResourcesManager::convertPath(fileName)),
-                  _music(LoadMusicStream(_realPath.c_str()))
+                  _music(LoadMusicStream(_path.c_str()))
             {
                 SetMusicVolume(_music, volume);
             }
@@ -214,14 +205,8 @@ namespace Raylib {
                 return _path;
             }
 
-            std::string getRealPath() const
-            {
-                return _realPath;
-            }
-
         private:
             std::string _path;
-            std::string _realPath;
             ::Music _music;
             bool _needToPlay {false};
     };
