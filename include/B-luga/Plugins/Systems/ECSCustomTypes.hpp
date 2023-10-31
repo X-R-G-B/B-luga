@@ -18,6 +18,12 @@
 // all values are in percentage of the screen
 namespace Types {
 
+    struct Health {
+            int hp;
+
+            NLOHMANN_DEFINE_TYPE_INTRUSIVE(Health, hp);
+    };
+
     struct CollisionRect {
             int width;
             int height;

@@ -13,8 +13,8 @@
 #include <functional>
 #include <string>
 #include <vector>
+#include "nlohmann/json.hpp"
 #include "B-luga/Json.hpp"
-#include <nlohmann/json.hpp>
 #include "B-luga/Plugins/Systems/ECSCustomTypes.hpp"
 #include "B-luga/Maths/Maths.hpp"
 #include "B-luga/Registry.hpp"
@@ -66,8 +66,8 @@ namespace Systems {
     {
         Registry::components<Types::Damage> arrDamage =
             Registry::getInstance().getComponents<Types::Damage>();
-        Registry::components<struct health_s> arrHealth =
-            Registry::getInstance().getComponents<struct health_s>();
+        Registry::components<Types::Health> arrHealth =
+            Registry::getInstance().getComponents<Types::Health>();
 
         if (arrDamage.exist(firstEntity) && arrDamage[firstEntity].damage > 0) {
             if (arrHealth.exist(secondEntity)) {
@@ -200,8 +200,8 @@ namespace Systems {
     static void deathChecker(std::size_t /*unused*/, std::size_t /*unused*/)
     {
         std::lock_guard<std::mutex> lock(Registry::getInstance().mutex);
-        Registry::components<struct health_s> arrHealth =
-            Registry::getInstance().getComponents<struct health_s>();
+        Registry::components<Types::Health> arrHealth =
+            Registry::getInstance().getComponents<Types::Health>();
         Registry::components<Types::Dead> arrDead = Registry::getInstance().getComponents<Types::Dead>();
 
         std::vector<std::size_t> ids = arrHealth.getExistingsId();
