@@ -4,7 +4,7 @@
 #include <string>
 #include "B-luga-graphics/GraphicsCustomTypes.hpp"
 #include "B-luga/Json.hpp"
-#include "B-luga/Maths.hpp"
+#include "B-luga/Maths/Maths.hpp"
 #include "B-luga/Registry.hpp"
 #include "B-luga/SystemManagers/SystemManagersDirector.hpp"
 
