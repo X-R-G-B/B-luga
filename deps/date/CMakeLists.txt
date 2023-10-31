@@ -14,5 +14,6 @@ FetchContent_MakeAvailable(date)
 target_include_directories(
     ${PROJECT_NAME}
     INTERFACE
-    ${date_SOURCE_DIR}/include
+    $<BUILD_INTERFACE:${date_SOURCE_DIR}/include>
+    $<INSTALL_INTERFACE:${date_SOURCE_DIR}/include>
 )
