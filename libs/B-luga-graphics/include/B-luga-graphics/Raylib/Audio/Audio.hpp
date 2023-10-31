@@ -10,7 +10,7 @@
 #include <string>
 extern "C"
 {
-#include "raylib.h"
+#include "raylib/raylib.h"
 }
 
 namespace Raylib {

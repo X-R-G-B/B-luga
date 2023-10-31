@@ -22,6 +22,13 @@ add_library(raylib_static_diff STATIC IMPORTED)
 set_property(TARGET raylib_static_diff PROPERTY IMPORTED_LOCATION $<TARGET_FILE:raylib>)
 set_property(TARGET ${PROJECT_NAME} PROPERTY INTERFACE_LINK_LIBRARIES raylib_static_diff)
 
+target_include_directories(
+    ${PROJECT_NAME}
+    PUBLIC
+    $<BUILD_INTERFACE:${raylib_SOURCE_DIR}/src>
+    $<INSTALL_INTERFACE:${BLUGA_INCLUDE_INSTALL_DIR}/raylib>
+)
+
 # install(
 #     EXPORT raylib
 #     DESTINATION ${BLUGA_INCLUDE_INSTALL_DIR}
