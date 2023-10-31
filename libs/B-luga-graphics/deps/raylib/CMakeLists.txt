@@ -15,7 +15,7 @@ FetchContent_MakeAvailable(raylib)
 add_library(raylib_static_diff STATIC IMPORTED)
 set_property(TARGET raylib_static_diff PROPERTY IMPORTED_LOCATION $<TARGET_FILE:raylib>)
 
-target_link_libraries(${PROJECT_NAME} PRIVATE raylib_static_diff)
+target_link_libraries(${PROJECT_NAME} INTERFACE raylib_static_diff)
 
 target_include_directories(
     ${PROJECT_NAME}
