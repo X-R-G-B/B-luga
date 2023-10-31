@@ -18,7 +18,7 @@ target_link_libraries(
     raylib
 )
 
-export(
-    TARGETS raylib
-    FILE raylibConfig.cmake
+install(
+    EXPORT raylib
+    DESTINATION ${BLUGA_INCLUDE_INSTALL_DIR}
 )
