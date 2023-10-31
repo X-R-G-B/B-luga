@@ -12,12 +12,6 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(raylib)
 
-add_custom_command(
-    TARGET ${PROJECT_NAME}
-    PRE_BUILD
-    COMMAND ${CMAKE_COMMAND} --build ${raylib_BINARY_DIR}
-)
-
 add_library(raylibe STATIC IMPORTED)
 set_target_properties(raylibe PROPERTIES IMPORTED_LOCATION $<TARGET_FILE:raylib>)
 
