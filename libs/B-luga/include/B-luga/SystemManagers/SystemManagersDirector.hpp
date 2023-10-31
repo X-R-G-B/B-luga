@@ -7,10 +7,12 @@
 
 #pragma once
 
+#include <stdexcept>
 #include <vector>
 #include <map>
+#include <functional>
+#include <string>
 #include "B-luga/SystemManagers/SystemManager.hpp"
-#include "B-luga/Plugins/Systems/ECSSystems.hpp"
 
 namespace Systems {
     class SystemManagersDirector {
