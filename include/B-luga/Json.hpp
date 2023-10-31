@@ -7,52 +7,30 @@
 
 #pragma once
 
-#include <nlohmann/json.hpp>
 #include <string>
 #include <unordered_map>
 #include <fstream>
 #include <iostream>
 #include <sstream>
 #include <utility>
-#include "Logger.hpp"
-#include "ResourcesManager.hpp"
-
-extern "C"
-{
-#include "MessageTypes.h"
-}
-
-enum class JsonType { DEFAULT_ENEMY, DEFAULT_PLAYER, DEFAULT_PARALLAX, TERMINATOR, WAVE, BULLETS };
-
-const std::unordered_map<enemy_type_e, JsonType> messageTypes = {
-    {CLASSIC_ENEMY, JsonType::DEFAULT_ENEMY},
-    {TERMINATOR,    JsonType::TERMINATOR   }
-};
-
-const std::unordered_map<JsonType, std::string> pathToJson = {
-    {JsonType::DEFAULT_ENEMY,    "assets/Json/enemyData.json"   },
-    {JsonType::DEFAULT_PLAYER,   "assets/Json/playerData.json"  },
-    {JsonType::DEFAULT_PARALLAX, "assets/Json/parallaxData.json"},
-    {JsonType::TERMINATOR,       "assets/Json/terminator.json"  },
-    {JsonType::WAVE,             "assets/Json/wave.json"        },
-    {JsonType::BULLETS,          "assets/Json/bullets.json"     }
-};
+#include "nlohmann/json.hpp"
+#include "B-luga/Logger.hpp"
 
 class Json {
     public:
         static Json &getInstance()
         {
             static auto instance = Json();
-            if (instance._jsonDatas.empty()) {
-                for (const auto &it : pathToJson) {
-                    instance._jsonDatas.insert({it.first, instance.loadJsonData(it.second)});
-                }
-            }
             return instance;
         }
 
+        void registerJsonFile(const std::string &path)
+        {
+            _jsonDatas.insert({path, loadJsonData(path)});
+        }
+
         nlohmann::json
-        getJsonObjectById(JsonType type, const std::string &id, const std::string &arrayName)
+        getJsonObjectById(const std::string &type, const std::string &id, const std::string &arrayName)
         {
             auto objectList = getDataByJsonType(type)[arrayName];
 
@@ -67,7 +45,7 @@ class Json {
         }
 
         template <typename T>
-        T getDataByJsonType(const std::string &index, JsonType dataType)
+        T getDataByJsonType(const std::string &dataType, const std::string &index)
         {
             nlohmann::json finalData(_jsonDatas[dataType]);
 
@@ -85,14 +63,14 @@ class Json {
             return (finalData);
         }
 
-        nlohmann::json getDataByJsonType(JsonType dataType)
+        nlohmann::json getDataByJsonType(const std::string &dataType)
         {
             nlohmann::json data(_jsonDatas[dataType]);
 
             return (data);
         }
 
-        nlohmann::basic_json<> getDataByJsonType(const std::string &index, JsonType dataType)
+        nlohmann::basic_json<> getDataByJsonType(const std::string &dataType, const std::string &index)
         {
             nlohmann::basic_json<> finalData(_jsonDatas[dataType]);
 
@@ -161,7 +139,7 @@ class Json {
     }
 
     std::vector<nlohmann::json>
-    getDatasByJsonType(const std::vector<std::string> &indexes, JsonType dataType)
+    getDatasByJsonType(const std::string &dataType, const std::vector<std::string> &indexes)
     {
         nlohmann::json finalData = getDataByJsonType(dataType);
         std::vector<nlohmann::json> datas;
@@ -182,7 +160,6 @@ class Json {
         return datas;
     }
 
-
     template <typename T>
     T getDataFromJson(nlohmann::json jsonData, const std::string &index)
     {
@@ -194,7 +171,7 @@ class Json {
     }
 
     template <typename T>
-    T getDataByVector(const std::vector<std::string> &indexes, JsonType dataType)
+    T getDataByVector(const std::string &dataType, const std::vector<std::string> &indexes)
     {
         auto datas = getDataByJsonType(dataType);
         auto begin = indexes.begin();
@@ -213,7 +190,7 @@ class Json {
         return getDataFromJson<T>(datas, *(indexes.end() - 1));
     }
 
-    nlohmann::json getDataByVector(const std::vector<std::string> &indexes, JsonType dataType)
+    nlohmann::json getDataByVector(const std::string &dataType, const std::vector<std::string> &indexes)
     {
         return getDataByVector<nlohmann::json>(indexes, dataType);
     }
@@ -236,7 +213,7 @@ private:
 
     static nlohmann::json loadJsonData(const std::string &path)
     {
-        std::ifstream fileData(ECS::ResourcesManager::convertPath(path));
+        std::ifstream fileData(path);
         std::ostringstream input;
         nlohmann::json jsonData = {};
 
@@ -250,5 +227,5 @@ private:
         return jsonData;
     }
 
-    std::unordered_map<JsonType, nlohmann::json> _jsonDatas;
+    std::unordered_map<std::string, nlohmann::json> _jsonDatas;
 };
