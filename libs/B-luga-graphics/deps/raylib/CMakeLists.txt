@@ -4,7 +4,7 @@ include(FetchContent)
 
 FetchContent_Declare(
     raylib
-    CMAKE_ARGS "-DCMAKE_BUILD_TYPE=Release" "-DCMAKE_CONFIGURATION_TYPES=\"Release;Release\"" "-DCONFIG=Release"
+    CMAKE_ARGS "-DCMAKE_BUILD_TYPE=Release" "-DCMAKE_CONFIGURATION_TYPES=\"Release;Release\"" "-DCONFIG=Release" "-DCUSTOMIZE_BUILD=ON" "-DUSE_EXTERNAL_GLFW=OFF" "-DPLATFORM=Desktop" "-DWITH_PIC=ON" "-DUSE_AUDIO=ON" "-DBUILD_SHARED_LIBS=OFF"
     URL "https://github.com/X-R-G-B/B-luga/releases/latest/download/raylib.tar"
     DOWNLOAD_NO_PROGRESS FALSE
     DOWNLOAD_EXTRACT_TIMESTAMP TRUE
