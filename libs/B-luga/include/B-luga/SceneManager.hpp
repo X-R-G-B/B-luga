@@ -7,8 +7,8 @@
 
 #pragma once
 
-#include "Logger.hpp"
-#include "Registry.hpp"
+#include "B-luga/Logger.hpp"
+#include "B-luga/Registry.hpp"
 #include "B-luga/SystemManagers/SystemManagersDirector.hpp"
 #include "B-luga/Plugins/Systems/ECSSystems.hpp"
 

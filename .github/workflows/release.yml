@@ -93,25 +93,56 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
-    - name: Cleanup
-      run: ./scripts/cleanup.sh
-
     - name: Create tar
-      run: ./scripts/create-tar.sh
+      run: ./scripts/generate-all.sh
 
-    - name: Upload To Release
+    # B-luga
+
+    - name: [B-luga] Upload To Release
       if: github.ref == 'refs/heads/main'
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        gh release upload ${{ needs.release-create.outputs.release }} ./b-luga.tar
+        gh release upload ${{ needs.release-create.outputs.release }} ./libs/B-luga/b-luga.tar
 
-    - name: Upload To Artifact
+    - name: [B-luga] Upload To Artifact
       if: github.ref != 'refs/heads/main'
       uses: actions/upload-artifact@v3
       with:
         name: b-luga.tar
-        path: ./b-luga.tar
+        path: ./libs/B-luga/b-luga.tar
+
+    # B-luga-graphics
+
+    - name: [B-luga-graphics] Upload To Release
+      if: github.ref == 'refs/heads/main'
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        gh release upload ${{ needs.release-create.outputs.release }} ./libs/B-luga-graphics/b-luga-graphics.tar
+
+    - name: [B-luga-graphics] Upload To Artifact
+      if: github.ref != 'refs/heads/main'
+      uses: actions/upload-artifact@v3
+      with:
+        name: b-luga-graphics.tar
+        path: ./libs/B-luga-graphics/b-luga-graphics.tar
+
+    # B-luga-physics
+
+    - name: [B-luga-physics] Upload To Release
+      if: github.ref == 'refs/heads/main'
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        gh release upload ${{ needs.release-create.outputs.release }} ./libs/B-luga-physics/b-luga-physics.tar
+
+    - name: [B-luga-physics] Upload To Artifact
+      if: github.ref != 'refs/heads/main'
+      uses: actions/upload-artifact@v3
+      with:
+        name: b-luga-physics.tar
+        path: ./libs/B-luga-physics/b-luga-physics.tar
 
   date-to-tar:
     runs-on: ubuntu-latest
