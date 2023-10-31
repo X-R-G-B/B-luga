@@ -12,7 +12,10 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(raylib)
 
-target_link_libraries(${PROJECT_NAME} INTERFACE "$<TARGET_FILE:raylib>")
+add_library(raylibe STATIC IMPORTED)
+set_target_properties(raylibe PROPERTIES IMPORTED_LOCATION $<TARGET_FILE:raylib>)
+
+target_link_libraries(${PROJECT_NAME} PUBLIC raylibe)
 
 target_include_directories(
     ${PROJECT_NAME}
