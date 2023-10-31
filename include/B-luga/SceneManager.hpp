@@ -7,11 +7,10 @@
 
 #pragma once
 
-#include "SceneManager.hpp"
 #include "Logger.hpp"
 #include "Registry.hpp"
-#include "SystemManagersDirector.hpp"
-#include "ECSSystems.hpp"
+#include "B-luga/SystemManagers/SystemManagersDirector.hpp"
+#include "B-luga/Plugins/Systems/ECSSystems.hpp"
 
 namespace Scene {
 
