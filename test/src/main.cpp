@@ -1,7 +1,8 @@
-#include "ECSTests.hpp"
-#include "Folder/Test.hpp"
+#include "B-luga/Clock.hpp"
+#include "B-luga/Logger.hpp"
 
 int main() {
-    ECS::ABC::test();
-    ECS::Folder::DEF::test();
+    Clock clock;
+    clock.create();
+    Logger::debug("bite")
 }
