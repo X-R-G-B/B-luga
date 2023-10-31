@@ -7,17 +7,17 @@
 
 #pragma once
 
-#include "UnloadRaylib.hpp"
-#include "AudioSystems.hpp"
-#include "DeathSystems.hpp"
-#include "GraphicsCustomTypes.hpp"
-#include "ParallaxSystems.hpp"
-#include "Maths.hpp"
-#include "Registry.hpp"
-#include "SpriteSystems.hpp"
-#include "TextSystems.hpp"
-#include "SceneManager.hpp"
-#include "IPlugin.hpp"
+#include "B-luga-graphics/Raylib/UnloadRaylib.hpp"
+#include "B-luga-graphics/Raylib/Audio/AudioSystems.hpp"
+// #include "DeathSystems.hpp"
+#include "B-luga-graphics/Raylib/GraphicsCustomTypes.hpp"
+#include "B-luga-graphics/Raylib/ParallaxSystems.hpp"
+#include "B-luga/Maths/Maths.hpp"
+#include "B-luga/Registry.hpp"
+#include "B-luga-graphics/Raylib/SpriteSystems.hpp"
+#include "B-luga-graphics/Raylib/TextSystems.hpp"
+#include "B-luga/SceneManager.hpp"
+#include "B-luga/IPlugin.hpp"
 
 namespace Systems::GraphicsSystems {
 

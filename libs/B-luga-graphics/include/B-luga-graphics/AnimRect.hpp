@@ -10,7 +10,7 @@
 #include <unordered_map>
 #include "B-luga/Json.hpp"
 #include "nlohmann/json.hpp"
-#include "GraphicsCustomTypes.hpp"
+#include "B-luga-graphics/GraphicsCustomTypes.hpp"
 
 namespace Types {
     enum Direction { NONE, UP, DOWN, RIGHT, LEFT };

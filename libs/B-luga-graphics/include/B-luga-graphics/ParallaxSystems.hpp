@@ -2,11 +2,11 @@
 
 #include <fstream>
 #include <string>
-#include "GraphicsCustomTypes.hpp"
-#include "Json.hpp"
-#include "Maths.hpp"
-#include "Registry.hpp"
-#include "SystemManagersDirector.hpp"
+#include "B-luga-graphics/Raylib/GraphicsCustomTypes.hpp"
+#include "B-luga/Json.hpp"
+#include "B-luga/Maths.hpp"
+#include "B-luga/Registry.hpp"
+#include "B-luga/SystemManagers/SystemManagersDirector.hpp"
 
 
 namespace Systems::ParallaxSystems {

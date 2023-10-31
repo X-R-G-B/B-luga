@@ -7,7 +7,7 @@
 
 #pragma once
 
-#include "Raylib.hpp"
+#include "B-luga-graphics/Raylib/Raylib.hpp"
 
 namespace Types {
     struct Rect {
