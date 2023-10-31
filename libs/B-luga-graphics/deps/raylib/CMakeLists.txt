@@ -14,8 +14,5 @@ FetchContent_MakeAvailable(raylib)
 
 target_link_libraries(
     ${PROJECT_NAME}
-    INTERFACE
     raylib
 )
-
-export(PACKAGE raylib)
