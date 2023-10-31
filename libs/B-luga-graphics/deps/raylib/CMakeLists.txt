@@ -17,3 +17,8 @@ target_link_libraries(
     PRIVATE
     raylib
 )
+
+export(
+    TARGETS raylib
+    FILE raylibConfig.cmake
+)

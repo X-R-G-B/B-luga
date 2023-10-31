@@ -32,7 +32,7 @@ target_sources(
     src/test.cpp
 )
 
-target_compile_features(${PROJECT_NAME} INTERFACE cxx_std_20)
+target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_20)
 
 include(CMakePackageConfigHelpers)
 
