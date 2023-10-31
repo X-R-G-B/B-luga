@@ -17,6 +17,8 @@ include(GNUInstallDirs)
 set(BLUGA_INCLUDE_BUILD_DIR "${CMAKE_CURRENT_SOURCE_DIR}/include/")
 set(BLUGA_INCLUDE_INSTALL_DIR "${CMAKE_INSTALL_INCLUDEDIR}")
 
+add_subdirectory(deps)
+
 target_include_directories(
     ${PROJECT_NAME}
     INTERFACE
@@ -25,8 +27,6 @@ target_include_directories(
 )
 
 target_compile_features(${PROJECT_NAME} INTERFACE cxx_std_20)
-
-add_subdirectory(deps)
 
 include(CMakePackageConfigHelpers)
 
