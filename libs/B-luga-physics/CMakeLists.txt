@@ -9,7 +9,7 @@ project(
     DESCRIPTION "Plugin for B-luga ECS | implement some graphics systems"
 )
 
-add_library(${PROJECT_NAME} PUBLIC)
+add_library(${PROJECT_NAME} STATIC)
 add_library(${PROJECT_NAME}::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
 
 include(GNUInstallDirs)
