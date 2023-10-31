@@ -8,14 +8,14 @@
 #pragma once
 
 #include "B-luga-graphics/Raylib/UnloadRaylib.hpp"
-#include "B-luga-graphics/Raylib/Audio/AudioSystems.hpp"
+#include "B-luga-graphics/AudioSystems.hpp"
 // #include "DeathSystems.hpp"
-#include "B-luga-graphics/Raylib/GraphicsCustomTypes.hpp"
-#include "B-luga-graphics/Raylib/ParallaxSystems.hpp"
+#include "B-luga-graphics/GraphicsCustomTypes.hpp"
+#include "B-luga-graphics/ParallaxSystems.hpp"
 #include "B-luga/Maths/Maths.hpp"
 #include "B-luga/Registry.hpp"
-#include "B-luga-graphics/Raylib/SpriteSystems.hpp"
-#include "B-luga-graphics/Raylib/TextSystems.hpp"
+#include "B-luga-graphics/SpriteSystems.hpp"
+#include "B-luga-graphics/TextSystems.hpp"
 #include "B-luga/SceneManager.hpp"
 #include "B-luga/IPlugin.hpp"
 
