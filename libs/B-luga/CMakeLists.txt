@@ -9,7 +9,7 @@ project(
     DESCRIPTION "ECS made for R-Type epitech project"
 )
 
-add_library(${PROJECT_NAME} INTERFACE)
+add_library(${PROJECT_NAME} PUBLIC)
 add_library(${PROJECT_NAME}::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
 
 include(GNUInstallDirs)
