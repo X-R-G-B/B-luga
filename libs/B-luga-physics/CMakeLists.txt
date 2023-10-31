@@ -9,7 +9,7 @@ project(
     DESCRIPTION "Plugin for B-luga ECS | implement some graphics systems"
 )
 
-add_library(${PROJECT_NAME} STATIC)
+add_library(${PROJECT_NAME} INTERFACE)
 add_library(${PROJECT_NAME}::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
 
 include(GNUInstallDirs)
@@ -24,12 +24,6 @@ target_include_directories(
     INTERFACE
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
     $<INSTALL_INTERFACE:include>
-)
-
-target_sources(
-    ${PROJECT_NAME}
-    PRIVATE
-    src/test.cpp
 )
 
 target_compile_features(${PROJECT_NAME} INTERFACE cxx_std_20)
