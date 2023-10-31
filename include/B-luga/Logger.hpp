@@ -17,7 +17,6 @@
 #ifdef _WIN32
     #define NOGDI  // All GDI defines and routines
     #define NOUSER // All USER defines and routines
-    #include <boost/asio.hpp>
 extern "C"
 {
     #include <windows.h>
