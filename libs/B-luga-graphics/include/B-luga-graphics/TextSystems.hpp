@@ -7,10 +7,10 @@
 
 #pragma once
 
-#include "GraphicsCustomTypes.hpp"
-#include "Maths.hpp"
-#include "Raylib.hpp"
-#include "SharedValues.hpp"
+#include "B-luga-graphics/GraphicsCustomTypes.hpp"
+#include "B-luga/Maths/Maths.hpp"
+#include "B-luga-graphics/Raylib/Raylib.hpp"
+#include "B-luga-graphics/SharedValues.hpp"
 
 namespace Systems {
     namespace GraphicsSystems {

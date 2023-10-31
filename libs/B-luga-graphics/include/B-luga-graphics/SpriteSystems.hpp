@@ -10,10 +10,10 @@
 #include <cstddef>
 #include <functional>
 #include <vector>
-#include "GraphicsCustomTypes.hpp"
-#include "Logger.hpp"
-#include "Maths.hpp"
-#include "SharedValues.hpp"
+#include "B-luga-graphics/GraphicsCustomTypes.hpp"
+#include "B-luga/Logger.hpp"
+#include "B-luga/Maths/Maths.hpp"
+#include "B-luga-graphics/SharedValues.hpp"
 
 namespace Systems {
     namespace GraphicsSystems {
