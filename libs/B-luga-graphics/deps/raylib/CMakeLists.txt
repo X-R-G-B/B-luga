@@ -18,9 +18,9 @@ FetchContent_MakeAvailable(raylib)
 #     $<TARGET_FILE:raylib>
 # )
 
-# add_library(raylib_static STATIC IMPORTED)
-# set_property(TARGET raylib_static PROPERTY IMPORTED_LOCATION $<TARGET_FILE:raylib>)
-set_property(TARGET ${PROJECT_NAME} PROPERTY INTERFACE_LINK_LIBRARIES raylib_static)
+add_library(raylib_static_diff STATIC IMPORTED)
+set_property(TARGET raylib_static_diff PROPERTY IMPORTED_LOCATION $<TARGET_FILE:raylib>)
+set_property(TARGET ${PROJECT_NAME} PROPERTY INTERFACE_LINK_LIBRARIES raylib_static_diff)
 
 # install(
 #     EXPORT raylib
