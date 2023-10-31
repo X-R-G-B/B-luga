@@ -1,5 +1,5 @@
-#include "IPlugin.hpp"
-#include "SystemManagersDirector.hpp"
+#include "B-luga/IPlugin.hpp"
+#include "B-luga/SystemManagers/SystemManagersDirector.hpp"
 
 class PluginHandler
 {
