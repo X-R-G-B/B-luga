@@ -11,9 +11,9 @@
 #include <functional>
 #include <optional>
 #include <vector>
-#include "Clock.hpp"
+#include "B-luga/Clock.hpp"
 #include "nlohmann/json.hpp"
-#include "Registry.hpp"
+#include "B-luga/Registry.hpp"
 
 // all values are in percentage of the screen
 namespace Types {

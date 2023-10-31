@@ -9,9 +9,8 @@
 
 #include <vector>
 #include <map>
-#include "SystemManager.hpp"
-#include "SystemManagersDirector.hpp"
-#include "ECSSystems.hpp"
+#include "B-luga/SystemManagers/SystemManager.hpp"
+#include "B-luga/ECSSystems.hpp"
 
 namespace Systems {
     class SystemManagersDirector {
