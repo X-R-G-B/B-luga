@@ -4,5 +4,5 @@
 int main() {
     Clock clock;
     clock.create();
-    Logger::debug("bite")
+    Logger::debug("bite");
 }
