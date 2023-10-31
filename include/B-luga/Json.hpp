@@ -13,6 +13,7 @@
 #include <iostream>
 #include <sstream>
 #include <utility>
+#include <vector>
 #include "nlohmann/json.hpp"
 #include "B-luga/Logger.hpp"
 
