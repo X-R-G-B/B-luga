@@ -13,7 +13,8 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(raylib)
 
 message(WARNING $<TARGET_FILE:raylib>)
-target_link_libraries(${PROJECT_NAME} INTERFACE $<TARGET_FILE:raylib>)
+cmake_path(ABSOLUTE_PATH $<TARGET_FILE:raylib> NORMALIZE OUTPUT_VARIABLE raylib_static_absolute_path)
+target_link_libraries(${PROJECT_NAME} INTERFACE ${raylib_static_absolute_path})
 
 target_include_directories(
     ${PROJECT_NAME}
