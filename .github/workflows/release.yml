@@ -42,13 +42,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Build test
-        run: ./scripts/compil.sh
-        working-directory: test
-
-      - name: Run test
-        run: ./build/test-ecs
-        working-directory: test
+      - name: Test all
+        run: ./scripts/test-all.sh
 
   test-ecs-macos:
     runs-on: macos-latest
@@ -62,13 +57,8 @@ jobs:
           brew install cmake
           brew install llvm
 
-      - name: Build test
-        run: ./scripts/compil.sh
-        working-directory: test
-
-      - name: Run test
-        run: ./build/test-ecs
-        working-directory: test
+      - name: Test all
+        run: ./scripts/test-all.sh
 
   test-ecs-windows:
     runs-on: windows-latest
@@ -77,13 +67,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Build test
-        run: ./scripts/compil.ps1
-        working-directory: test
-
-      - name: Run test
-        run: ./build\Debug\test-ecs.exe
-        working-directory: test
+      - name: Test all
+        run: ./scripts/test-all.ps1
 
   release-linux:
     runs-on: ubuntu-latest
