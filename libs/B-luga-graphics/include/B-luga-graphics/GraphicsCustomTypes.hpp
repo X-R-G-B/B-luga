@@ -7,7 +7,6 @@
 
 #pragma once
 
-#include "ECSCustomTypes.hpp"
 #include "Raylib.hpp"
 
 namespace Types {
@@ -51,5 +50,3 @@ namespace Types {
             Raylib::Color color;
     };
 } // namespace Types
-
-#include "AnimRect.hpp"
