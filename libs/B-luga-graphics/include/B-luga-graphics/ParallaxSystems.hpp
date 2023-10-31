@@ -2,7 +2,7 @@
 
 #include <fstream>
 #include <string>
-#include "B-luga-graphics/Raylib/GraphicsCustomTypes.hpp"
+#include "B-luga-graphics/GraphicsCustomTypes.hpp"
 #include "B-luga/Json.hpp"
 #include "B-luga/Maths.hpp"
 #include "B-luga/Registry.hpp"
