@@ -13,14 +13,13 @@
 #include <functional>
 #include <string>
 #include <vector>
-#include "Json.hpp"
-#include "ECSSystems.hpp"
+#include "B-luga/Json.hpp"
 #include <nlohmann/json.hpp>
-#include "ECSCustomTypes.hpp"
-#include "Maths.hpp"
-#include "Registry.hpp"
-#include "SystemManagersDirector.hpp"
-#include "IPlugin.hpp"
+#include "B-luga/Plugins/Systems/ECSCustomTypes.hpp"
+#include "B-luga/Maths/Maths.hpp"
+#include "B-luga/Registry.hpp"
+#include "B-luga/SystemManagers/SystemManagersDirector.hpp"
+#include "B-luga/IPlugin.hpp"
 
 namespace Systems {
 
