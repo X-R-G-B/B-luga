@@ -5,8 +5,9 @@
 ** unloadRaylib
 */
 
-#include "Raylib.hpp"
-#include "Registry.hpp"
+#include <cstddef>
+#include "B-luga-graphics/Raylib/Raylib.hpp"
+#include "B-luga/Registry.hpp"
 
 static void unloadSounds(std::size_t id)
 {
