@@ -12,11 +12,11 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(raylib)
 
-# target_link_libraries(
-#     ${PROJECT_NAME}
-#     PRIVATE
-#     $<TARGET_FILE:raylib>
-# )
+target_link_libraries(
+    ${PROJECT_NAME}
+    INTERFACE
+    raylib
+)
 
 add_library(raylib_static_diff STATIC IMPORTED)
 set_property(TARGET raylib_static_diff PROPERTY IMPORTED_LOCATION $<TARGET_FILE:raylib>)
