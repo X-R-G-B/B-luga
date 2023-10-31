@@ -11,7 +11,7 @@
 #include <functional>
 #include <iostream>
 #include <sstream>
-#include <map>
+#include <unordered_map>
 #include "date/date.h"
 
 #ifdef _WIN32
@@ -267,7 +267,7 @@ class Logger {
             }
 
 #else
-            static std::map<LogLevel, std::string> colors = {
+            static std::unordered_map<LogLevel, std::string> colors = {
         {LogLevel::Fatal,       "\033[31m"},
         {LogLevel::Error,       "\033[33m"},
         {LogLevel::Warn,        "\033[34m"},
