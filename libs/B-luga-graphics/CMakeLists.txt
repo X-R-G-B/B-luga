@@ -28,8 +28,8 @@ target_include_directories(
 
 target_sources(
     ${PROJECT_NAME}
-    PUBLIC
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/test.cpp
+    PRIVATE
+    src/test.cpp
 )
 
 target_compile_features(${PROJECT_NAME} INTERFACE cxx_std_20)
