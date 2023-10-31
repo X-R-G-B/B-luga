@@ -96,7 +96,7 @@ jobs:
     - name: Create tar
       run: ./scripts/generate-all.sh
 
-    # B-luga
+# B-luga
 
     - name: [B-luga] Upload To Release
       if: github.ref == 'refs/heads/main'
@@ -112,7 +112,7 @@ jobs:
         name: b-luga.tar
         path: ./libs/B-luga/b-luga.tar
 
-    # B-luga-graphics
+# B-luga-graphics
 
     - name: [B-luga-graphics] Upload To Release
       if: github.ref == 'refs/heads/main'
@@ -128,7 +128,7 @@ jobs:
         name: b-luga-graphics.tar
         path: ./libs/B-luga-graphics/b-luga-graphics.tar
 
-    # B-luga-physics
+# B-luga-physics
 
     - name: [B-luga-physics] Upload To Release
       if: github.ref == 'refs/heads/main'
