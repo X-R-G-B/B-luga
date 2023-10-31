@@ -8,10 +8,6 @@ FetchContent_Declare(
     DOWNLOAD_EXTRACT_TIMESTAMP TRUE
 )
 
-FetchContent_MakeAvailable(b-luga)
+FetchContent_MakeAvailable(b-luga-physics)
 
-target_link_libraries(
-    ${PROJECT_NAME}
-    PRIVATE
-    b-luga-physics
-)
+target_link_libraries(${PROJECT_NAME} PRIVATE b-luga-physics)
