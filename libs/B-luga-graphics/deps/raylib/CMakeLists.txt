@@ -15,7 +15,10 @@ FetchContent_MakeAvailable(raylib)
 # add_library(raylibe STATIC IMPORTED)
 # set_target_properties(raylibe PROPERTIES IMPORTED_LOCATION )
 
+find_library(cocoa Cocoa)
+
 target_link_libraries(${PROJECT_NAME} PUBLIC $<TARGET_FILE:raylib>)
+target_link_libraries(${PROJECT_NAME} PUBLIC cocoa)
 
 target_include_directories(
     ${PROJECT_NAME}
