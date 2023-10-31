@@ -10,7 +10,7 @@
 #include <vector>
 #include <map>
 #include "B-luga/SystemManagers/SystemManager.hpp"
-#include "B-luga/ECSSystems.hpp"
+#include "B-luga/Plugins/Systems/ECSSystems.hpp"
 
 namespace Systems {
     class SystemManagersDirector {
