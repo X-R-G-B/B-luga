@@ -5,7 +5,7 @@ include(FetchContent)
 FetchContent_Declare(
     json
     CMAKE_ARGS "-DCMAKE_BUILD_TYPE=Release" "-DCMAKE_CONFIGURATION_TYPES=\"Release;Release\"" "-DCONFIG=Release"
-    URL https://github.com/nlohmann/json/releases/download/v3.11.2/json.tar.xz
+    URL "https://github.com/nlohmann/json/releases/download/v3.11.2/json.tar.xz"
     DOWNLOAD_EXTRACT_TIMESTAMP TRUE
     DOWNLOAD_NO_PROGRESS FALSE
 )
