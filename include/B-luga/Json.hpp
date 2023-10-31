@@ -31,9 +31,9 @@ class Json {
         }
 
         nlohmann::json
-        getJsonObjectById(const std::string &type, const std::string &id, const std::string &arrayName)
+        getJsonObjectById(const std::string &dataType, const std::string &id, const std::string &arrayName)
         {
-            auto objectList = getDataByJsonType(type)[arrayName];
+            auto objectList = getDataByJsonType(dataType)[arrayName];
 
             for (const auto &object : objectList) {
                 auto idField = object.find("id");
@@ -41,7 +41,7 @@ class Json {
                     return object;
                 }
             }
-            Logger::fatal(std::string("(getJsonObject) Key : " + id + " is not valid"));
+            Logger::fatal(std::string("(getJsonObject) Key : ") + id + std::string(" is not valid"));
             throw std::runtime_error("Json error");
         }
 
@@ -50,15 +50,10 @@ class Json {
         {
             nlohmann::json finalData(_jsonDatas[dataType]);
 
-            for (const auto &key : index) {
-                finalData = finalData[key];
-                if (finalData == nullptr) {
-                    Logger::fatal(std::string("(getDataByVector) Key : " + key + " is not valid"));
-                    throw std::runtime_error("Json error");
-                }
-                if (finalData.is_array()) {
-                    return (finalData);
-                }
+            finalData = finalData[index];
+            if (finalData == nullptr) {
+                Logger::fatal(std::string("(getDataByVector) Key : ") + index + std::string(" is not valid"));
+                throw std::runtime_error("Json error");
             }
 
             return (finalData);
@@ -77,7 +72,7 @@ class Json {
 
             finalData = finalData[index];
             if (finalData == nullptr) {
-                Logger::error(std::string("(getDataByJsonType) Key : " + index + " is not valid"));
+                Logger::error(std::string("(getDataByJsonType) Key : ") + index + std::string(" is not valid"));
             }
             return (finalData);
         }
@@ -90,7 +85,7 @@ class Json {
 
             for (const auto &elem : list) {
                 if (elem[index] == nullptr) {
-                    Logger::fatal(std::string("(getDatasDromList : 2) Key : " + index + " is not valid"));
+                    Logger::fatal(std::string("(getDatasDromList : 2) Key : ") + index + std::string(" is not valid"));
                     throw std::runtime_error("Json error");
                 }
                 if (elem[index].is_array() == true) {
@@ -109,7 +104,7 @@ class Json {
 
             for (const auto &elem : list) {
                 if (elem[index] == nullptr) {
-                    Logger::fatal(std::string("(getDatasFromList : 1) Key : " + index + " is not valid"));
+                    Logger::fatal(std::string("(getDatasFromList : 1) Key : ") + index + std::string(" is not valid"));
                     throw std::runtime_error("Json error");
                 }
                 datas.push_back(elem[index]);
@@ -165,7 +160,7 @@ class Json {
     T getDataFromJson(nlohmann::json jsonData, const std::string &index)
     {
         if (jsonData[index] == nullptr) {
-            Logger::fatal(std::string("(getDataByJson<template>) Key : " + index + " is not valid"));
+            Logger::fatal(std::string("(getDataByJson<template>) Key : ") + index + std::string(" is not valid"));
             throw std::runtime_error("Json error");
         }
         return jsonData[index].get<T>();
@@ -183,7 +178,7 @@ class Json {
         }
         for (; begin + 1 != indexes.end(); begin++) {
             if (datas[*begin] == nullptr) {
-                Logger::fatal(std::string("(getDataByVector<T>) Key : " + *begin + " is not valid"));
+                Logger::fatal(std::string("(getDataByVector<T>) Key : ") + *begin + std::string(" is not valid"));
                 throw std::runtime_error("Json error");
             }
             datas = datas[*begin];
