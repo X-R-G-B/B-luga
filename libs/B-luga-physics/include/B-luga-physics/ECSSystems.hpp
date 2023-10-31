@@ -15,7 +15,7 @@
 #include <vector>
 #include "nlohmann/json.hpp"
 #include "B-luga/Json.hpp"
-#include "B-luga/Plugins/Systems/ECSCustomTypes.hpp"
+#include "B-luga-physics/ECSCustomTypes.hpp"
 #include "B-luga/Maths/Maths.hpp"
 #include "B-luga/Registry.hpp"
 #include "B-luga/SystemManagers/SystemManagersDirector.hpp"
