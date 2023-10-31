@@ -18,8 +18,14 @@ set_property(TARGET ${PROJECT_NAME} PROPERTY INTERFACE_LINK_LIBRARIES raylib_sta
 
 target_include_directories(
     ${PROJECT_NAME}
-    PRIVATE
-    ${raylib_SOURCE_DIR}/src
+    INTERFACE
+    $<BUILD_INTERFACE:${raylib_SOURCE_DIR}/src>
+    $<INSTALL_INTERFACE:include>
+)
+
+install(
+    DIRECTORY ${raylib_SOURCE_DIR}/src
+    DESTINATION ${BLUGA_INCLUDE_INSTALL_DIR}
 )
 
 # install(
