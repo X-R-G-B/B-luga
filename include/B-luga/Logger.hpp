@@ -8,8 +8,10 @@
 #pragma once
 
 #include <chrono>
+#include <functional>
 #include <iostream>
 #include <sstream>
+#include <map>
 #include "date/date.h"
 
 #ifdef _WIN32
@@ -132,9 +134,7 @@ class Logger {
          */
         static void debug(const std::string &message)
         {
-#ifdef NDEBUG
-            return;
-#else
+#ifndef NDEBUG
             if (getLogLevel() < LogLevel::Debug) {
                 return;
             }
@@ -151,9 +151,7 @@ class Logger {
          */
         static void trace(const std::string &message)
         {
-#ifdef NDEBUG
-            return;
-#else
+#ifndef NDEBUG
             if (getLogLevel() < LogLevel::Trace) {
                 return;
             }
