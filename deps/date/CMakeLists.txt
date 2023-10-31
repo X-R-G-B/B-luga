@@ -13,6 +13,6 @@ FetchContent_MakeAvailable(date)
 
 target_include_directories(
     ${PROJECT_NAME}
-    PRIVATE
+    INTERFACE
     ${date_SOURCE_DIR}/include
 )
