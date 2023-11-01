@@ -2,7 +2,7 @@
 
 namespace Raylib {
 
-            RayImage::RayImage(const std::string &fileName)
+            RayImageImpl::RayImageImpl(const std::string &fileName)
                 : _image(LoadImage(fileName.c_str()))
             {
                 if (!isImageReady()) {
@@ -12,53 +12,53 @@ namespace Raylib {
                 }
             }
 
-            RayImage::RayImage(int width, int height, Color color)
+            RayImageImpl::RayImageImpl(int width, int height, Color color)
                 : _image(GenImageColor(width, height, {color.r, color.g, color.b, color.a}))
             {
             }
 
-            RayImage::~RayImage()
+            RayImageImpl::~RayImageImpl()
             {
                 if (isImageReady()) {
                     unloadImage();
                 }
             }
 
-            bool RayImage::isImageReady()
+            bool RayImageImpl::isImageReady()
             {
                 return IsImageReady(_image);
             }
 
-            void RayImage::unloadImage()
+            void RayImageImpl::unloadImage()
             {
                 if (isImageReady()) {
                     UnloadImage(_image);
                 }
             }
 
-            int RayImage::getWidth() const
+            int RayImageImpl::getWidth() const
             {
                 return _image.width;
             }
 
-            int RayImage::getHeight() const
+            int RayImageImpl::getHeight() const
             {
                 return _image.height;
             }
 
-            int RayImage::getMipmaps() const
+            int RayImageImpl::getMipmaps() const
             {
                 return _image.mipmaps;
             }
 
-            int RayImage::getFormat() const
+            int RayImageImpl::getFormat() const
             {
                 return _image.format;
             }
 
-            void RayImage::setData(const RayImage &image)
+            void *RayImageImpl::getData()
             {
-                _image.data = image._image.data;
+                return _image.data;
             }
 
             SpriteImpl::SpriteImpl(const std::string &fileName, float width, float height, std::size_t id)
