@@ -24,7 +24,7 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(raylib)
 
 target_link_libraries(
-    ${PROJECT_NAME_CLIENT}
+    ${PROJECT_NAME}
     PRIVATE
     raylib
 )
