@@ -178,7 +178,7 @@ class Json {
         }
         for (; begin + 1 != indexes.end(); begin++) {
             if (datas[*begin] == nullptr) {
-                Logger::fatal(std::string("(getDataByVector<T>) Key : ") + *begin + std::string(" is not valid"));
+                Logger::fatal(std::string("(getDataByVector<T>) Key : '") + *begin + std::string("' is not valid from '") + dataType + std::string("'"));
                 throw std::runtime_error("Json error");
             }
             datas = datas[*begin];
