@@ -85,72 +85,72 @@ namespace Raylib {
 
     class KeyboardInput {
         public:
-            static bool isKeyPressed(KeyboardKey key)
+            static bool isKeyPressed(KeyboardKey key);
 
-            static bool isKeyDown(KeyboardKey key)
+            static bool isKeyDown(KeyboardKey key);
 
-            static bool isKeyReleased(KeyboardKey key)
+            static bool isKeyReleased(KeyboardKey key);
 
-            static bool isKeyUp(KeyboardKey key)
+            static bool isKeyUp(KeyboardKey key);
 
-            static void setExitKey(KeyboardKey key)
+            static void setExitKey(KeyboardKey key);
 
-            static int getKeyPressed()
+            static int getKeyPressed();
 
-            static int getCharPressed()
+            static int getCharPressed();
     };
 
     class MouseInput {
         public:
-            static bool isMouseButtonPressed(MouseButton button)
+            static bool isMouseButtonPressed(MouseButton button);
 
-            static bool isMouseButtonDown(MouseButton button)
+            static bool isMouseButtonDown(MouseButton button);
 
-            static bool isMouseButtonReleased(MouseButton button)
+            static bool isMouseButtonReleased(MouseButton button);
 
-            static bool isMouseButtonUp(MouseButton button)
+            static bool isMouseButtonUp(MouseButton button);
 
-            static Vector2 getMousePosition()
+            static Vector2 getMousePosition();
 
-            static int getMouseX()
+            static int getMouseX();
 
-            static int getMouseY()
+            static int getMouseY();
 
-            static void setMousePosition(int x, int y)
+            static void setMousePosition(int x, int y);
 
-            static Vector2 getMouseDelta()
+            static Vector2 getMouseDelta();
 
-            static void setMouseOffset(int offsetX, int offsetY)
+            static void setMouseOffset(int offsetX, int offsetY);
 
-            static void setMouseScale(float scaleX, float scaleY)
+            static void setMouseScale(float scaleX, float scaleY);
 
-            static float getMouseWheelMove()
+            static float getMouseWheelMove();
 
-            static Vector2 getMouseWheelMoveV()
+            static Vector2 getMouseWheelMoveV();
 
-            static void setMouseCursor(int cursor)
+            static void setMouseCursor(int cursor);
     };
 
     class DrawShape {
         public:
-            static void drawPixel(int posX, int posY, Color color)
+            static void drawPixel(int posX, int posY, Color color);
 
-            static void drawCircle(int centerX, int centerY, float radius, Color color)
+            static void drawCircle(int centerX, int centerY, float radius, Color color);
 
-            static void drawRectangle(int posX, int posY, int width, int height, Color color)
+            static void drawRectangle(int posX, int posY, int width, int height, Color color);
     };
 
     class RayColor {
         public:
-            static Color fade(Color color, float alpha)
+            static Color fade(Color color, float alpha);
 
-            static int colorToInt(Color color)
+            static int colorToInt(Color color);
 
-            static Vector4 colorNormalize(Color color)
+            static Vector4 colorNormalize(Color color);
 
-            static Color colorFromNormalized(Vector4 normalized)
+            static Color colorFromNormalized(Vector4 normalized);
 
-            static Color getColor(unsigned int hexValue)
+            static Color getColor(unsigned int hexValue);
     };
 
     class RayImage {
