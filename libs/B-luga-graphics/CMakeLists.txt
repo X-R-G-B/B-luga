@@ -28,8 +28,8 @@ target_include_directories(
     $<INSTALL_INTERFACE:include>
 )
 
-add_subdirectory(src)
 add_subdirectory(include)
+add_subdirectory(src)
 
 target_compile_features(${PROJECT_NAME} INTERFACE cxx_std_20)
 
