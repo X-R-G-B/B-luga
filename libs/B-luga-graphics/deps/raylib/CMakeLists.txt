@@ -17,7 +17,7 @@ FetchContent_MakeAvailable(raylib)
 
 if(APPLE)
     find_library(COCOA_LIBRARY Cocoa)
-    target_link_libraries(${PROJECT_NAME} ${COCOA_LIBRARY})
+    target_link_libraries(${PROJECT_NAME} PUBLIC ${COCOA_LIBRARY})
 endif()
 
 target_link_libraries(${PROJECT_NAME} PUBLIC $<TARGET_FILE:raylib>)
