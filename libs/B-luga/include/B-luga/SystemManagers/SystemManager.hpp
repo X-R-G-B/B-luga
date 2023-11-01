@@ -10,6 +10,7 @@
 #include <functional>
 #include <mutex>
 #include <vector>
+#include <algorithm>
 
 namespace Systems {
     class SystemManager {

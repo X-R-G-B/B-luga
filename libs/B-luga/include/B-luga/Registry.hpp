@@ -18,6 +18,7 @@
 #include <unordered_map>
 #include <vector>
 #include <unordered_set>
+#include <algorithm>
 #include "Clock.hpp"
 #include "SparseArray.hpp"
 #include "Logger.hpp"
