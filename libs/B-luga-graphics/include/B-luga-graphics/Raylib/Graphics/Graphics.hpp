@@ -265,7 +265,7 @@ namespace Raylib {
 
         static std::string getClipboardText();
 
-        static void setWindowIcon(std::unique_ptr<RayImage> icon):
+        static void setWindowIcon(std::unique_ptr<RayImage> icon);
     };
 
     // Text functions and classes
