@@ -7,4 +7,6 @@
 
 #pragma once
 
-constexpr float denominator = 100.0;
+namespace Raylib {
+    constexpr float denominator = 100.0;
+}

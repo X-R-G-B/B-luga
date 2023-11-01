@@ -15,6 +15,7 @@
 #include "B-luga/Logger.hpp"
 #include "B-luga/Maths/Maths.hpp"
 #include "B-luga-graphics/SharedValues.hpp"
+#include "B-luga-graphics/Raylib.hpp"
 
 namespace Systems {
     namespace GraphicsSystems {
