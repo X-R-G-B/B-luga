@@ -16,8 +16,7 @@ FetchContent_MakeAvailable(raylib)
 # set_target_properties(raylibe PROPERTIES IMPORTED_LOCATION )
 
 if(APPLE)
-    find_library(COCOA Cocoa)
-    target_link_libraries(${PROJECT_NAME} PUBLIC ${COCOA})
+    target_compile_options(${PROJECT_NAME} PUBLIC "-framework Cocoa")
 endif()
 
 target_link_libraries(${PROJECT_NAME} PUBLIC $<TARGET_FILE:raylib>)
