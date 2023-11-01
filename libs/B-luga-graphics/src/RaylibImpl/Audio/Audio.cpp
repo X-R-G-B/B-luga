@@ -11,6 +11,7 @@ extern "C"
 #include "raylib.h"
 }
 #include "B-luga-graphics/Raylib/Audio/Audio.hpp"
+#include "Audio.hpp"
 
 namespace Raylib {
     // Sounds
