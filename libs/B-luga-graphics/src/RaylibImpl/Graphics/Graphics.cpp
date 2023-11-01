@@ -166,11 +166,11 @@ namespace Raylib {
             void SpriteImpl::loadTextureFromImage(RayImage image)
             {
                 ::Image img;
-                RayImage::setExternData(img, image);
                 img.width   = image.getWidth();
                 img.height  = image.getHeight();
                 img.mipmaps = image.getMipmaps();
                 img.format  = image.getFormat();
+                img.data    = image.getData();
                 _texture    = LoadTextureFromImage(img);
             }
 
