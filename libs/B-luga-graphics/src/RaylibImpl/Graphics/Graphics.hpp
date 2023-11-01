@@ -80,7 +80,7 @@ namespace Raylib {
             void drawPro(Rectangle source, Rectangle dest, Vector2 origin, float rotation, Color tint) override;
 
         private:
-            void loadTextureFromImage(RayImage image);
+            void loadTextureFromImage(std::unique_ptr<RayImage> image);
             ::Texture2D _texture;
             std::unique_ptr<RayImage> _imageUnique;
             // width and height in percentage of the screen
