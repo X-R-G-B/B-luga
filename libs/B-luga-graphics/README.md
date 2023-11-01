@@ -29,3 +29,5 @@ target_link_libraries(
     raylib
 )
 ```
+
+If you have stange linkage problem, try to incerse order of target_link_libraries between raylib and B-luga-graphics.
