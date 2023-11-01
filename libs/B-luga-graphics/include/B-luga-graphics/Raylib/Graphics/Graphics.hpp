@@ -170,7 +170,6 @@ namespace Raylib {
 
             virtual int getFormat() const = 0;
 
-            virtual void setData(const RayImage &image) = 0;
             virtual void *getData() = 0;
     };
 
