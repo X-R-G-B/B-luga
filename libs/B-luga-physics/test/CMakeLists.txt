@@ -19,6 +19,16 @@ include(ExternalProject)
 include(FetchContent)
 
 FetchContent_Declare(
+    b-luga
+    URL "https://github.com/X-R-G-B/B-luga/releases/latest/download/b-luga.tar"
+    DOWNLOAD_EXTRACT_TIMESTAMP TRUE
+)
+
+FetchContent_MakeAvailable(b-luga)
+
+target_link_libraries(${PROJECT_NAME} PRIVATE b-luga)
+
+FetchContent_Declare(
     b-luga-physics
     URL "https://github.com/X-R-G-B/B-luga/releases/latest/download/b-luga-physics.tar"
     DOWNLOAD_EXTRACT_TIMESTAMP TRUE
