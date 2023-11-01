@@ -19,12 +19,6 @@ set(BLUGA_INCLUDE_INSTALL_DIR "${CMAKE_INSTALL_INCLUDEDIR}")
 
 add_subdirectory(deps)
 
-add_custom_command(
-    TARGET ${PROJECT_NAME}
-    PRE_BUILD
-    COMMAND ${CMAKE_COMMAND} --build ${raylib_BINARY_DIR}
-)
-
 target_include_directories(
     ${PROJECT_NAME}
     INTERFACE
