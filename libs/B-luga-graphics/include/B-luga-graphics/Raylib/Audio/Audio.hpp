@@ -8,206 +8,84 @@
 #pragma once
 
 #include <string>
-extern "C"
-{
-#include "raylib.h"
-}
+#include <memory>
 
 namespace Raylib {
     // Audio device management functions
     class Audio {
         public:
-            static void initAudioDevice()
-            {
-                InitAudioDevice();
-            }
-            static void closeAudioDevice()
-            {
-                CloseAudioDevice();
-            }
-            static bool isAudioDeviceReady()
-            {
-                return IsAudioDeviceReady();
-            }
-            static void setMasterVolume(float volume)
-            {
-                SetMasterVolume(volume);
-            }
+            static void initAudioDevice();
+            static void closeAudioDevice();
+            static bool isAudioDeviceReady();
+            static void setMasterVolume(float volume);
     };
 
     // Sounds
     class Sound {
         public:
-            Sound(const std::string& fileName, float volume)
-                : _path(fileName),
-                  _sound(LoadSound(_path.c_str()))
-            {
-                SetSoundVolume(_sound, volume);
-            }
+            static std::unique_ptr<Sound> fromFile(const std::string& fileName, float volume);
 
-            bool isReady() const
-            {
-                return IsSoundReady(_sound);
-            }
+            virtual bool isReady() const = 0;
 
-            void unload()
-            {
-                UnloadSound(_sound);
-            }
+            virtual void unload() = 0;
 
-            void play() const
-            {
-                PlaySound(_sound);
-            }
+            virtual void play() const = 0;
 
-            void stop() const
-            {
-                StopSound(_sound);
-            }
+            virtual void stop() const = 0;
 
-            void pause() const
-            {
-                PauseSound(_sound);
-            }
+            virtual void pause() const = 0;
 
-            void resume() const
-            {
-                ResumeSound(_sound);
-            }
+            virtual void resume() const = 0;
 
-            bool isPlaying() const
-            {
-                return IsSoundPlaying(_sound);
-            }
+            virtual bool isPlaying() const = 0;
 
-            void setVolume(float volume) const
-            {
-                SetSoundVolume(_sound, volume);
-            }
+            virtual void setVolume(float volume) const = 0;
 
-            void setPitch(float pitch) const
-            {
-                SetSoundPitch(_sound, pitch);
-            }
+            virtual void setPitch(float pitch) const = 0;
 
-            void setPan(float pan) const
-            {
-                SetSoundPitch(_sound, pan);
-            }
+            virtual void setPan(float pan) const = 0;
 
-            bool NeedToPlay() const
-            {
-                return _needToPlay;
-            }
+            virtual bool NeedToPlay() const = 0;
 
-            void setNeedToPlay(bool needToPlay)
-            {
-                _needToPlay = needToPlay;
-            }
+            virtual void setNeedToPlay(bool needToPlay) = 0;
 
-            std::string getPath() const
-            {
-                return _path;
-            }
-
-        private:
-            std::string _path;
-            ::Sound _sound;
-            bool _needToPlay {false};
+            virtual std::string getPath() const = 0;
     };
 
     class Music {
         public:
-            Music(const std::string& fileName, float volume)
-                : _path(fileName),
-                  _music(LoadMusicStream(_path.c_str()))
-            {
-                SetMusicVolume(_music, volume);
-            }
+            static std::unique_ptr<Music> fromFile(const std::string &fileName, float volume);
 
-            void unload()
-            {
-                UnloadMusicStream(_music);
-            }
+            virtual void unload() = 0;
 
-            bool isReady() const
-            {
-                return IsMusicReady(_music);
-            }
+            virtual bool isReady() const;
 
-            void play() const
-            {
-                PlayMusicStream(_music);
-            }
+            virtual void play() const;
 
-            bool isPlaying() const
-            {
-                return IsMusicStreamPlaying(_music);
-            }
+            virtual bool isPlaying() const;
 
-            void update() const
-            {
-                UpdateMusicStream(_music);
-            }
+            virtual void update() const;
 
-            void stop() const
-            {
-                StopMusicStream(_music);
-            }
+            virtual void stop() const;
 
-            void pause() const
-            {
-                PauseMusicStream(_music);
-            }
+            virtual void pause() const;
 
-            void resume() const
-            {
-                ResumeMusicStream(_music);
-            }
+            virtual void resume() const;
 
-            void setVolume(float volume) const
-            {
-                SetMusicVolume(_music, volume);
-            }
+            virtual void setVolume(float volume) const;
 
-            void setPitch(float pitch) const
-            {
-                SetMusicPitch(_music, pitch);
-            }
+            virtual void setPitch(float pitch) const;
 
-            void setPan(float pan) const
-            {
-                SetMusicPitch(_music, pan);
-            }
+            virtual void setPan(float pan) const;
 
-            float getTimeLength() const
-            {
-                return GetMusicTimeLength(_music);
-            }
+            virtual float getTimeLength() const;
 
-            float getTimePlayed() const
-            {
-                return GetMusicTimePlayed(_music);
-            }
+            virtual float getTimePlayed() const;
 
-            bool NeedToPlay() const
-            {
-                return _needToPlay;
-            }
+            virtual bool NeedToPlay() const;
 
-            void setNeedToPlay(bool needToPlay)
-            {
-                _needToPlay = needToPlay;
-            }
+            virtual void setNeedToPlay(bool needToPlay);
 
-            std::string getPath() const
-            {
-                return _path;
-            }
-
-        private:
-            std::string _path;
-            ::Music _music;
-            bool _needToPlay {false};
+            virtual const std::string &getPath() const;
     };
 } // namespace Raylib

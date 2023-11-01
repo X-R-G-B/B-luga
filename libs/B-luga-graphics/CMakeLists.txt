@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.20)
 
 set(PROJECT_NAME "b-luga-graphics")
 
+set(CMAKE_CXX_STANDARD 20)
+
 project(
     ${PROJECT_NAME}
     VERSION 1.0.0
@@ -9,7 +11,7 @@ project(
     DESCRIPTION "Plugin for B-luga ECS | implement some graphics systems"
 )
 
-add_library(${PROJECT_NAME} INTERFACE)
+add_library(${PROJECT_NAME} STATIC)
 add_library(${PROJECT_NAME}::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
 
 include(GNUInstallDirs)
@@ -25,6 +27,9 @@ target_include_directories(
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
     $<INSTALL_INTERFACE:include>
 )
+
+add_subdirectory(src)
+add_subdirectory(include)
 
 target_compile_features(${PROJECT_NAME} INTERFACE cxx_std_20)
 
