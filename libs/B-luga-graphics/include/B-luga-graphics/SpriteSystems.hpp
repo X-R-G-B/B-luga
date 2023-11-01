@@ -97,7 +97,7 @@ namespace Systems {
                     static_cast<int>(y),
                     static_cast<int>(width),
                     static_cast<int>(height),
-                    Raylib::PURPLE);
+                    Raylib::Purple);
             }
         }
 
@@ -200,7 +200,7 @@ namespace Systems {
             auto ids = arrSpriteDatas.getExistingsId();
             for (auto id : ids) {
                 auto &spriteDatas = arrSpriteDatas[id];
-                Raylib::SpriteShared sprite = Sprite::fromFile(
+                Raylib::SpriteShared sprite = Raylib::Sprite::fromFile(
                     spriteDatas.fileName,
                     Maths::intToFloatConservingDecimals(spriteDatas.width),
                     Maths::intToFloatConservingDecimals(spriteDatas.height),
