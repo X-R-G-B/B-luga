@@ -39,12 +39,12 @@ namespace Raylib {
 
             int getFormat() const override;
 
-            void setData(RayImage image) override;
+            void setData(const RayImage &image) override;
         private:
             ::Image _image;
     };
 
-    class SpriteImpl {
+    class SpriteImpl : public Sprite {
         public:
             SpriteImpl(const std::string &fileName, float width, float height, std::size_t id);
 

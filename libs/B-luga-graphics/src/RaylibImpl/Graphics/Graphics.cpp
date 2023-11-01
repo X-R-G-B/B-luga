@@ -56,7 +56,7 @@ namespace Raylib {
                 return _image.format;
             }
 
-            void RayImage::setData(RayImage image)
+            void RayImage::setData(const RayImage &image)
             {
                 _image.data = image._image.data;
             }
