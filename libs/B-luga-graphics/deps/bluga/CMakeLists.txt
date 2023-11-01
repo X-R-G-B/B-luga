@@ -15,3 +15,9 @@ target_link_libraries(
     PRIVATE
     b-luga
 )
+
+target_link_libraries(
+    ${PROJECT_NAME}
+    INTERFACE
+    b-luga
+)
