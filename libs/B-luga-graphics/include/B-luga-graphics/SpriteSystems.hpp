@@ -195,12 +195,12 @@ namespace Systems {
         {
             std::lock_guard<std::mutex> lock(Registry::getInstance().mutex);
             auto &arrSpriteDatas = Registry::getInstance().getComponents<Types::SpriteDatas>();
-            auto &arrSprite      = Registry::getInstance().getComponents<Raylib::Sprite>();
+            auto &arrSprite      = Registry::getInstance().getComponents<Raylib::SpriteShared>();
 
             auto ids = arrSpriteDatas.getExistingsId();
             for (auto id : ids) {
                 auto &spriteDatas = arrSpriteDatas[id];
-                Raylib::Sprite sprite(
+                SpriteShared sprite = Sprite::fromFile(
                     spriteDatas.fileName,
                     Maths::intToFloatConservingDecimals(spriteDatas.width),
                     Maths::intToFloatConservingDecimals(spriteDatas.height),
