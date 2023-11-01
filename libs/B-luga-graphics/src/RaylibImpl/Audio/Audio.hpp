@@ -19,76 +19,32 @@ namespace Raylib {
     class SoundImpl : public Sound {
         public:
             SoundImpl(const std::string& fileName, float volume)
-                : _path(fileName),
-                  _sound(LoadSound(_path.c_str()))
-            {
-                SetSoundVolume(_sound, volume);
-            }
 
-            bool isReady() const override
-            {
-                return IsSoundReady(_sound);
-            }
+            bool isReady() const ovveride;
 
-            void unload() override
-            {
-                UnloadSound(_sound);
-            }
+            void unload() ovveride;
 
-            void play() const override
-            {
-                PlaySound(_sound);
-            }
+            void play() const ovveride;
 
-            void stop() const override
-            {
-                StopSound(_sound);
-            }
+            void stop() const ovveride;
 
-            void pause() const override
-            {
-                PauseSound(_sound);
-            }
+            void pause() const ovveride;
 
-            void resume() const override
-            {
-                ResumeSound(_sound);
-            }
+            void resume() const ovveride;
 
-            bool isPlaying() const override
-            {
-                return IsSoundPlaying(_sound);
-            }
+            bool isPlaying() const ovveride;
 
-            void setVolume(float volume) const override
-            {
-                SetSoundVolume(_sound, volume);
-            }
+            void setVolume(float volume) const ovveride;
 
-            void setPitch(float pitch) const override
-            {
-                SetSoundPitch(_sound, pitch);
-            }
+            void setPitch(float pitch) const ovveride;
 
-            void setPan(float pan) const override
-            {
-                SetSoundPitch(_sound, pan);
-            }
+            void setPan(float pan) const ovveride;
 
-            bool NeedToPlay() const override
-            {
-                return _needToPlay;
-            }
+            bool NeedToPlay() const ovveride;
 
-            void setNeedToPlay(bool needToPlay) override
-            {
-                _needToPlay = needToPlay;
-            }
+            void setNeedToPlay(bool needToPlay) ovveride;
 
-            const std::string &getPath() const override
-            {
-                return _path;
-            }
+            const std::string &getPath() const ovveride;
 
         private:
             std::string _path;
@@ -99,91 +55,38 @@ namespace Raylib {
     class MusicImpl : public Music {
         public:
             MusicImpl(const std::string& fileName, float volume)
-                : _path(fileName),
-                  _music(LoadMusicStream(_path.c_str()))
-            {
-                SetMusicVolume(_music, volume);
-            }
 
-            void unload() override
-            {
-                UnloadMusicStream(_music);
-            }
+            void unload() ovveride;
 
-            bool isReady() const override
-            {
-                return IsMusicReady(_music);
-            }
+            bool isReady() const ovveride;
 
-            void play() const override
-            {
-                PlayMusicStream(_music);
-            }
+            void play() const ovveride;
 
-            bool isPlaying() const override
-            {
-                return IsMusicStreamPlaying(_music);
-            }
+            bool isPlaying() const ovveride;
 
-            void update() const override
-            {
-                UpdateMusicStream(_music);
-            }
+            void update() const ovveride;
 
-            void stop() const override
-            {
-                StopMusicStream(_music);
-            }
+            void stop() const ovveride;
 
-            void pause() const override
-            {
-                PauseMusicStream(_music);
-            }
+            void pause() const ovveride;
 
-            void resume() const override
-            {
-                ResumeMusicStream(_music);
-            }
+            void resume() const ovveride;
 
-            void setVolume(float volume) const override
-            {
-                SetMusicVolume(_music, volume);
-            }
+            void setVolume(float volume) const ovveride;
 
-            void setPitch(float pitch) const override
-            {
-                SetMusicPitch(_music, pitch);
-            }
+            void setPitch(float pitch) const ovveride;
 
-            void setPan(float pan) const override
-            {
-                SetMusicPitch(_music, pan);
-            }
+            void setPan(float pan) const ovveride;
 
-            float getTimeLength() const override
-            {
-                return GetMusicTimeLength(_music);
-            }
+            float getTimeLength() const ovveride;
 
-            float getTimePlayed() const override
-            {
-                return GetMusicTimePlayed(_music);
-            }
+            float getTimePlayed() const ovveride;
 
-            bool NeedToPlay() const override
-            {
-                return _needToPlay;
-            }
+            bool NeedToPlay() const ovveride;
 
-            void setNeedToPlay(bool needToPlay) override
-            {
-                _needToPlay = needToPlay;
-            }
+            void setNeedToPlay(bool needToPlay) ovveride;
 
-            const std::string &getPath() const override
-            {
-                return _path;
-            }
+            const std::string &getPath() const ovveride;
 
         private:
             std::string _path;

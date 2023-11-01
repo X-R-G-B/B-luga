@@ -5,8 +5,6 @@
 ** Audio
 */
 
-#pragma once
-
 #include <memory>
 #include <string>
 #include "Audio.hpp"
