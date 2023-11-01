@@ -17,16 +17,16 @@ namespace Systems {
 
         static void setFontSizeResponsive(Raylib::Text &text, Types::FontSize &fsz)
         {
-            float fontSize = (fsz.fsz * static_cast<float>(GetScreenWidth())) / denominator;
+            float fontSize = (fsz.fsz * static_cast<float>(Raylib::Window::getScreenWidth())) / denominator;
 
             text.setCurrentFontSize(fontSize);
         }
 
         static void setPositionResponsive(Raylib::Text &text, Types::Position &pos)
         {
-            float x = (Maths::intToFloatConservingDecimals(pos.x) * static_cast<float>(GetScreenWidth()))
+            float x = (Maths::intToFloatConservingDecimals(pos.x) * static_cast<float>(Raylib::Window::getScreenWidth()))
                       / denominator;
-            float y = (Maths::intToFloatConservingDecimals(pos.y) * static_cast<float>(GetScreenHeight()))
+            float y = (Maths::intToFloatConservingDecimals(pos.y) * static_cast<float>(Raylib::Window::getScreenHeight()))
                       / denominator;
 
             text.setPixelPosition({x, y});
@@ -64,12 +64,12 @@ namespace Systems {
         void textRenderer(std::size_t /*unused*/, std::size_t /*unused*/)
         {
             std::lock_guard<std::mutex> lock(Registry::getInstance().mutex);
-            Registry::components<Raylib::Text> arrText = Registry::getInstance().getComponents<Raylib::Text>();
+            Registry::components<Raylib::TextShared> arrText = Registry::getInstance().getComponents<Raylib::TextShared>();
 
             std::vector<std::size_t> ids = arrText.getExistingsId();
 
             for (auto &id : ids) {
-                drawTextResponsive(id, arrText[id]);
+                drawTextResponsive(id, *arrText[id]);
             }
         }
 
