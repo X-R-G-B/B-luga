@@ -26,6 +26,12 @@ target_include_directories(
     $<INSTALL_INTERFACE:include>
 )
 
+target_include_directories(
+    ${PROJECT_NAME}
+    PRIVATE
+    ${BLUGA_INCLUDE_BUILD_DIR}
+)
+
 target_sources(
     ${PROJECT_NAME}
     PRIVATE
