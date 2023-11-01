@@ -20,8 +20,8 @@ namespace Systems {
         void soundEffectPlayer(std::size_t /*unused*/, std::size_t /*unused*/)
         {
             std::lock_guard<std::mutex> lock(Registry::getInstance().mutex);
-            Registry::components<Raylib::Sound> arrSoundEffect =
-                Registry::getInstance().getComponents<Raylib::Sound>();
+            Registry::components<Raylib::SoundShared> arrSoundEffect =
+                Registry::getInstance().getComponents<Raylib::SoundShared>();
 
             for (auto &soundEffect : arrSoundEffect) {
                 if (soundEffect.NeedToPlay() && !soundEffect.isPlaying()) {
@@ -33,8 +33,8 @@ namespace Systems {
         void musicPlayer(std::size_t /*unused*/, std::size_t /*unused*/)
         {
             std::lock_guard<std::mutex> lock(Registry::getInstance().mutex);
-            Registry::components<Raylib::Music> arrMusics =
-                Registry::getInstance().getComponents<Raylib::Music>();
+            Registry::components<Raylib::MusicShared> arrMusics =
+                Registry::getInstance().getComponents<Raylib::MusicShared>();
 
             for (auto &music : arrMusics) {
                 if (music.NeedToPlay()) {
