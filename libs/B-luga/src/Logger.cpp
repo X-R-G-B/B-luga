@@ -27,7 +27,7 @@ static HANDLE &getHandle()
 }
 #endif
 
-static void Logger::print(LogLevel levelT, const std::string &level, const std::string &message)
+void Logger::print(LogLevel levelT, const std::string &level, const std::string &message)
 {
     auto const now = std::chrono::system_clock::now();
     auto it        = getCallbacks().find(levelT);
