@@ -92,7 +92,7 @@ namespace Systems {
                 float width  = (rectangle.width * static_cast<float>(Raylib::Window::getScreenWidth())) / denominator;
                 float height = (rectangle.height * static_cast<float>(Raylib::Window::getScreenHeight())) / denominator;
 
-                DrawRectangle(
+                DrawShape::drawRectangle(
                     static_cast<int>(x),
                     static_cast<int>(y),
                     static_cast<int>(width),
