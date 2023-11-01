@@ -61,7 +61,7 @@ namespace Raylib {
                 _image.data = image._image.data;
             }
 
-            Sprite::Sprite(const std::string &fileName, float width, float height, std::size_t id)
+            SpriteImpl::SpriteImpl(const std::string &fileName, float width, float height, std::size_t id)
                 : _texture(LoadTexture(fileName.c_str())),
                   _width(width),
                   _height(height)
@@ -74,61 +74,61 @@ namespace Raylib {
                 Registry::getInstance().setToDefaultLayer(id);
             }
 
-            Sprite::Sprite(RayImage image, float width, float height) : _texture(), _width(width), _height(height)
+            SpriteImpl::SpriteImpl(RayImage image, float width, float height) : _texture(), _width(width), _height(height)
             {
                 loadTextureFromImage(image);
             }
 
-            void Sprite::unloadSprite()
+            void SpriteImpl::unloadSprite()
             {
                 UnloadTexture(_texture);
             }
 
-            unsigned int Sprite::getId() const
+            unsigned int SpriteImpl::getId() const
             {
                 return _texture.id;
             }
 
-            float Sprite::getWidth() const
+            float SpriteImpl::getWidth() const
             {
                 return _width;
             }
 
-            float Sprite::getHeight() const
+            float SpriteImpl::getHeight() const
             {
                 return _height;
             }
 
-            int Sprite::getTextureWidth() const
+            int SpriteImpl::getTextureWidth() const
             {
                 return _texture.width;
             }
 
-            int Sprite::getTextureHeight() const
+            int SpriteImpl::getTextureHeight() const
             {
                 return _texture.height;
             }
 
-            int Sprite::getMipmaps() const
+            int SpriteImpl::getMipmaps() const
             {
                 return _texture.mipmaps;
             }
 
-            int Sprite::getFormat() const
+            int SpriteImpl::getFormat() const
             {
                 return _texture.format;
             }
 
             // draw texture functions
 
-            void Sprite::draw(int posX, int posY, Color tint)
+            void SpriteImpl::draw(int posX, int posY, Color tint)
             {
                 ::Color tnt = {tint.r, tint.g, tint.b, tint.a};
 
                 DrawTexture(_texture, posX, posY, tnt);
             }
 
-            void Sprite::drawV(Vector2 position, Color tint)
+            void SpriteImpl::drawV(Vector2 position, Color tint)
             {
                 ::Vector2 pos = {position.x, position.y};
                 ::Color tnt   = {tint.r, tint.g, tint.b, tint.a};
@@ -136,7 +136,7 @@ namespace Raylib {
                 DrawTextureV(_texture, pos, tnt);
             }
 
-            void Sprite::drawEx(Vector2 position, float rotation, float scale, Color tint)
+            void SpriteImpl::drawEx(Vector2 position, float rotation, float scale, Color tint)
             {
                 ::Vector2 pos = {position.x, position.y};
                 ::Color tnt   = {tint.r, tint.g, tint.b, tint.a};
@@ -144,7 +144,7 @@ namespace Raylib {
                 DrawTextureEx(_texture, pos, rotation, scale, tnt);
             }
 
-            void Sprite::drawRec(Rectangle source, Vector2 position, Color tint)
+            void SpriteImpl::drawRec(Rectangle source, Vector2 position, Color tint)
             {
                 ::Rectangle src = {source.x, source.y, source.width, source.height};
                 ::Vector2 pos   = {position.x, position.y};
@@ -153,7 +153,7 @@ namespace Raylib {
                 DrawTextureRec(_texture, src, pos, tnt);
             }
 
-            void Sprite::drawPro(Rectangle source, Rectangle dest, Vector2 origin, float rotation, Color tint)
+            void SpriteImpl::drawPro(Rectangle source, Rectangle dest, Vector2 origin, float rotation, Color tint)
             {
                 ::Rectangle src = {source.x, source.y, source.width, source.height};
                 ::Rectangle dst = {dest.x, dest.y, dest.width, dest.height};
@@ -163,7 +163,7 @@ namespace Raylib {
                 DrawTexturePro(_texture, src, dst, org, rotation, tnt);
             }
 
-            void Sprite::loadTextureFromImage(RayImage image)
+            void SpriteImpl::loadTextureFromImage(RayImage image)
             {
                 ::Image img;
                 RayImage::setExternData(img, image);
@@ -177,7 +177,7 @@ namespace Raylib {
 
     // Text functions and classes
 
-            Text::Text(std::string text, Vector2 position, float fontSize, Color color)
+            TextImpl::TextImpl(std::string text, Vector2 position, float fontSize, Color color)
                 : _text(std::move(text)),
                   _fontSize(fontSize),
                   _currentFontSize(fontSize),
@@ -187,7 +187,7 @@ namespace Raylib {
             {
             }
 
-            void Text::draw()
+            void TextImpl::draw()
             {
                 ::Color textColor = {_color.r, _color.g, _color.b, _color.a};
 
@@ -199,7 +199,7 @@ namespace Raylib {
                     textColor);
             }
 
-            void Text::drawEx(float spacing)
+            void TextImpl::drawEx(float spacing)
             {
                 ::Color textColor = {_color.r, _color.g, _color.b, _color.a};
                 ::Vector2 pos     = {_pixelPosition.x, _pixelPosition.y};
@@ -207,7 +207,7 @@ namespace Raylib {
                 DrawTextEx(GetFontDefault(), _text.c_str(), pos, _currentFontSize, spacing, textColor);
             }
 
-            void Text::drawPro(Vector2 origin, float rotation, float spacing)
+            void TextImpl::drawPro(Vector2 origin, float rotation, float spacing)
             {
                 ::Vector2 textOrigin = {origin.x, origin.y};
                 ::Vector2 pos        = {_pixelPosition.x, _pixelPosition.y};
@@ -225,47 +225,47 @@ namespace Raylib {
             }
 
 
-            float Text::x() const
+            float TextImpl::x() const
             {
                 return _position.x;
             }
 
-            float Text::y() const
+            float TextImpl::y() const
             {
                 return _position.y;
             }
 
-            float Text::getFontSize() const
+            float TextImpl::getFontSize() const
             {
                 return _fontSize;
             }
 
-            void Text::setFontSize(float fontSize)
+            void TextImpl::setFontSize(float fontSize)
             {
                 _fontSize = fontSize;
             }
 
-            Vector2 Text::getPosition() const
+            Vector2 TextImpl::getPosition() const
             {
                 return _position;
             }
 
-            void Text::setPixelPosition(Vector2 position)
+            void TextImpl::setPixelPosition(Vector2 position)
             {
                 _pixelPosition = position;
             }
 
-            void Text::setColor(Color color)
+            void TextImpl::setColor(Color color)
             {
                 _color = color;
             }
 
-            Color Text::getColor() const
+            Color TextImpl::getColor() const
             {
                 return _color;
             }
 
-            void Text::setCurrentFontSize(float fontSize)
+            void TextImpl::setCurrentFontSize(float fontSize)
             {
                 _currentFontSize = fontSize;
             }

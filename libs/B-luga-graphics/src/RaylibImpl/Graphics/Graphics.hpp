@@ -14,194 +14,72 @@ extern "C"
 }
 #include "B-luga-graphics/Raylib/Geometry/Geometry.hpp"
 #include "B-luga-graphics/Raylib/Events/Inputs.hpp"
+#include "B-luga-graphics/Raylib/Graphics/Graphics.hpp"
 #include "B-luga/Registry.hpp"
 
 namespace Raylib {
 
-    class RayImage {
+    class RayImageImpl : public RayImage {
         public:
-            RayImage(const std::string &fileName)
-                : _image(LoadImage(fileName.c_str()))
-            {
-                if (!isImageReady()) {
-                    const ::Color badTexture          = {255, 16, 240, 255};
-                    static constexpr int badImageSize = 50;
-                    _image                            = GenImageColor(badImageSize, badImageSize, badTexture);
-                }
-            }
+            RayImageImpl(const std::string &fileName);
 
-            RayImage(int width, int height, Color color)
-                : _image(GenImageColor(width, height, {color.r, color.g, color.b, color.a}))
-            {
-            }
+            RayImageImpl(int width, int height, Color color);
 
-            ~RayImage()
-            {
-                if (isImageReady()) {
-                    unloadImage();
-                }
-            }
+            ~RayImageImpl();
 
-            bool isImageReady()
-            {
-                return IsImageReady(_image);
-            }
+            bool isImageReady() override;
 
-            void unloadImage()
-            {
-                if (isImageReady()) {
-                    UnloadImage(_image);
-                }
-            }
+            void unloadImage() override;
 
-            int getWidth() const
-            {
-                return _image.width;
-            }
+            int getWidth() const override;
 
-            int getHeight() const
-            {
-                return _image.height;
-            }
+            int getHeight() const override;
 
-            int getMipmaps() const
-            {
-                return _image.mipmaps;
-            }
+            int getMipmaps() const override;
 
-            int getFormat() const
-            {
-                return _image.format;
-            }
+            int getFormat() const override;
 
-            void setData(RayImage image)
-            {
-                _image.data = image._image.data;
-            }
-
-            static void setExternData(::Image &extern_, RayImage image)
-            {
-                extern_.data = image._image.data;
-            }
+            void setData(RayImage image) override;
         private:
             ::Image _image;
     };
 
-    class Sprite {
+    class SpriteImpl {
         public:
-            Sprite(const std::string &fileName, float width, float height, std::size_t id)
-                : _texture(LoadTexture(fileName.c_str())),
-                  _width(width),
-                  _height(height)
-            {
-                if (!IsTextureReady(_texture)) {
-                    static const ::Color badTexture   = {255, 16, 240, 255};
-                    static constexpr int badImageSize = 50;
-                    _texture = LoadTextureFromImage(GenImageColor(badImageSize, badImageSize, badTexture));
-                }
-                Registry::getInstance().setToDefaultLayer(id);
-            }
+            SpriteImpl(const std::string &fileName, float width, float height, std::size_t id);
 
-            Sprite(RayImage image, float width, float height) : _texture(), _width(width), _height(height)
-            {
-                loadTextureFromImage(image);
-            }
+            SpriteImpl(RayImage image, float width, float height) : _texture(), _width(width), _height(height);
 
-            void unloadSprite()
-            {
-                UnloadTexture(_texture);
-            }
+            void unloadSprite() override;
 
-            unsigned int getId() const
-            {
-                return _texture.id;
-            }
+            unsigned int getId() const override;
 
-            float getWidth() const
-            {
-                return _width;
-            }
+            float getWidth() const override;
 
-            float getHeight() const
-            {
-                return _height;
-            }
+            float getHeight() const override;
 
-            int getTextureWidth() const
-            {
-                return _texture.width;
-            }
+            int getTextureWidth() const override;
 
-            int getTextureHeight() const
-            {
-                return _texture.height;
-            }
+            int getTextureHeight() const override;
 
-            int getMipmaps() const
-            {
-                return _texture.mipmaps;
-            }
+            int getMipmaps() const override;
 
-            int getFormat() const
-            {
-                return _texture.format;
-            }
+            int getFormat() const override;
 
             // draw texture functions
 
-            void draw(int posX, int posY, Color tint)
-            {
-                ::Color tnt = {tint.r, tint.g, tint.b, tint.a};
+            void draw(int posX, int posY, Color tint) override;
 
-                DrawTexture(_texture, posX, posY, tnt);
-            }
+            void drawV(Vector2 position, Color tint) override;
 
-            void drawV(Vector2 position, Color tint)
-            {
-                ::Vector2 pos = {position.x, position.y};
-                ::Color tnt   = {tint.r, tint.g, tint.b, tint.a};
+            void drawEx(Vector2 position, float rotation, float scale, Color tint) override;
 
-                DrawTextureV(_texture, pos, tnt);
-            }
+            void drawRec(Rectangle source, Vector2 position, Color tint) override;
 
-            void drawEx(Vector2 position, float rotation, float scale, Color tint)
-            {
-                ::Vector2 pos = {position.x, position.y};
-                ::Color tnt   = {tint.r, tint.g, tint.b, tint.a};
-
-                DrawTextureEx(_texture, pos, rotation, scale, tnt);
-            }
-
-            void drawRec(Rectangle source, Vector2 position, Color tint)
-            {
-                ::Rectangle src = {source.x, source.y, source.width, source.height};
-                ::Vector2 pos   = {position.x, position.y};
-                ::Color tnt     = {tint.r, tint.g, tint.b, tint.a};
-
-                DrawTextureRec(_texture, src, pos, tnt);
-            }
-
-            void drawPro(Rectangle source, Rectangle dest, Vector2 origin, float rotation, Color tint)
-            {
-                ::Rectangle src = {source.x, source.y, source.width, source.height};
-                ::Rectangle dst = {dest.x, dest.y, dest.width, dest.height};
-                ::Vector2 org   = {origin.x, origin.y};
-                ::Color tnt     = {tint.r, tint.g, tint.b, tint.a};
-
-                DrawTexturePro(_texture, src, dst, org, rotation, tnt);
-            }
+            void drawPro(Rectangle source, Rectangle dest, Vector2 origin, float rotation, Color tint) override;
 
         private:
-            void loadTextureFromImage(RayImage image)
-            {
-                ::Image img;
-                RayImage::setExternData(img, image);
-                img.width   = image.getWidth();
-                img.height  = image.getHeight();
-                img.mipmaps = image.getMipmaps();
-                img.format  = image.getFormat();
-                _texture    = LoadTextureFromImage(img);
-            }
+            void loadTextureFromImage(RayImage image);
             ::Texture2D _texture;
             // width and height in percentage of the screen
             float _width;
@@ -211,113 +89,34 @@ namespace Raylib {
 
     // Text functions and classes
 
-    class Text {
+    class TextImpl : public Text {
         public:
 
-            static void drawText(std::string text, int posX, int posY, int fontSize, Color color)
-            {
-                ::Color textColor = {color.r, color.g, color.b, color.a};
+            TextImpl(std::string text, Vector2 position, float fontSize, Color color);
 
-                DrawText(text.c_str(), posX, posY, fontSize, textColor);
-            }
+            void draw() override;
 
-            static int measureText(const std::string text, int fontSize)
-            {
-                return MeasureText(text.c_str(), fontSize);
-            }
+            void drawEx(float spacing) override;
 
-            Text(std::string text, Vector2 position, float fontSize, Color color)
-                : _text(std::move(text)),
-                  _fontSize(fontSize),
-                  _currentFontSize(fontSize),
-                  _color(color),
-                  _position(position),
-                  _pixelPosition(position)
-            {
-            }
+            void drawPro(Vector2 origin, float rotation, float spacing) override;
 
-            void draw()
-            {
-                ::Color textColor = {_color.r, _color.g, _color.b, _color.a};
+            float x() const override;
 
-                DrawText(
-                    _text.c_str(),
-                    static_cast<int>(_pixelPosition.x),
-                    static_cast<int>(_pixelPosition.y),
-                    static_cast<int>(_currentFontSize),
-                    textColor);
-            }
+            float y() const override;
 
-            void drawEx(float spacing)
-            {
-                ::Color textColor = {_color.r, _color.g, _color.b, _color.a};
-                ::Vector2 pos     = {_pixelPosition.x, _pixelPosition.y};
+            float getFontSize() const override;
 
-                DrawTextEx(GetFontDefault(), _text.c_str(), pos, _currentFontSize, spacing, textColor);
-            }
+            void setFontSize(float fontSize) override;
 
-            void drawPro(Vector2 origin, float rotation, float spacing)
-            {
-                ::Vector2 textOrigin = {origin.x, origin.y};
-                ::Vector2 pos        = {_pixelPosition.x, _pixelPosition.y};
-                ::Color textColor    = {_color.r, _color.g, _color.b, _color.a};
+            Vector2 getPosition() const override;
 
-                DrawTextPro(
-                    GetFontDefault(),
-                    _text.c_str(),
-                    pos,
-                    textOrigin,
-                    rotation,
-                    _currentFontSize,
-                    spacing,
-                    textColor);
-            }
+            void setPixelPosition(Vector2 position) override;
 
+            void setColor(Color color) override;
 
-            float x() const
-            {
-                return _position.x;
-            }
+            Color getColor() const override;
 
-            float y() const
-            {
-                return _position.y;
-            }
-
-            float getFontSize() const
-            {
-                return _fontSize;
-            }
-
-            void setFontSize(float fontSize)
-            {
-                _fontSize = fontSize;
-            }
-
-            Vector2 getPosition() const
-            {
-                return _position;
-            }
-
-            void setPixelPosition(Vector2 position)
-            {
-                _pixelPosition = position;
-            }
-
-            void setColor(Color color)
-            {
-                _color = color;
-            }
-
-            Color getColor() const
-            {
-                return _color;
-            }
-
-            void setCurrentFontSize(float fontSize)
-            {
-                _currentFontSize = fontSize;
-            }
+            void setCurrentFontSize(float fontSize) override;
 
         private:
             std::string _text;
