@@ -24,9 +24,9 @@ namespace Systems {
                 Registry::getInstance().getComponents<Raylib::SoundShared>();
 
             for (auto &soundEffect : arrSoundEffect) {
-                if (soundEffect.NeedToPlay() && !soundEffect.isPlaying()) {
-                    soundEffect.play();
-                    soundEffect.setNeedToPlay(false);
+                if (soundEffect->NeedToPlay() && !soundEffect->isPlaying()) {
+                    soundEffect->play();
+                    soundEffect->setNeedToPlay(false);
                 }
             }
         }
@@ -37,12 +37,12 @@ namespace Systems {
                 Registry::getInstance().getComponents<Raylib::MusicShared>();
 
             for (auto &music : arrMusics) {
-                if (music.NeedToPlay()) {
-                    music.play();
-                    music.setNeedToPlay(false);
+                if (music->NeedToPlay()) {
+                    music->play();
+                    music->setNeedToPlay(false);
                 }
-                if (music.isPlaying()) {
-                    music.update();
+                if (music->isPlaying()) {
+                    music->update();
                 }
             }
         }
