@@ -427,7 +427,7 @@ namespace Raylib {
             return GetClipboardText();
         }
 
-        void Window::setWindowIcon(RayImage icon)
+        void Window::setWindowIcon(std::unique_ptr<RayImage> icon)
         {
             ::Image image;
 

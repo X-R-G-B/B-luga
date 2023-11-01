@@ -48,7 +48,7 @@ namespace Raylib {
         public:
             SpriteImpl(const std::string &fileName, float width, float height, std::size_t id);
 
-            SpriteImpl(RayImage image, float width, float height) : _texture(), _width(width), _height(height);
+            SpriteImpl(RayImage image, float width, float height);
 
             void unloadSprite() override;
 
