@@ -8,52 +8,49 @@
 #include <cstddef>
 #include "B-luga-graphics/Raylib/Raylib.hpp"
 #include "B-luga/Registry.hpp"
+#include "UnloadRaylib.hpp"
 
 static void unloadSounds(std::size_t id)
 {
-    Registry::components<Raylib::Sound> arrSound = Registry::getInstance().getComponents<Raylib::Sound>();
+    Registry::components<Raylib::SoundShared> arrSound = Registry::getInstance().getComponents<Raylib::SoundShared>();
 
     if (arrSound.exist(id)) {
-        arrSound[id].unload();
+        arrSound[id]->unload();
     }
 }
 
 static void unloadMusic(std::size_t id)
 {
-    Registry::components<Raylib::Music> arrMusic = Registry::getInstance().getComponents<Raylib::Music>();
+    Registry::components<Raylib::MusicShared> arrMusic = Registry::getInstance().getComponents<Raylib::MusicShared>();
 
     if (arrMusic.exist(id)) {
-        arrMusic[id].unload();
+        arrMusic[id]->unload();
     }
 }
 
 static void unloadSprite(std::size_t id)
 {
-    Registry::components<Raylib::Sprite> arrSprite =
-        Registry::getInstance().getComponents<Raylib::Sprite>();
+    Registry::components<Raylib::SpriteShared> arrSprite =
+        Registry::getInstance().getComponents<Raylib::SpriteShared>();
 
     if (arrSprite.exist(id)) {
-        arrSprite[id].unloadSprite();
+        arrSprite[id]->unloadSprite();
     }
 }
 
 static void unloadImage(std::size_t id)
 {
-    Registry::components<Raylib::RayImage> arrImage = Registry::getInstance().getComponents<Raylib::RayImage>();
+    Registry::components<Raylib::RayImageShared> arrImage = Registry::getInstance().getComponents<Raylib::RayImageShared>();
 
     if (arrImage.exist(id)) {
-        arrImage[id].unloadImage();
+        arrImage[id]->unloadImage();
     }
 }
 
-// NOLINTNEXTLINE(readability-convert-member-functions-to-static,-warnings-as-errors)
-class UnloadRaylib {
-    public:
-        static void unloadRaylibComponents(std::size_t id)
+void UnloadRaylib::unloadRaylibComponents(std::size_t id)
         {
             unloadSounds(id);
             unloadMusic(id);
             unloadSprite(id);
             unloadImage(id);
         }
-};
