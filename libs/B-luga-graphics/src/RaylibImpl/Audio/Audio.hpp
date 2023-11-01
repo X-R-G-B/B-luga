@@ -18,7 +18,7 @@ namespace Raylib {
     // Sounds
     class SoundImpl : public Sound {
         public:
-            SoundImpl(const std::string& fileName, float volume)
+            SoundImpl(const std::string& fileName, float volume);
 
             bool isReady() const ovveride;
 
@@ -54,7 +54,7 @@ namespace Raylib {
 
     class MusicImpl : public Music {
         public:
-            MusicImpl(const std::string& fileName, float volume)
+            MusicImpl(const std::string& fileName, float volume);
 
             void unload() ovveride;
 
