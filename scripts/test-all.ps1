@@ -1,6 +1,6 @@
 #!/bin/pwsh
 
-$ErrorActionPreference = 'SilentlyContinue'
+# $ErrorActionPreference = 'SilentlyContinue'
 
 cd ./libs
 
