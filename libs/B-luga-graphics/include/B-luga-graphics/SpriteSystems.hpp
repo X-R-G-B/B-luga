@@ -92,12 +92,12 @@ namespace Systems {
                 float width  = (rectangle.width * static_cast<float>(Raylib::Window::getScreenWidth())) / denominator;
                 float height = (rectangle.height * static_cast<float>(Raylib::Window::getScreenHeight())) / denominator;
 
-                DrawShape::drawRectangle(
+                Raylib::DrawShape::drawRectangle(
                     static_cast<int>(x),
                     static_cast<int>(y),
                     static_cast<int>(width),
                     static_cast<int>(height),
-                    PURPLE);
+                    Raylib::PURPLE);
             }
         }
 
@@ -200,7 +200,7 @@ namespace Systems {
             auto ids = arrSpriteDatas.getExistingsId();
             for (auto id : ids) {
                 auto &spriteDatas = arrSpriteDatas[id];
-                SpriteShared sprite = Sprite::fromFile(
+                Raylib::SpriteShared sprite = Sprite::fromFile(
                     spriteDatas.fileName,
                     Maths::intToFloatConservingDecimals(spriteDatas.width),
                     Maths::intToFloatConservingDecimals(spriteDatas.height),
