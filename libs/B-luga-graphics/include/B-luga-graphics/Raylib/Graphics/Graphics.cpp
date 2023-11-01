@@ -3,26 +3,27 @@ extern "C" {
 #include "raylib.h"
 }
 #include "RaylibImpl/Graphics/Graphics.hpp"
+#include "Graphics.hpp"
 
 namespace Raylib {
     int Graphics::getEquivalentRaylibConfigFlags(ConfigFlags flags)
     {
         switch (flags) {
-        case VSYNC_HINT               : return FLAG_VSYNC_HINT;
-        case FULLSCREEN_MODE          : return FLAG_FULLSCREEN_MODE;
-        case WINDOW_RESIZABLE         : return FLAG_WINDOW_RESIZABLE;
-        case WINDOW_UNDECORATED       : return FLAG_WINDOW_UNDECORATED;
-        case WINDOW_HIDDEN            : return FLAG_WINDOW_HIDDEN;
-        case WINDOW_MINIMIZED         : return FLAG_WINDOW_MINIMIZED;
-        case WINDOW_MAXIMIZED         : return FLAG_WINDOW_MAXIMIZED;
-        case WINDOW_UNFOCUSED         : return FLAG_WINDOW_UNFOCUSED;
-        case WINDOW_TOPMOST           : return FLAG_WINDOW_TOPMOST;
-        case WINDOW_ALWAYS_RUN        : return FLAG_WINDOW_ALWAYS_RUN;
-        case WINDOW_TRANSPARENT       : return FLAG_WINDOW_TRANSPARENT;
-        case WINDOW_HIGHDPI           : return FLAG_WINDOW_HIGHDPI;
-        case WINDOW_MOUSE_PASSTHROUGH : return FLAG_WINDOW_MOUSE_PASSTHROUGH;
-        case MSAA_4X_HINT             : return FLAG_MSAA_4X_HINT;
-        case INTERLACED_HINT          : return FLAG_INTERLACED_HINT;
+        case ConfigFlags::VSYNC_HINT               : return FLAG_VSYNC_HINT;
+        case ConfigFlags::FULLSCREEN_MODE          : return FLAG_FULLSCREEN_MODE;
+        case ConfigFlags::WINDOW_RESIZABLE         : return FLAG_WINDOW_RESIZABLE;
+        case ConfigFlags::WINDOW_UNDECORATED       : return FLAG_WINDOW_UNDECORATED;
+        case ConfigFlags::WINDOW_HIDDEN            : return FLAG_WINDOW_HIDDEN;
+        case ConfigFlags::WINDOW_MINIMIZED         : return FLAG_WINDOW_MINIMIZED;
+        case ConfigFlags::WINDOW_MAXIMIZED         : return FLAG_WINDOW_MAXIMIZED;
+        case ConfigFlags::WINDOW_UNFOCUSED         : return FLAG_WINDOW_UNFOCUSED;
+        case ConfigFlags::WINDOW_TOPMOST           : return FLAG_WINDOW_TOPMOST;
+        case ConfigFlags::WINDOW_ALWAYS_RUN        : return FLAG_WINDOW_ALWAYS_RUN;
+        case ConfigFlags::WINDOW_TRANSPARENT       : return FLAG_WINDOW_TRANSPARENT;
+        case ConfigFlags::WINDOW_HIGHDPI           : return FLAG_WINDOW_HIGHDPI;
+        case ConfigFlags::WINDOW_MOUSE_PASSTHROUGH : return FLAG_WINDOW_MOUSE_PASSTHROUGH;
+        case ConfigFlags::MSAA_4X_HINT             : return FLAG_MSAA_4X_HINT;
+        case ConfigFlags::INTERLACED_HINT          : return FLAG_INTERLACED_HINT;
         default                       : return 0;
         }
     }
