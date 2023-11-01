@@ -32,7 +32,7 @@ namespace Raylib {
                 SetMasterVolume(volume);
             }
 
-            std::unique_ptr<Sound> Sound::fromFile(const std::string& fileName, float volume)
+    std::unique_ptr<Sound> Sound::fromFile(const std::string& fileName, float volume)
     {
         return std::make_unique<SoundImpl>(fileName, volume);
     }

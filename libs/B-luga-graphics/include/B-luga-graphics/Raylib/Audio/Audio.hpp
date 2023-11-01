@@ -58,34 +58,34 @@ namespace Raylib {
 
             virtual void unload() = 0;
 
-            virtual bool isReady() const;
+            virtual bool isReady() const = 0;
 
-            virtual void play() const;
+            virtual void play() const = 0;
 
-            virtual bool isPlaying() const;
+            virtual bool isPlaying() const = 0;
 
-            virtual void update() const;
+            virtual void update() const = 0;
 
-            virtual void stop() const;
+            virtual void stop() const = 0;
 
-            virtual void pause() const;
+            virtual void pause() const = 0;
 
-            virtual void resume() const;
+            virtual void resume() const = 0;
 
-            virtual void setVolume(float volume) const;
+            virtual void setVolume(float volume) const = 0;
 
-            virtual void setPitch(float pitch) const;
+            virtual void setPitch(float pitch) const = 0;
 
-            virtual void setPan(float pan) const;
+            virtual void setPan(float pan) const = 0;
 
-            virtual float getTimeLength() const;
+            virtual float getTimeLength() const = 0;
 
-            virtual float getTimePlayed() const;
+            virtual float getTimePlayed() const = 0;
 
-            virtual bool NeedToPlay() const;
+            virtual bool NeedToPlay() const = 0;
 
-            virtual void setNeedToPlay(bool needToPlay);
+            virtual void setNeedToPlay(bool needToPlay) = 0;
 
-            virtual const std::string &getPath() const;
+            virtual const std::string &getPath() const = 0;
     };
 } // namespace Raylib
