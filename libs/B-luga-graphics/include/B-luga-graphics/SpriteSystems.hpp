@@ -15,7 +15,7 @@
 #include "B-luga/Logger.hpp"
 #include "B-luga/Maths/Maths.hpp"
 #include "B-luga-graphics/SharedValues.hpp"
-#include "B-luga-graphics/Raylib.hpp"
+#include "B-luga-graphics/Raylib/Raylib.hpp"
 
 namespace Systems {
     namespace GraphicsSystems {
@@ -159,16 +159,16 @@ namespace Systems {
         static void renderEntityList(std::vector<std::size_t> list)
         {
             Registry &registry                                = Registry::getInstance();
-            Registry::components<Raylib::Sprite> arrSprite    = registry.getComponents<Raylib::Sprite>();
+            Registry::components<Raylib::SpriteShared> arrSprite    = registry.getComponents<Raylib::SpriteShared>();
             Registry::components<Types::Rect> arrRect         = registry.getComponents<Types::Rect>();
             Registry::components<Types::Position> arrPosition = registry.getComponents<Types::Position>();
 
             for (auto id : list) {
                 if (arrPosition.exist(id) && arrSprite.exist(id)) {
                     if (arrRect.exist(id)) {
-                        drawSpriteWithRect(arrPosition[id], arrSprite[id], arrRect[id], id);
+                        drawSpriteWithRect(arrPosition[id], *arrSprite[id], arrRect[id], id);
                     } else {
-                        drawSpriteWithoutRect(arrPosition[id], arrSprite[id], id);
+                        drawSpriteWithoutRect(arrPosition[id], *arrSprite[id], id);
                     }
                 }
             }
