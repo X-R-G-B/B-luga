@@ -5,8 +5,6 @@
 ** Audio
 */
 
-#pragma once
-
 #include <string>
 extern "C"
 {
