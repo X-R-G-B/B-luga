@@ -2,12 +2,13 @@ cmake_minimum_required(VERSION 3.20)
 
 set(PROJECT_NAME "b-luga")
 
+set(CMAKE_CXX_STANDARD 20)
+
 project(
     ${PROJECT_NAME}
     VERSION 1.0.0
     LANGUAGES CXX
     DESCRIPTION "ECS made for R-Type epitech project"
-    CXX_STANDARD 20
 )
 
 add_library(${PROJECT_NAME} STATIC)
@@ -40,7 +41,6 @@ target_sources(
 )
 
 target_compile_features(${PROJECT_NAME} INTERFACE cxx_std_20)
-target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_20)
 
 include(CMakePackageConfigHelpers)
 
