@@ -74,9 +74,9 @@ namespace Raylib {
                 Registry::getInstance().setToDefaultLayer(id);
             }
 
-            SpriteImpl::SpriteImpl(RayImage image, float width, float height) : _texture(), _width(width), _height(height)
+            SpriteImpl::SpriteImpl(std::unique_ptr<RayImage> image, float width, float height) : _texture(), _width(width), _height(height)
             {
-                loadTextureFromImage(image);
+                loadTextureFromImage(std::move(image));
             }
 
             void SpriteImpl::unloadSprite()
@@ -163,14 +163,15 @@ namespace Raylib {
                 DrawTexturePro(_texture, src, dst, org, rotation, tnt);
             }
 
-            void SpriteImpl::loadTextureFromImage(RayImage image)
+            void SpriteImpl::loadTextureFromImage(std::unique_ptr<RayImage> image)
             {
+                _imageUnique = std::move(image);
                 ::Image img;
-                img.width   = image.getWidth();
-                img.height  = image.getHeight();
-                img.mipmaps = image.getMipmaps();
-                img.format  = image.getFormat();
-                img.data    = image.getData();
+                img.width   = _imageUnique->getWidth();
+                img.height  = _imageUnique->getHeight();
+                img.mipmaps = _imageUnique->getMipmaps();
+                img.format  = _imageUnique->getFormat();
+                img.data    = _imageUnique->getData();
                 _texture    = LoadTextureFromImage(img);
             }
 

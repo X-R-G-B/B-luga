@@ -7,6 +7,7 @@
 
 #pragma once
 
+#include <memory>
 #include <string>
 extern "C"
 {
@@ -81,6 +82,7 @@ namespace Raylib {
         private:
             void loadTextureFromImage(RayImage image);
             ::Texture2D _texture;
+            std::unique_ptr<RayImage> _imageUnique;
             // width and height in percentage of the screen
             float _width;
             float _height;
