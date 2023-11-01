@@ -12,6 +12,6 @@ FetchContent_MakeAvailable(b-luga-physics)
 
 target_link_libraries(
     ${PROJECT_NAME}
-    INTERFACE
+    PRIVATE
     b-luga-physics
 )
