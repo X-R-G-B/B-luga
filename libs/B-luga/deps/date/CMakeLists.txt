@@ -18,6 +18,12 @@ target_include_directories(
     $<INSTALL_INTERFACE:include>
 )
 
+target_include_directories(
+    ${PROJECT_NAME}
+    PRIVATE
+    ${date_SOURCE_DIR}/include
+)
+
 install(
     DIRECTORY ${date_SOURCE_DIR}/include/
     DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
