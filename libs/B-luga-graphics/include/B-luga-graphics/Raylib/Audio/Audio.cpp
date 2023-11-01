@@ -34,11 +34,11 @@ namespace Raylib {
 
             std::unique_ptr<Sound> Sound::fromFile(const std::string& fileName, float volume)
     {
-        return std::make_unique(SoundImpl(fileName, volume));
+        return std::make_unique<SoundImpl>(fileName, volume);
     }
 
     std::unique_ptr<Music> Music::fromFile(const std::string& fileName, float volume)
     {
-        return std::make_unique(MusicImpl(fileName, volume));
+        return std::make_unique<MusicImpl>(fileName, volume);
     }
 }
