@@ -431,11 +431,11 @@ namespace Raylib {
         {
             ::Image image;
 
-            image.width   = icon.getWidth();
-            image.height  = icon.getHeight();
-            image.mipmaps = icon.getMipmaps();
-            image.format  = icon.getFormat();
-            image.data    = icon.getData();
+            image.width   = icon->getWidth();
+            image.height  = icon->getHeight();
+            image.mipmaps = icon->getMipmaps();
+            image.format  = icon->getFormat();
+            image.data    = icon->getData();
             SetWindowIcon(image);
         }
 
