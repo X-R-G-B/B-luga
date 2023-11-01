@@ -25,6 +25,8 @@ namespace Raylib {
         public:
             static std::unique_ptr<Sound> fromFile(const std::string& fileName, float volume);
 
+            virtual ~Sound() = default;
+
             virtual bool isReady() const = 0;
 
             virtual void unload() = 0;
@@ -55,6 +57,8 @@ namespace Raylib {
     class Music {
         public:
             static std::unique_ptr<Music> fromFile(const std::string &fileName, float volume);
+
+            virtual ~Music() = default;
 
             virtual void unload() = 0;
 

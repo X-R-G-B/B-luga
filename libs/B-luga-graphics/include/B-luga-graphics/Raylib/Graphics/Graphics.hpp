@@ -158,6 +158,8 @@ namespace Raylib {
             static std::unique_ptr<RayImage> fromFile(const std::string &fileName);
             static std::unique_ptr<RayImage> fromColor(int width, int height, Color color);
 
+            virtual ~RayImage() = default;
+
             virtual bool isImageReady() = 0;
 
             virtual void unloadImage() = 0;
@@ -177,6 +179,8 @@ namespace Raylib {
         public:
             static std::unique_ptr<Sprite> fromFile(const std::string &fileName, float width, float height, std::size_t id = 0);
             static std::unique_ptr<Sprite> fromRayImage(std::unique_ptr<RayImage> image, float width, float height);
+
+            virtual ~Sprite() = default;
 
             virtual void unloadSprite() = 0;
 
@@ -277,6 +281,8 @@ namespace Raylib {
             static int measureText(const std::string text, int fontSize);
 
             static std::unique_ptr<Text> fromText(const std::string &text, Vector2 position, float fontSize, Color color);
+
+            virtual ~Text() = default;
 
             virtual void draw() = 0;
 
