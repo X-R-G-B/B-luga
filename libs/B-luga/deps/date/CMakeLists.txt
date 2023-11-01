@@ -17,3 +17,8 @@ target_include_directories(
     $<BUILD_INTERFACE:${date_SOURCE_DIR}/include>
     $<INSTALL_INTERFACE:include>
 )
+
+install(
+    DIRECTORY ${date_SOURCE_DIR}/include/
+    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+)
