@@ -9,6 +9,7 @@
 
 #include <memory>
 #include <string>
+#include <map>
 extern "C"
 {
 #include "raylib.h"
