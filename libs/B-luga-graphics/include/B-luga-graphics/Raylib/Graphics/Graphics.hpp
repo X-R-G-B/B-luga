@@ -315,5 +315,9 @@ namespace Raylib {
             [[nodiscard]] virtual Color getColor() const = 0;
 
             virtual void setCurrentFontSize(float fontSize) = 0;
+
+            [[nodiscard]] virtual const std::string &getCurrentText() const = 0;
+
+            virtual void setCurrentText(const std::string &text) = 0;
     };
 } // namespace Raylib

@@ -82,9 +82,14 @@ namespace Raylib {
                 return _image.data;
             }
 
+            TextureManagerImpl &TextureManagerImpl::getInstance()
+        {
+            static TextureManagerImpl instance;
+            return instance;
+        }
 
             SpriteImpl::SpriteImpl(const std::string &fileName, float width, float height, std::size_t id)
-                : _texture(TextureManager::getInstance().getTexture(fileName)),
+                : _texture(TextureManagerImpl::getInstance().getTexture(fileName)),
                   _width(width),
                   _height(height)
             {
@@ -288,12 +293,12 @@ namespace Raylib {
                 _currentFontSize = fontSize;
             }
 
-            std::string &Text::getCurrentText()
+            const std::string &TextImpl::getCurrentText()
             {
                 return (_text);
             }
 
-            void Text::setCurrentText(const std::string &text)
+            void TextImpl::setCurrentText(const std::string &text)
             {
                 _text = text;
             }

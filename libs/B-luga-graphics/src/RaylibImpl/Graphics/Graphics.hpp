@@ -48,6 +48,7 @@ namespace Raylib {
 
     class TextureManagerImpl : public TextureManager {
         public:
+            static TextureManagerImpl &getInstance();
             ::Texture2D &getTexture(const std::string &fileName);
             void unloadTextures() override;
 
@@ -128,6 +129,10 @@ namespace Raylib {
             [[nodiscard]] Color getColor() const override;
 
             void setCurrentFontSize(float fontSize) override;
+
+            [[nodiscard]] const std::string &getCurrentText() const override;
+
+            void setCurrentText(const std::string &text) override;
 
         private:
             std::string _text;

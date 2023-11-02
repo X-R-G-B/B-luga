@@ -465,7 +465,6 @@ namespace Raylib {
 
             TextureManager &TextureManager::getInstance()
             {
-                static TextureManagerImpl instance;
-                return instance;
+                return TextureManagerImpl::getInstance();
             }
 }
