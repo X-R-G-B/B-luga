@@ -114,4 +114,24 @@ namespace Raylib {
         default                : return -1;
         }
     }
+
+    KeyboardKey Inputs::getRaylibKey(int equivalent)
+    {
+        for (int i = 0; i < static_cast<int>(KeyboardKey::KB_MAX_MAX); i++) {
+            if (equivalent == getEquivalentRaylibKey(static_cast<KeyboardKey>(i))) {
+                return static_cast<KeyboardKey>(i);
+            }
+        }
+        return KeyboardKey::KB_MAX_MAX;
+    }
+
+    MouseButton Inputs::getRaylibMouse(int equivalent)
+    {
+        for (int i = 0; i < static_cast<int>(MouseButton::MOUSE_MAX_MAX); i++) {
+            if (equivalent == getEquivalentRaylibMouse(static_cast<MouseButton>(i))) {
+                return static_cast<MouseButton>(i);
+            }
+        }
+        return MouseButton::MOUSE_MAX_MAX;
+    }
 }

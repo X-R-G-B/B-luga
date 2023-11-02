@@ -28,16 +28,6 @@ static void unloadMusic(std::size_t id)
     }
 }
 
-static void unloadSprite(std::size_t id)
-{
-    Registry::components<Raylib::SpriteShared> arrSprite =
-        Registry::getInstance().getComponents<Raylib::SpriteShared>();
-
-    if (arrSprite.exist(id)) {
-        arrSprite[id]->unloadSprite();
-    }
-}
-
 static void unloadImage(std::size_t id)
 {
     Registry::components<Raylib::RayImageShared> arrImage = Registry::getInstance().getComponents<Raylib::RayImageShared>();
@@ -51,6 +41,5 @@ void UnloadRaylib::unloadRaylibComponents(std::size_t id)
         {
             unloadSounds(id);
             unloadMusic(id);
-            unloadSprite(id);
             unloadImage(id);
         }

@@ -47,6 +47,7 @@ namespace Systems::GraphicsSystems {
     {
         Raylib::Audio::closeAudioDevice();
         Raylib::Window::closeWindow();
+        Raylib::TextureManager::unloadTextures();
     }
 
     static void checkRaylibStop(std::size_t /*unused*/, std::size_t /*unused*/)
@@ -61,7 +62,6 @@ namespace Systems::GraphicsSystems {
         public:
             void initPlugin() override
             {
-                Logger::fatal("initplugin");
                 std::lock_guard<std::mutex> lock(Registry::getInstance().mutex);
                 Registry::getInstance().addEventCallback(Events::REMOVE_ENTITY, UnloadRaylib::unloadRaylibComponents);
                 Registry::getInstance().addEventCallback(Events::CLEAR, UnloadRaylib::unloadRaylibComponents);
@@ -72,7 +72,6 @@ namespace Systems::GraphicsSystems {
             }
             std::vector<std::function<void(std::size_t, std::size_t)>> getSystems() override
             {
-                Logger::fatal("getSystems graphics");
                 std::vector<std::function<void(std::size_t, std::size_t)>> graphicsSystems = {
                     checkRaylibStop
                 };

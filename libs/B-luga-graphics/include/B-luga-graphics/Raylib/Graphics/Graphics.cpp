@@ -3,6 +3,7 @@ extern "C" {
 #include "raylib.h"
 }
 #include "RaylibImpl/Graphics/Graphics.hpp"
+#include "B-luga-graphics/Raylib/Events/Inputs.hpp"
 #include "Graphics.hpp"
 
 namespace Raylib {
@@ -104,29 +105,35 @@ namespace Raylib {
                 TakeScreenshot(fileName.c_str());
             }
 
+            // Collision check functions
+            bool checkCollisionPointRec(Vector2 point, Rectangle rec)
+            {
+                return (CheckCollisionPointRec({point.x, point.y}, {rec.x, rec.y, rec.width, rec.height}));
+            }
+
             bool KeyboardInput::isKeyPressed(KeyboardKey key)
             {
-                return IsKeyPressed(static_cast<int>(key));
+                return IsKeyPressed(static_cast<int>(Inputs::getEquivalentRaylibKey(key)));
             }
 
             bool KeyboardInput::isKeyDown(KeyboardKey key)
             {
-                return IsKeyDown(static_cast<int>(key));
+                return IsKeyDown(static_cast<int>(Inputs::getEquivalentRaylibKey(key)));
             }
 
             bool KeyboardInput::isKeyReleased(KeyboardKey key)
             {
-                return IsKeyReleased(static_cast<int>(key));
+                return IsKeyReleased(static_cast<int>(Inputs::getEquivalentRaylibKey(key)));
             }
 
             bool KeyboardInput::isKeyUp(KeyboardKey key)
             {
-                return IsKeyUp(static_cast<int>(key));
+                return IsKeyUp(static_cast<int>(Inputs::getEquivalentRaylibKey(key)));
             }
 
             void KeyboardInput::setExitKey(KeyboardKey key)
             {
-                SetExitKey(static_cast<int>(key));
+                SetExitKey(static_cast<int>(Inputs::getEquivalentRaylibKey(key)));
             }
 
             int KeyboardInput::getKeyPressed()

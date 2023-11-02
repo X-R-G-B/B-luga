@@ -212,8 +212,8 @@ namespace Systems {
                             id,
                             static_cast<enum BackLayers>(spriteDatas.layerSide));
                         break;
-                    case FRONTLAYER: Registry::getInstance().setToDefaultLayer(id); break;
-                    case DEFAULTLAYER:
+                    case DEFAULTLAYER: Registry::getInstance().setToDefaultLayer(id); break;
+                    case FRONTLAYER:
                         Registry::getInstance().setToFrontLayers(
                             id,
                             static_cast<enum FrontLayers>(spriteDatas.layerSide));
