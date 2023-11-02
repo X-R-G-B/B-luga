@@ -298,21 +298,21 @@ namespace Raylib {
 
             virtual void drawPro(Vector2 origin, float rotation, float spacing) = 0;
 
-            [[nodiscard] virtual float x() const = 0;
+            [[nodiscard]] virtual float x() const = 0;
 
-            [[nodiscard] virtual float y() const = 0;
+            [[nodiscard]] virtual float y() const = 0;
 
-            [[nodiscard] virtual float getFontSize() const = 0;
+            [[nodiscard]] virtual float getFontSize() const = 0;
 
             virtual void setFontSize(float fontSize) = 0;
 
-            [[nodiscard] virtual Vector2 getPosition() const = 0;
+            [[nodiscard]] virtual Vector2 getPosition() const = 0;
 
             virtual void setPixelPosition(Vector2 position) = 0;
 
             virtual void setColor(Color color) = 0;
 
-            [[nodiscard] virtual Color getColor() const = 0;
+            [[nodiscard]] virtual Color getColor() const = 0;
 
             virtual void setCurrentFontSize(float fontSize) = 0;
     };
