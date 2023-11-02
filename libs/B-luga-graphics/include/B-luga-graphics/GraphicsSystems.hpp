@@ -47,7 +47,7 @@ namespace Systems::GraphicsSystems {
     {
         Raylib::Audio::closeAudioDevice();
         Raylib::Window::closeWindow();
-        Raylib::TextureManager::unloadTextures();
+        Raylib::TextureManager::getInstance().unloadTextures();
     }
 
     static void checkRaylibStop(std::size_t /*unused*/, std::size_t /*unused*/)
