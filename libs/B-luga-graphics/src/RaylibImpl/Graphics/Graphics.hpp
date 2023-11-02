@@ -61,8 +61,6 @@ namespace Raylib {
 
             SpriteImpl(std::unique_ptr<RayImage> image, float width, float height);
 
-            void unloadSprite() override;
-
             unsigned int getId() const override;
 
             float getWidth() const override;
@@ -112,21 +110,21 @@ namespace Raylib {
 
             void drawPro(Vector2 origin, float rotation, float spacing) override;
 
-            float x() const override;
+            [[nodiscard]] float x() const override;
 
-            float y() const override;
+            [[nodiscard]] float y() const override;
 
-            float getFontSize() const override;
+            [[nodiscard]] float getFontSize() const override;
 
             void setFontSize(float fontSize) override;
 
-            Vector2 getPosition() const override;
+            [[nodiscard]] Vector2 getPosition() const override;
 
             void setPixelPosition(Vector2 position) override;
 
             void setColor(Color color) override;
 
-            Color getColor() const override;
+            [[nodiscard]] Color getColor() const override;
 
             void setCurrentFontSize(float fontSize) override;
 
