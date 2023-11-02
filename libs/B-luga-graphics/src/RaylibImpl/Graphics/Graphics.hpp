@@ -45,6 +45,16 @@ namespace Raylib {
             ::Image _image;
     };
 
+    class TextureManagerImpl : public TextureManager {
+        public:
+            ::Texture2D &getTexture(const std::string &fileName);
+            void unloadTextures() override;
+
+        private:
+            std::map<std::string, ::Texture2D> _textures;
+            std::mutex _mutex;
+    };
+
     class SpriteImpl : public Sprite {
         public:
             SpriteImpl(const std::string &fileName, float width, float height, std::size_t id);

@@ -1,6 +1,27 @@
 #include "Graphics.hpp"
+#include <mutex>
 
 namespace Raylib {
+
+            ::Texture2D &TextureManagerImpl::getTexture(const std::string &fileName)
+            {
+                std::lock_guard<std::mutex> lock(_mutex);
+                auto it = _textures.find(fileName);
+
+                if (it == _textures.end()) {
+                    _textures[fileName] = LoadTexture(fileName.c_str());
+                }
+                return _textures[fileName];
+            }
+
+            void TextureManagerImpl::unloadTextures()
+        {
+                std::lock_guard<std::mutex> lock(_mutex);
+                for (auto &it : _textures) {
+                UnloadTexture(it.second);
+                }
+                _textures.clear();
+        }
 
             RayImageImpl::RayImageImpl(const std::string &fileName)
                 : _image(LoadImage(fileName.c_str()))

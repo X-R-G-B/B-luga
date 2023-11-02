@@ -462,4 +462,10 @@ namespace Raylib {
             {
                 return std::make_unique<TextImpl>(text, position, fontSize, color);
             }
+
+            TextureManager::getInstance()
+            {
+                static TextureManagerImpl instance;
+                return instance;
+            }
 }

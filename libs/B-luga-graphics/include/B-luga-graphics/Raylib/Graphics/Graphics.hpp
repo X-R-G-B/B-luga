@@ -158,23 +158,9 @@ namespace Raylib {
 
     class TextureManager {
         public:
-            TextureManager(const TextureManager &) = delete;
-            TextureManager(TextureManager &&)      = delete;
-            void operator=(const TextureManager &) = delete;
-            void operator=(TextureManager &&)      = delete;
-
             static TextureManager &getInstance();
             ~TextureManager();
-            ::Texture2D &getTexture(const std::string &fileName);
-            void unloadTextures();
-
-        private:
-            TextureManager() = default;
-            std::map<std::string, ::Texture2D> _textures;
-            std::mutex _mutex;
-            // NOLINTBEGIN(cppcoreguidelines-avoid-non-const-global-variables)
-            static TextureManager _instance;
-            // NOLINTEND(cppcoreguidelines-avoid-non-const-global-variables)
+            virtual void unloadTextures() = 0;
     };
 
     class RayImage {
