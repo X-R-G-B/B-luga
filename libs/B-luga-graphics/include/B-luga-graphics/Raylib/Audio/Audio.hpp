@@ -23,11 +23,11 @@ namespace Raylib {
     // Sounds
     class Sound {
         public:
-            static std::unique_ptr<Sound> fromFile(const std::string& fileName, float volume);
+            static std::unique_ptr<Sound> fromFile(const std::string &fileName, float volume);
 
             virtual ~Sound() = default;
 
-            virtual bool isReady() const = 0;
+            [[nodiscard]] virtual bool isReady() const = 0;
 
             virtual void unload() = 0;
 
@@ -39,7 +39,7 @@ namespace Raylib {
 
             virtual void resume() const = 0;
 
-            virtual bool isPlaying() const = 0;
+            [[nodiscard]] virtual bool isPlaying() const = 0;
 
             virtual void setVolume(float volume) const = 0;
 
@@ -47,11 +47,11 @@ namespace Raylib {
 
             virtual void setPan(float pan) const = 0;
 
-            virtual bool NeedToPlay() const = 0;
+            [[nodiscard]] virtual bool NeedToPlay() const = 0;
 
             virtual void setNeedToPlay(bool needToPlay) = 0;
 
-            virtual const std::string &getPath() const = 0;
+            [[nodiscard]] virtual const std::string &getPath() const = 0;
     };
 
     class Music {

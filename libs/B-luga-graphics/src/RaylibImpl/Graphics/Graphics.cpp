@@ -61,8 +61,45 @@ namespace Raylib {
                 return _image.data;
             }
 
+            // TextureManager functions
+
+            // NOLINTBEGIN(cppcoreguidelines-avoid-non-const-global-variables)
+            TextureManager TextureManager::_instance = TextureManager();
+            // NOLINTEND(cppcoreguidelines-avoid-non-const-global-variables)
+
+            TextureManager::~TextureManager()
+            {
+                unloadTextures();
+            }
+
+            TextureManager &TextureManager::getInstance()
+            {
+                return _instance;
+            }
+
+            ::Texture2D &TextureManager::getTexture(const std::string &fileName)
+            {
+                std::lock_guard<std::mutex> lock(_mutex);
+                auto it = _textures.find(fileName);
+
+                if (it == _textures.end()) {
+                    _textures[fileName] = LoadTexture(ECS::ResourcesManager::convertPath(fileName).c_str());
+                    it                  = _textures.find(fileName);
+                }
+                return _textures[fileName];
+            }
+
+            void TextureManager::unloadTextures()
+            {
+                std::lock_guard<std::mutex> lock(_mutex);
+                for (auto &it : _textures) {
+                    UnloadTexture(it.second);
+                }
+                _textures.clear();
+            }
+
             SpriteImpl::SpriteImpl(const std::string &fileName, float width, float height, std::size_t id)
-                : _texture(LoadTexture(fileName.c_str())),
+                : _texture(TextureManager::getInstance().getTexture(fileName)),
                   _width(width),
                   _height(height)
             {
@@ -77,11 +114,6 @@ namespace Raylib {
             SpriteImpl::SpriteImpl(std::unique_ptr<RayImage> image, float width, float height) : _texture(), _width(width), _height(height)
             {
                 loadTextureFromImage(std::move(image));
-            }
-
-            void SpriteImpl::unloadSprite()
-            {
-                UnloadTexture(_texture);
             }
 
             unsigned int SpriteImpl::getId() const
@@ -269,6 +301,16 @@ namespace Raylib {
             void TextImpl::setCurrentFontSize(float fontSize)
             {
                 _currentFontSize = fontSize;
+            }
+
+            std::string &Text::getCurrentText()
+            {
+                return (_text);
+            }
+
+            void Text::setCurrentText(const std::string &text)
+            {
+                _text = text;
             }
 
 } // namespace Raylib

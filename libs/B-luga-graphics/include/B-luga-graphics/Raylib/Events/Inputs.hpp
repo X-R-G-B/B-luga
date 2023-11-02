@@ -10,7 +10,7 @@
 namespace Raylib {
 
     enum class KeyboardKey : int {
-        KB_NULL           ,
+        KB_NULL           = 0,
         KB_APOSTROPHE     ,
         KB_COMMA          ,
         KB_MINUS          ,
@@ -99,21 +99,25 @@ namespace Raylib {
         KB_RIGHT_ALT      ,
         KB_RIGHT_SUPER    ,
         KB_MENU           ,
+        KB_MAX_MAX        ,
     };
 
     enum class MouseButton : int {
-        MOUSE_BTN_LEFT     ,
+        MOUSE_BTN_LEFT     = 0,
         MOUSE_BTN_RIGHT    ,
         MOUSE_BTN_MIDDLE   ,
         MOUSE_BTN_SIDE     ,
         MOUSE_BTN_EXTRA    ,
         MOUSE_BTN_FORWARD  ,
         MOUSE_BTN_BACK     ,
+        MOUSE_MAX_MAX      ,
     };
 
     class Inputs {
         public:
             static int getEquivalentRaylibKey(KeyboardKey key);
             static int getEquivalentRaylibMouse(MouseButton button);
+            static KeyboardKey getRaylibKey(int equivalent);
+            static MouseButton getRaylibMouse(int equivalent);
     };
 } // namespace Raylib

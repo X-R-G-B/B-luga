@@ -52,7 +52,7 @@ namespace Scene {
                 Systems::SystemManagersDirector::getInstance().resetChanges();
             }
 
-            std::size_t getCurrentScene() const
+            [[nodiscard]] std::size_t getCurrentScene() const
             {
                 return _currentScene;
             }

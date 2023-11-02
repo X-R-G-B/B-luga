@@ -7,6 +7,7 @@
 
 #pragma once
 
+#include <mutex>
 #include <memory>
 #include <string>
 #include "B-luga-graphics/Raylib/Geometry/Geometry.hpp"
@@ -83,6 +84,8 @@ namespace Raylib {
             static void takeScreenshot(const std::string &fileName);
     };
 
+    bool checkCollisionPointRec(Vector2 point, Rectangle rec);
+
     class KeyboardInput {
         public:
             static bool isKeyPressed(KeyboardKey key);
@@ -153,6 +156,27 @@ namespace Raylib {
             static Color getColor(unsigned int hexValue);
     };
 
+    class TextureManager {
+        public:
+            TextureManager(const TextureManager &) = delete;
+            TextureManager(TextureManager &&)      = delete;
+            void operator=(const TextureManager &) = delete;
+            void operator=(TextureManager &&)      = delete;
+
+            static TextureManager &getInstance();
+            ~TextureManager();
+            ::Texture2D &getTexture(const std::string &fileName);
+            void unloadTextures();
+
+        private:
+            TextureManager() = default;
+            std::map<std::string, ::Texture2D> _textures;
+            std::mutex _mutex;
+            // NOLINTBEGIN(cppcoreguidelines-avoid-non-const-global-variables)
+            static TextureManager _instance;
+            // NOLINTEND(cppcoreguidelines-avoid-non-const-global-variables)
+    };
+
     class RayImage {
         public:
             static std::unique_ptr<RayImage> fromFile(const std::string &fileName);
@@ -160,19 +184,19 @@ namespace Raylib {
 
             virtual ~RayImage() = default;
 
-            virtual bool isImageReady() = 0;
+            [[nodiscard]] virtual bool isImageReady() = 0;
 
             virtual void unloadImage() = 0;
 
-            virtual int getWidth() const = 0;
+            [[nodiscard]] virtual int getWidth() const = 0;
 
-            virtual int getHeight() const = 0;
+            [[nodiscard]] virtual int getHeight() const = 0;
 
-            virtual int getMipmaps() const = 0;
+            [[nodiscard]] virtual int getMipmaps() const = 0;
 
-            virtual int getFormat() const = 0;
+            [[nodiscard]] virtual int getFormat() const = 0;
 
-            virtual void *getData() = 0;
+            [[nodiscard]] virtual void *getData() = 0;
     };
 
     class Sprite {
@@ -182,19 +206,17 @@ namespace Raylib {
 
             virtual ~Sprite() = default;
 
-            virtual void unloadSprite() = 0;
+            [[nodiscard]] virtual unsigned int getId() const = 0;
 
-            virtual unsigned int getId() const = 0;
+            [[nodiscard]] virtual float getWidth() const = 0;
 
-            virtual float getWidth() const = 0;
+            [[nodiscard]] virtual float getHeight() const = 0;
 
-            virtual float getHeight() const = 0;
+            [[nodiscard]] virtual int getTextureWidth() const = 0;
 
-            virtual int getTextureWidth() const = 0;
+            [[nodiscard]] virtual int getTextureHeight() const = 0;
 
-            virtual int getTextureHeight() const = 0;
-
-            virtual int getMipmaps() const = 0;
+            [[nodiscard]] virtual int getMipmaps() const = 0;
 
             virtual int getFormat() const = 0;
 
@@ -290,21 +312,21 @@ namespace Raylib {
 
             virtual void drawPro(Vector2 origin, float rotation, float spacing) = 0;
 
-            virtual float x() const = 0;
+            [[nodiscard] virtual float x() const = 0;
 
-            virtual float y() const = 0;
+            [[nodiscard] virtual float y() const = 0;
 
-            virtual float getFontSize() const = 0;
+            [[nodiscard] virtual float getFontSize() const = 0;
 
             virtual void setFontSize(float fontSize) = 0;
 
-            virtual Vector2 getPosition() const = 0;
+            [[nodiscard] virtual Vector2 getPosition() const = 0;
 
             virtual void setPixelPosition(Vector2 position) = 0;
 
             virtual void setColor(Color color) = 0;
 
-            virtual Color getColor() const = 0;
+            [[nodiscard] virtual Color getColor() const = 0;
 
             virtual void setCurrentFontSize(float fontSize) = 0;
     };
