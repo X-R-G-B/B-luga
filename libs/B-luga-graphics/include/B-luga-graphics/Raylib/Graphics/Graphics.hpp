@@ -159,7 +159,6 @@ namespace Raylib {
     class TextureManager {
         public:
             static TextureManager &getInstance();
-            ~TextureManager();
             virtual void unloadTextures() = 0;
     };
 
