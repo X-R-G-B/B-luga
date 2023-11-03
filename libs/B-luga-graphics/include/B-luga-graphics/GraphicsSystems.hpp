@@ -20,45 +20,46 @@
 
 namespace Systems::GraphicsSystems {
 
-    static void startLoopRaylib(std::size_t /*unused*/)
-    {
-        Raylib::Drawing::beginDrawing();
-        Raylib::Drawing::clearBackground(Raylib::DarkGray);
-    }
 
     static constexpr int screenWidth  = 1920;
     static constexpr int screenHeight = 1080;
 
-    static void beforeLoopRaylib(std::size_t /*unused*/)
-    {
-        Raylib::Window::initWindow(screenWidth, screenHeight, "R-Bus");
-        Raylib::Window::setWindowState(Raylib::ConfigFlags::WINDOW_RESIZABLE);
-        Raylib::Frame::setTargetFPS(Raylib::Window::getMonitorRefreshRate(Raylib::Window::getCurrentMonitor()));
-        Raylib::Audio::initAudioDevice();
-    }
-
-    static void endLoopRaylib(std::size_t /*unused*/)
-    {
-        Raylib::Drawing::endDrawing();
-    }
-
-    static void afterLoopRaylib(std::size_t /*unused*/)
-    {
-        Raylib::Audio::closeAudioDevice();
-        Raylib::Window::closeWindow();
-        Raylib::TextureManager::getInstance().unloadTextures();
-    }
-
-    static void checkRaylibStop(std::size_t /*unused*/, std::size_t /*unused*/)
-    {
-        if (Raylib::Window::windowShouldClose()) {
-            Scene::SceneManager::getInstance().stop();
-        }
-    }
 
     class GraphicsPlugin : public IPlugin
     {
         public:
+            static void startLoopRaylib(std::size_t /*unused*/)
+            {
+                Raylib::Drawing::beginDrawing();
+                Raylib::Drawing::clearBackground(Raylib::DarkGray);
+            }
+
+            static void beforeLoopRaylib(std::size_t /*unused*/)
+            {
+                Raylib::Window::initWindow(screenWidth, screenHeight, "R-Bus");
+                Raylib::Window::setWindowState(Raylib::ConfigFlags::WINDOW_RESIZABLE);
+                Raylib::Frame::setTargetFPS(Raylib::Window::getMonitorRefreshRate(Raylib::Window::getCurrentMonitor()));
+                Raylib::Audio::initAudioDevice();
+            }
+
+            static void endLoopRaylib(std::size_t /*unused*/)
+            {
+                Raylib::Drawing::endDrawing();
+            }
+
+            static void afterLoopRaylib(std::size_t /*unused*/)
+            {
+                Raylib::Audio::closeAudioDevice();
+                Raylib::Window::closeWindow();
+                Raylib::TextureManager::getInstance().unloadTextures();
+            }
+
+            static void checkRaylibStop(std::size_t /*unused*/, std::size_t /*unused*/)
+            {
+                if (Raylib::Window::windowShouldClose()) {
+                    Scene::SceneManager::getInstance().stop();
+                }
+            }
             void initPlugin() override
             {
                 std::lock_guard<std::mutex> lock(Registry::getInstance().mutex);
@@ -75,8 +76,8 @@ namespace Systems::GraphicsSystems {
                     checkRaylibStop
                 };
                 std::vector<std::function<void(std::size_t, std::size_t)>> audioSystems  = AudioSystems::getAudioSystems();
-                std::vector<std::function<void(std::size_t, std::size_t)>> spriteSystems = getSpriteSystems();
-                std::vector<std::function<void(std::size_t, std::size_t)>> textSystems   = getTextSystems();
+                std::vector<std::function<void(std::size_t, std::size_t)>> spriteSystems = SpriteSystems::getSpriteSystems();
+                std::vector<std::function<void(std::size_t, std::size_t)>> textSystems   = TextSystems::getTextSystems();
                 std::vector<std::function<void(std::size_t, std::size_t)>> parallaxSystems =
                     ParallaxSystems::getParallaxSystems();
 
