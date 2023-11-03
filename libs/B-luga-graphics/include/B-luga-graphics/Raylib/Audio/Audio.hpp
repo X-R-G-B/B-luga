@@ -23,7 +23,7 @@ namespace Raylib {
     // Sounds
     class Sound {
         public:
-            static std::unique_ptr<Sound> fromFile(const std::string &fileName, float volume);
+            static std::shared_ptr<Sound> fromFile(const std::string &fileName, float volume);
 
             virtual ~Sound() = default;
 
@@ -56,7 +56,7 @@ namespace Raylib {
 
     class Music {
         public:
-            static std::unique_ptr<Music> fromFile(const std::string &fileName, float volume);
+            static std::shared_ptr<Music> fromFile(const std::string &fileName, float volume);
 
             virtual ~Music() = default;
 

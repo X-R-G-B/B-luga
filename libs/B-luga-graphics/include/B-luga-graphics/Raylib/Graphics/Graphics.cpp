@@ -284,14 +284,14 @@ namespace Raylib {
                 return std::make_unique<RayImageImpl>(width, height, color);
             }
 
-            std::unique_ptr<Sprite> Sprite::fromFile(const std::string &fileName, float width, float height, std::size_t id)
+            std::shared_ptr<Sprite> Sprite::fromFile(const std::string &fileName, float width, float height, std::size_t id)
             {
-                return std::make_unique<SpriteImpl>(fileName, width, height, id);
+                return std::make_shared<SpriteImpl>(fileName, width, height, id);
             }
 
-            std::unique_ptr<Sprite> Sprite::fromRayImage(std::unique_ptr<RayImage> image, float width, float height)
+            std::shared_ptr<Sprite> Sprite::fromRayImage(std::unique_ptr<RayImage> image, float width, float height)
             {
-                return std::make_unique<SpriteImpl>(std::move(image), width, height);
+                return std::make_shared<SpriteImpl>(std::move(image), width, height);
             }
 
         void Window::initWindow(int width, int height, const std::string &title)
@@ -458,9 +458,9 @@ namespace Raylib {
                 return MeasureText(text.c_str(), fontSize);
             }
 
-            std::unique_ptr<Text> Text::fromText(const std::string &text, Vector2 position, float fontSize, Color color)
+            std::shared_ptr<Text> Text::fromText(const std::string &text, Vector2 position, float fontSize, Color color)
             {
-                return std::make_unique<TextImpl>(text, position, fontSize, color);
+                return std::make_shared<TextImpl>(text, position, fontSize, color);
             }
 
             TextureManager &TextureManager::getInstance()
