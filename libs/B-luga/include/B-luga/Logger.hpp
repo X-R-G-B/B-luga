@@ -114,7 +114,7 @@ class Logger {
          *
          * @param message the message
          */
-        static void debug(const std::string &message)
+        static void debug(const std::string &message /* unused */)
         {
 #ifndef NDEBUG
             if (getLogLevel() < LogLevel::Debug) {
@@ -131,7 +131,7 @@ class Logger {
          *
          * @param message the message
          */
-        static void trace(const std::string &message)
+        static void trace(const std::string &message /* unused */)
         {
 #ifndef NDEBUG
             if (getLogLevel() < LogLevel::Trace) {
