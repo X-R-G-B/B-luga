@@ -7,6 +7,7 @@
 
 #pragma once
 
+#include <nlohmann/json.hpp>
 #include "B-luga-graphics/Raylib/Raylib.hpp"
 
 namespace Types {
