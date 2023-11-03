@@ -16,6 +16,7 @@
 #include <vector>
 #include "nlohmann/json.hpp"
 #include "B-luga/Logger.hpp"
+#include "B-luga/PathResolver.hpp"
 
 class Json {
     public:
@@ -27,7 +28,8 @@ class Json {
 
         void registerJsonFile(const std::string &path)
         {
-            _jsonDatas.insert({path, loadJsonData(path)});
+            const std::string path_resolved = PathResolver::resolve(path);
+            _jsonDatas.insert({path_resolved, loadJsonData(path_resolved)});
         }
 
         nlohmann::json
@@ -48,7 +50,8 @@ class Json {
         template <typename T>
         T getDataByJsonType(const std::string &dataType, const std::string &index)
         {
-            nlohmann::json finalData(_jsonDatas[dataType]);
+            const std::string path_resolved = PathResolver::resolve(dataType);
+            nlohmann::json finalData(_jsonDatas[path_resolved]);
 
             finalData = finalData[index];
             if (finalData == nullptr) {
@@ -61,14 +64,16 @@ class Json {
 
         nlohmann::json getDataByJsonType(const std::string &dataType)
         {
-            nlohmann::json data(_jsonDatas[dataType]);
+            const std::string path_resolved = PathResolver::resolve(dataType);
+            nlohmann::json data(_jsonDatas[path_resolved]);
 
             return (data);
         }
 
         nlohmann::basic_json<> getDataByJsonType(const std::string &dataType, const std::string &index)
         {
-            nlohmann::basic_json<> finalData(_jsonDatas[dataType]);
+            const std::string path_resolved = PathResolver::resolve(dataType);
+            nlohmann::basic_json<> finalData(_jsonDatas[path_resolved]);
 
             finalData = finalData[index];
             if (finalData == nullptr) {

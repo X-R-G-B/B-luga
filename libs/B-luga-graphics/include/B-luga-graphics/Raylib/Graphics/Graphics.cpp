@@ -5,6 +5,7 @@ extern "C" {
 #include "RaylibImpl/Graphics/Graphics.hpp"
 #include "B-luga-graphics/Raylib/Events/Inputs.hpp"
 #include "Graphics.hpp"
+#include "B-luga/PathResolver.hpp"
 
 namespace Raylib {
     int Graphics::getEquivalentRaylibConfigFlags(ConfigFlags flags)
@@ -276,7 +277,7 @@ namespace Raylib {
 
             std::unique_ptr<RayImage> RayImage::fromFile(const std::string &fileName)
             {
-                return std::make_unique<RayImageImpl>(fileName);
+                return std::make_unique<RayImageImpl>(PathResolver::resolve(fileName));
             }
 
             std::unique_ptr<RayImage> RayImage::fromColor(int width, int height, Color color)
@@ -286,7 +287,7 @@ namespace Raylib {
 
             std::shared_ptr<Sprite> Sprite::fromFile(const std::string &fileName, float width, float height, std::size_t id)
             {
-                return std::make_shared<SpriteImpl>(fileName, width, height, id);
+                return std::make_shared<SpriteImpl>(PathResolver::resolve(fileName), width, height, id);
             }
 
             std::shared_ptr<Sprite> Sprite::fromRayImage(std::unique_ptr<RayImage> image, float width, float height)

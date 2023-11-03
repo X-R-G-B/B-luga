@@ -9,6 +9,7 @@
 #include <string>
 #include "Audio.hpp"
 #include "RaylibImpl/Audio/Audio.hpp"
+#include "B-luga/PathResolver.hpp"
 extern "C" {
 #include "raylib.h"
 }
@@ -34,11 +35,11 @@ namespace Raylib {
 
     std::shared_ptr<Sound> Sound::fromFile(const std::string& fileName, float volume)
     {
-        return std::make_shared<SoundImpl>(fileName, volume);
+        return std::make_shared<SoundImpl>(PathResolver::resolve(fileName), volume);
     }
 
     std::shared_ptr<Music> Music::fromFile(const std::string& fileName, float volume)
     {
-        return std::make_shared<MusicImpl>(fileName, volume);
+        return std::make_shared<MusicImpl>(PathResolver::resolve(fileName), volume);
     }
 }

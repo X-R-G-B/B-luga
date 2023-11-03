@@ -1,3 +1,5 @@
+#pragma once
+
 #include "B-luga/IPlugin.hpp"
 #include "B-luga/SystemManagers/SystemManagersDirector.hpp"
 
