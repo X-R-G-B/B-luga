@@ -287,7 +287,7 @@ namespace Raylib {
 
             static int measureText(const std::string text, int fontSize);
 
-            static std::unique_ptr<Text> fromText(const std::string &text, Vector2 position, float fontSize, Color color);
+            static std::unique_ptr<Text> fromText(const std::string &text, Vector2 position = Vector2(0, 0), float fontSize = 5.0F, Color color = Color(0, 0, 0));
 
             virtual ~Text() = default;
 

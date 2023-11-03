@@ -126,7 +126,7 @@ class Json {
             return (datas);
         }
 
-    bool isDataExist(nlohmann::basic_json<> jsonData, const std::string &index)
+    static bool isDataExist(nlohmann::basic_json<> jsonData, const std::string &index)
     {
         if (jsonData[index] == nullptr) {
             return (false);
