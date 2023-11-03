@@ -26,8 +26,8 @@ namespace Systems::GraphicsSystems {
         Raylib::Drawing::clearBackground(Raylib::DarkGray);
     }
 
-    constexpr int screenWidth  = 1920;
-    constexpr int screenHeight = 1080;
+    static constexpr int screenWidth  = 1920;
+    static constexpr int screenHeight = 1080;
 
     static void beforeLoopRaylib(std::size_t /*unused*/)
     {
