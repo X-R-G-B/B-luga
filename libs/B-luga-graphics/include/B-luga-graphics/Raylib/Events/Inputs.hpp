@@ -110,7 +110,6 @@ namespace Raylib {
         MOUSE_BTN_EXTRA    ,
         MOUSE_BTN_FORWARD  ,
         MOUSE_BTN_BACK     ,
-        MOUSE_
         MOUSE_MAX_MAX      ,
     };
 
