@@ -106,6 +106,7 @@ class Logger {
             }
             Logger::print(LogLevel::Info, "INFO", message);
         }
+#ifndef NDEBUG
         /**
          * @brief Logger debug
          *
@@ -116,13 +117,16 @@ class Logger {
          */
         static void debug(const std::string &message /* unused */)
         {
-#ifndef NDEBUG
             if (getLogLevel() < LogLevel::Debug) {
                 return;
             }
             Logger::print(LogLevel::Debug, "DEBUG", message);
-#endif
         }
+#else
+        static void debug(const std::string & /* unused */)
+        {}
+#endif
+#ifndef NDEBUG
         /**
          * @brief Logger trace
          *
@@ -133,13 +137,15 @@ class Logger {
          */
         static void trace(const std::string &message /* unused */)
         {
-#ifndef NDEBUG
             if (getLogLevel() < LogLevel::Trace) {
                 return;
             }
             Logger::print(LogLevel::Trace, "TRACE", message);
-#endif
         }
+#else
+        static void trace(const std::string & /* unused */)
+        {}
+#endif
         /**
          * @brief Logger subscribe
          *
