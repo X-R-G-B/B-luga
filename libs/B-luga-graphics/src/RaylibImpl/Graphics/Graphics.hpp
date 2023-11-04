@@ -56,7 +56,7 @@ namespace Raylib {
         private:
             std::map<std::string, ::Texture2D> _textures;
             std::mutex _mutex;
-            ::Texture2D loadTexture(const std::string &path);
+            ::Texture2D &loadTexture(const std::string &path);
     };
 
     class SpriteImpl : public Sprite {
