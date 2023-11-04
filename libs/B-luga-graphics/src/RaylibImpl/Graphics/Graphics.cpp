@@ -6,21 +6,23 @@ namespace Raylib {
 
             ::Texture2D &TextureManagerImpl::getTexture(const std::string &path)
             {
-                std::lock_guard<std::mutex> lock(_mutex);
-                preloadTexture(path);
-                auto fileName = PathResolver::resolve(path);
-
-                return _textures[fileName];
+                return loadTexture(path);
             }
+
+        ::Texture2D &TextureManagerImpl::loadTexture(const std::string &path)
+        {
+            std::lock_guard<std::mutex> lock(_mutex);
+            if (_textures.find(path) == _textures.end()) {
+                _textures[path] = LoadTexture(path.c_str());
+            }
+            return _textures[path];
+        }
 
             void TextureManagerImpl::preloadTexture(const std::string &path)
         {
-                std::lock_guard<std::mutex> lock(_mutex);
                 auto fileName = PathResolver::resolve(path);
 
-                if (_textures.find(fileName) == _textures.end()) {
-                    _textures[fileName] = LoadTexture(fileName.c_str());
-                }
+                loadTexture(fileName);
         }
 
             void TextureManagerImpl::unloadTextures()

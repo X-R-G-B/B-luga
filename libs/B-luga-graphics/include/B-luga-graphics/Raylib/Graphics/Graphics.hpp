@@ -223,6 +223,8 @@ namespace Raylib {
         public:
         static void initWindow(int width, int height, const std::string &title);
 
+        static void setWindowSize(int width, int height);
+
         static bool windowShouldClose();
 
         static void closeWindow();

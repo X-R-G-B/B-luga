@@ -301,6 +301,11 @@ namespace Raylib {
             InitWindow(width, height, title.c_str());
         }
 
+        static void setWindowSize(int width, int height)
+        {
+            SetWindowSize(width, height);
+        }
+
         bool Window::windowShouldClose()
         {
             return WindowShouldClose();
