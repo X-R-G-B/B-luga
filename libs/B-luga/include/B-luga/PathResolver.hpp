@@ -12,7 +12,7 @@ class PathResolver {
             return getCustomResolver()(path);
         }
 
-        static void setResolver(Resolver &resolver)
+        static void setResolver(Resolver resolver)
         {
             getCustomResolver() = resolver;
         }
