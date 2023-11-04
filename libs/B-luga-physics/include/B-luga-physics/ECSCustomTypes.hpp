@@ -152,6 +152,12 @@ namespace Types {
             {
                 _physicsMap.clear();
             }
+            template <typename T>
+            T &getPhysicData(physicsType_e type)
+            {
+                return std::any_cast<T &>(_physicsMap[type]);
+            }
+
         private:
             void initBounce(nlohmann::json & /*unused*/, const Types::Position &originPos)
             {
