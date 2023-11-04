@@ -7,7 +7,10 @@
 
 #pragma once
 
-#include <nlohmann/json.hpp>
+#include <unordered_map>
+#include <string>
+#include <functional>
+#include "nlohmann/json.hpp"
 #include "B-luga-graphics/Raylib/Raylib.hpp"
 
 namespace Types {
@@ -73,29 +76,29 @@ namespace Types {
     };
 
     static const std::unordered_map<std::string, Raylib::Color> colorMatchStrings({
-            {"darkgray",   Raylib::DarkGray  },
-            {"yellow",     Raylib::Yellow    },
-            {"gold",       Raylib::Gold      },
-            {"orange",     Raylib::Orange    },
-            {"pink",       Raylib::Pink      },
-            {"red",        Raylib::Red       },
-            {"maroon",     Raylib::Maroon    },
-            {"green",      Raylib::Green     },
-            {"lime",       Raylib::Lime      },
-            {"darkgreen",  Raylib::DarkGreen },
-            {"skyblue",    Raylib::SkyBlue   },
-            {"blue",       Raylib::Blue      },
-            {"darkblue",   Raylib::DarkBlue  },
-            {"purple",     Raylib::Purple    },
-            {"violet",     Raylib::Violet    },
-            {"darkpurple", Raylib::DarkPurple},
-            {"beige",      Raylib::Beige     },
-            {"brown",      Raylib::Brown     },
-            {"darkbrown",  Raylib::DarkBrown },
-            {"white",      Raylib::White     },
-            {"black",      Raylib::Black     },
-            {"blank",      Raylib::Blank     },
-            {"magenta",    Raylib::Magenta   },
-            {"white",      Raylib::RayWhite  }
+            {"darkgray",   Raylib::Color(DarkGray)  },
+            {"yellow",     Raylib::Color(Yellow)    },
+            {"gold",       Raylib::Color(Gold)      },
+            {"orange",     Raylib::Color(Orange)    },
+            {"pink",       Raylib::Color(Pink)      },
+            {"red",        Raylib::Color(Red)       },
+            {"maroon",     Raylib::Color(Maroon)    },
+            {"green",      Raylib::Color(Green)     },
+            {"lime",       Raylib::Color(Lime)      },
+            {"darkgreen",  Raylib::Color(DarkGreen) },
+            {"skyblue",    Raylib::Color(SkyBlue)   },
+            {"blue",       Raylib::Color(Blue)      },
+            {"darkblue",   Raylib::Color(DarkBlue)  },
+            {"purple",     Raylib::Color(Purple)    },
+            {"violet",     Raylib::Color(Violet)    },
+            {"darkpurple", Raylib::Color(DarkPurple)},
+            {"beige",      Raylib::Color(Beige)     },
+            {"brown",      Raylib::Color(Brown)     },
+            {"darkbrown",  Raylib::Color(DarkBrown) },
+            {"white",      Raylib::Color(White)     },
+            {"black",      Raylib::Color(Black)     },
+            {"blank",      Raylib::Color(Blank)     },
+            {"magenta",    Raylib::Color(Magenta)   },
+            {"white",      Raylib::Color(RayWhite)  }
     });
 } // namespace Types
