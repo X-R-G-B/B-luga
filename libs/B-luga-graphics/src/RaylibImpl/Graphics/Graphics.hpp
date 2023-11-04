@@ -135,7 +135,6 @@ namespace Raylib {
         private:
             std::string _text;
             float _fontSize;
-            float _currentFontSize;
             Raylib::Color _color;
             Vector2 _position;
             Vector2 _pixelPosition;
