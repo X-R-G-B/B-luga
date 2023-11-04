@@ -228,7 +228,7 @@ private:
 
     nlohmann::json getJsonData(const std::string &path)
     {
-        const std::string path_resolved = PathResolver::resolve(dataType);
+        const std::string path_resolved = PathResolver::resolve(path);
 
         if (_jsonDatas.find(path_resolved) == _jsonDatas.end()) {
             _jsonDatas.insert({path_resolved, loadJsonData(path_resolved)});
