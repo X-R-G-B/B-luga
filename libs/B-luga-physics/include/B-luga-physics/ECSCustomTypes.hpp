@@ -120,29 +120,6 @@ namespace Types {
                     initBounce(jsonObject, originPos);
                 }
             }
-            void initBounce(nlohmann::json & /*unused*/, const Types::Position &originPos)
-            {
-                Bouncing bounce(originPos);
-                _physicsMap[BOUNCING] = bounce;
-            }
-            void initZigzag(nlohmann::json &jsonObject, const Types::Position &originPos)
-            {
-                Json &json = Json::getInstance();
-                Zigzag zigzag(originPos);
-                if (json.isDataExist(jsonObject, "amplitude")) {
-                    zigzag.amplitude = json.getDataFromJson<float>(jsonObject, "amplitude");
-                }
-                if (json.isDataExist(jsonObject, "period")) {
-                    zigzag.period = json.getDataFromJson<float>(jsonObject, "period");
-                }
-                if (json.isDataExist(jsonObject, "maxScreenY")) {
-                    zigzag.maxScreenY = json.getDataFromJson<float>(jsonObject, "maxScreenY");
-                }
-                if (json.isDataExist(jsonObject, "minScreenY")) {
-                    zigzag.minScreenY = json.getDataFromJson<float>(jsonObject, "minScreenY");
-                }
-                _physicsMap[ZIGZAG] = zigzag;
-            }
             void addPhysic(std::string type)
             {
                 auto it = physicsTypeMap.find(type);
@@ -198,16 +175,31 @@ namespace Types {
                 }
                 return it->second.value();
             }
-            const Types::Position &getOriginPos() const
-            {
-                return _originPos;
-            }
-
         private:
-            // we have a map with a physic and an optional clock
-            // because some physics don't need a clock
-            std::unordered_map<PhysicsType, std::optional<std::size_t>> _physicsMap;
-            Types::Position _originPos;
+            void initBounce(nlohmann::json & /*unused*/, const Types::Position &originPos)
+            {
+                Bouncing bounce(originPos);
+                _physicsMap[BOUNCING] = bounce;
+            }
+            void initZigzag(nlohmann::json &jsonObject, const Types::Position &originPos)
+            {
+                Json &json = Json::getInstance();
+                Zigzag zigzag(originPos);
+                if (json.isDataExist(jsonObject, "amplitude")) {
+                    zigzag.amplitude = json.getDataFromJson<float>(jsonObject, "amplitude");
+                }
+                if (json.isDataExist(jsonObject, "period")) {
+                    zigzag.period = json.getDataFromJson<float>(jsonObject, "period");
+                }
+                if (json.isDataExist(jsonObject, "maxScreenY")) {
+                    zigzag.maxScreenY = json.getDataFromJson<float>(jsonObject, "maxScreenY");
+                }
+                if (json.isDataExist(jsonObject, "minScreenY")) {
+                    zigzag.minScreenY = json.getDataFromJson<float>(jsonObject, "minScreenY");
+                }
+                _physicsMap[ZIGZAG] = zigzag;
+            }
+            std::unordered_map<physicsType_e, std::any> _physicsMap;
     };
 
     struct Dead {

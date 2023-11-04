@@ -36,7 +36,7 @@ class Json {
         }
 
         template <typename T>
-        nlohmann::json getJsonObjectById(JsonType type, const T &id, const std::string &arrayName)
+        nlohmann::json getJsonObjectById(const std::string &type, const T &id, const std::string &arrayName)
         {
             auto objectList = getDataByJsonType(type)[arrayName];
 
