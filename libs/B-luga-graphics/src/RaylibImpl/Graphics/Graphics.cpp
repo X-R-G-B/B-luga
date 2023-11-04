@@ -16,7 +16,7 @@ namespace Raylib {
                 return _textures[fileName];
             }
 
-            void preloadTexture(const std::string &path)
+            void TextureManagerImpl::preloadTexture(const std::string &path)
         {
                 std::lock_guard<std::mutex> lock(_mutex);
                 auto fileName = PathResolver::resolve(path);
