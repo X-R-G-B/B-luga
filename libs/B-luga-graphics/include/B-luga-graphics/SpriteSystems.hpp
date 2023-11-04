@@ -114,7 +114,6 @@ namespace Systems {
                         Registry::getInstance().getComponents<Types::Rotation>();
                     Registry::components<Types::Color> arrColor =
                         Registry::getInstance().getComponents<Types::Color>();
-                    float scale               = 1.0F;
                     float rotation            = 0;
                     Raylib::Color tint        = Raylib::Color(Raylib::ColorDef::White);
                     Raylib::Vector2 spritePos = {0, 0};
@@ -123,8 +122,6 @@ namespace Systems {
 
                     rotation = arrRotation.exist(entityId) ? arrRotation[entityId].rotate : rotation;
                     tint     = arrColor.exist(entityId) ? arrColor[entityId].color : tint;
-                    scale    = (sprite.getWidth() * static_cast<float>(Raylib::Window::getScreenWidth()))
-                        / denominator / static_cast<float>(sprite.getTextureWidth());
                     spritePos = calculatePosition(
                         Maths::intToFloatConservingDecimals(position.x),
                         Maths::intToFloatConservingDecimals(position.y));
