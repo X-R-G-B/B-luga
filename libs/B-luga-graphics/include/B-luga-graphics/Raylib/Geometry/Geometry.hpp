@@ -7,6 +7,7 @@
 
 #pragma once
 
+#include <cstddef>
 #include <cstdint>
 
 namespace Raylib {
@@ -40,37 +41,40 @@ namespace Raylib {
             float height;
     };
 
+    // COLOR CONSTANTS
+    enum class ColorDef : std::size_t {
+        DarkGray   ,
+        Yellow     ,
+        Gold       ,
+        Orange     ,
+        Pink       ,
+        Red        ,
+        Maroon     ,
+        Green      ,
+        Lime       ,
+        DarkGreen  ,
+        SkyBlue    ,
+        Blue       ,
+        DarkBlue   ,
+        Purple     ,
+        Violet     ,
+        DarkPurple ,
+        Beige      ,
+        Brown      ,
+        DarkBrown  ,
+        White      ,
+        Black      ,
+        Blank      ,
+        Magenta    ,
+        RayWhite   ,
+    };
+
     struct Color {
             Color(uint8_t r, uint8_t g, uint8_t b, uint8_t a) : r(r), g(g), b(b), a(a) {};
+            Color(ColorDef color);
             uint8_t r;
             uint8_t g;
             uint8_t b;
             uint8_t a;
     };
-
-    // COLOR CONSTANTS
-    extern const Color DarkGray   ;
-    extern const Color Yellow     ;
-    extern const Color Gold       ;
-    extern const Color Orange     ;
-    extern const Color Pink       ;
-    extern const Color Red        ;
-    extern const Color Maroon     ;
-    extern const Color Green      ;
-    extern const Color Lime       ;
-    extern const Color DarkGreen  ;
-    extern const Color SkyBlue    ;
-    extern const Color Blue       ;
-    extern const Color DarkBlue   ;
-    extern const Color Purple     ;
-    extern const Color Violet     ;
-    extern const Color DarkPurple ;
-    extern const Color Beige      ;
-    extern const Color Brown      ;
-    extern const Color DarkBrown  ;
-    extern const Color White      ;
-    extern const Color Black      ;
-    extern const Color Blank      ;
-    extern const Color Magenta    ;
-    extern const Color RayWhite   ;
 } // namespace Raylib
