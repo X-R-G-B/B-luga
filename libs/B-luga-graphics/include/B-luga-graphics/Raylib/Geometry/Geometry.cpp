@@ -4,6 +4,8 @@ extern "C" {
 #include "Geometry.hpp"
 
 namespace Raylib {
+    Color::Color(const Color &color) : r(color.r), g(color.g), b(color.b), a(color.a) {}
+
     Color::Color(ColorDef colorDef)
     {
         Color color(0, 0, 0, 0);
