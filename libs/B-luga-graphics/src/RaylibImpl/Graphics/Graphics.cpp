@@ -203,7 +203,6 @@ namespace Raylib {
             TextImpl::TextImpl(std::string text, Vector2 position, float fontSize, Raylib::Color color)
                 : _text(std::move(text)),
                   _fontSize(fontSize),
-                  _currentFontSize(fontSize),
                   _color(color),
                   _position(position),
                   _pixelPosition(position)
@@ -229,7 +228,7 @@ namespace Raylib {
                 ::Color textColor = {_color.r, _color.g, _color.b, _color.a};
                 ::Vector2 pos     = {_pixelPosition.x, _pixelPosition.y};
 
-                DrawTextEx(GetFontDefault(), _text.c_str(), pos, _currentFontSize, spacing, textColor);
+                DrawTextEx(GetFontDefault(), _text.c_str(), pos, _fontSize, spacing, textColor);
             }
 
             void TextImpl::drawPro(Vector2 origin, float rotation, float spacing)
@@ -244,7 +243,7 @@ namespace Raylib {
                     pos,
                     textOrigin,
                     rotation,
-                    _currentFontSize,
+                    _fontSize,
                     spacing,
                     textColor);
             }
