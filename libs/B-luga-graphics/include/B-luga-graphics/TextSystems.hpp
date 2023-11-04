@@ -50,6 +50,7 @@ namespace Systems {
                     if (arrFsz.exist(id)) {
                         Logger::info("Setting font size to " + std::to_string(arrFsz[id].fsz));
                         setFontSizeResponsive(text, arrFsz[id]);
+                        Logger::info("Getting font size to " + std::to_string(text->getFontSize()));
                     }
 
                     Types::Position defaultPosition = {
