@@ -33,7 +33,7 @@ namespace Raylib {
                 }
             }
 
-            RayImageImpl::RayImageImpl(int width, int height, Color color)
+            RayImageImpl::RayImageImpl(int width, int height, Raylib::Color color)
                 : _image(GenImageColor(width, height, {color.r, color.g, color.b, color.a}))
             {
             }
@@ -143,14 +143,14 @@ namespace Raylib {
 
             // draw texture functions
 
-            void SpriteImpl::draw(int posX, int posY, Color tint)
+            void SpriteImpl::draw(int posX, int posY, Raylib::Color tint)
             {
                 ::Color tnt = {tint.r, tint.g, tint.b, tint.a};
 
                 DrawTexture(_texture, posX, posY, tnt);
             }
 
-            void SpriteImpl::drawV(Vector2 position, Color tint)
+            void SpriteImpl::drawV(Vector2 position, Raylib::Color tint)
             {
                 ::Vector2 pos = {position.x, position.y};
                 ::Color tnt   = {tint.r, tint.g, tint.b, tint.a};
@@ -158,7 +158,7 @@ namespace Raylib {
                 DrawTextureV(_texture, pos, tnt);
             }
 
-            void SpriteImpl::drawEx(Vector2 position, float rotation, float scale, Color tint)
+            void SpriteImpl::drawEx(Vector2 position, float rotation, float scale, Raylib::Color tint)
             {
                 ::Vector2 pos = {position.x, position.y};
                 ::Color tnt   = {tint.r, tint.g, tint.b, tint.a};
@@ -166,7 +166,7 @@ namespace Raylib {
                 DrawTextureEx(_texture, pos, rotation, scale, tnt);
             }
 
-            void SpriteImpl::drawRec(Rectangle source, Vector2 position, Color tint)
+            void SpriteImpl::drawRec(Rectangle source, Vector2 position, Raylib::Color tint)
             {
                 ::Rectangle src = {source.x, source.y, source.width, source.height};
                 ::Vector2 pos   = {position.x, position.y};
@@ -175,7 +175,7 @@ namespace Raylib {
                 DrawTextureRec(_texture, src, pos, tnt);
             }
 
-            void SpriteImpl::drawPro(Rectangle source, Rectangle dest, Vector2 origin, float rotation, Color tint)
+            void SpriteImpl::drawPro(Rectangle source, Rectangle dest, Vector2 origin, float rotation, Raylib::Color tint)
             {
                 ::Rectangle src = {source.x, source.y, source.width, source.height};
                 ::Rectangle dst = {dest.x, dest.y, dest.width, dest.height};
@@ -200,7 +200,7 @@ namespace Raylib {
 
     // Text functions and classes
 
-            TextImpl::TextImpl(std::string text, Vector2 position, float fontSize, Color color)
+            TextImpl::TextImpl(std::string text, Vector2 position, float fontSize, Raylib::Color color)
                 : _text(std::move(text)),
                   _fontSize(fontSize),
                   _currentFontSize(fontSize),
@@ -278,12 +278,12 @@ namespace Raylib {
                 _pixelPosition = position;
             }
 
-            void TextImpl::setColor(Color color)
+            void TextImpl::setColor(Raylib::Color color)
             {
                 _color = color;
             }
 
-            Color TextImpl::getColor() const
+            Raylib::Color TextImpl::getColor() const
             {
                 return _color;
             }

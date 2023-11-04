@@ -79,15 +79,15 @@ namespace Raylib {
 
             // draw texture functions
 
-            void draw(int posX, int posY, Color tint) override;
+            void draw(int posX, int posY, Raylib::Color tint) override;
 
-            void drawV(Vector2 position, Color tint) override;
+            void drawV(Vector2 position, Raylib::Color tint) override;
 
-            void drawEx(Vector2 position, float rotation, float scale, Color tint) override;
+            void drawEx(Vector2 position, float rotation, float scale, Raylib::Color tint) override;
 
-            void drawRec(Rectangle source, Vector2 position, Color tint) override;
+            void drawRec(Rectangle source, Vector2 position, Raylib::Color tint) override;
 
-            void drawPro(Rectangle source, Rectangle dest, Vector2 origin, float rotation, Color tint) override;
+            void drawPro(Rectangle source, Rectangle dest, Vector2 origin, float rotation, Raylib::Color tint) override;
 
         private:
             void loadTextureFromImage(std::unique_ptr<RayImage> image);
@@ -104,7 +104,7 @@ namespace Raylib {
     class TextImpl : public Text {
         public:
 
-            TextImpl(std::string text, Vector2 position, float fontSize, Color color);
+            TextImpl(std::string text, Vector2 position, float fontSize, Raylib::Color color);
 
             void draw() override;
 
@@ -124,9 +124,9 @@ namespace Raylib {
 
             void setPixelPosition(Vector2 position) override;
 
-            void setColor(Color color) override;
+            void setColor(Raylib::Color color) override;
 
-            [[nodiscard]] Color getColor() const override;
+            [[nodiscard]] Raylib::Color getColor() const override;
 
             void setCurrentFontSize(float fontSize) override;
 
@@ -138,7 +138,7 @@ namespace Raylib {
             std::string _text;
             float _fontSize;
             float _currentFontSize;
-            Color _color;
+            Raylib::Color _color;
             Vector2 _position;
             Vector2 _pixelPosition;
     };

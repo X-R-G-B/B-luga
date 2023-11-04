@@ -57,7 +57,7 @@ namespace Raylib {
 
     class Drawing {
         public:
-            static void clearBackground(Color color);
+            static void clearBackground(Raylib::Color color);
 
             static void beginDrawing();
 
@@ -136,24 +136,24 @@ namespace Raylib {
 
     class DrawShape {
         public:
-            static void drawPixel(int posX, int posY, Color color);
+            static void drawPixel(int posX, int posY, Raylib::Color color);
 
-            static void drawCircle(int centerX, int centerY, float radius, Color color);
+            static void drawCircle(int centerX, int centerY, float radius, Raylib::Color color);
 
-            static void drawRectangle(int posX, int posY, int width, int height, Color color);
+            static void drawRectangle(int posX, int posY, int width, int height, Raylib::Color color);
     };
 
     class RayColor {
         public:
-            static Color fade(Color color, float alpha);
+            static Raylib::Color fade(Raylib::Color color, float alpha);
 
-            static int colorToInt(Color color);
+            static int colorToInt(Raylib::Color color);
 
-            static Vector4 colorNormalize(Color color);
+            static Vector4 colorNormalize(Raylib::Color color);
 
-            static Color colorFromNormalized(Vector4 normalized);
+            static Raylib::Color colorFromNormalized(Vector4 normalized);
 
-            static Color getColor(unsigned int hexValue);
+            static Raylib::Color getColor(unsigned int hexValue);
     };
 
     class TextureManager {
@@ -165,7 +165,7 @@ namespace Raylib {
     class RayImage {
         public:
             static std::unique_ptr<RayImage> fromFile(const std::string &fileName);
-            static std::unique_ptr<RayImage> fromColor(int width, int height, Color color);
+            static std::unique_ptr<RayImage> fromColor(int width, int height, Raylib::Color color);
 
             virtual ~RayImage() = default;
 
@@ -207,13 +207,13 @@ namespace Raylib {
 
             // draw texture functions
 
-            virtual void draw(int posX, int posY, Color tint) = 0;
+            virtual void draw(int posX, int posY, Raylib::Color tint) = 0;
 
-            virtual void drawV(Vector2 position, Color tint) = 0;
+            virtual void drawV(Vector2 position, Raylib::Color tint) = 0;
 
             virtual void drawEx(Vector2 position, float rotation, float scale, Color tint) = 0;
 
-            virtual void drawRec(Rectangle source, Vector2 position, Color tint) = 0;
+            virtual void drawRec(Rectangle source, Vector2 position, Raylib::Color tint) = 0;
 
             virtual void drawPro(Rectangle source, Rectangle dest, Vector2 origin, float rotation, Color tint) = 0;
     };
@@ -283,11 +283,11 @@ namespace Raylib {
 
     class Text {
         public:
-            static void drawText(std::string text, int posX, int posY, int fontSize, Color color);
+            static void drawText(std::string text, int posX, int posY, int fontSize, Raylib::Color color);
 
             static int measureText(const std::string text, int fontSize);
 
-            static std::shared_ptr<Text> fromText(const std::string &text, Vector2 position = Vector2(0, 0), float fontSize = 20.0F, Color color = Color(255, 255, 255, 255));
+            static std::shared_ptr<Text> fromText(const std::string &text, Vector2 position = Vector2(0, 0), float fontSize = 20.0F, Raylib::Color color = Raylib::Color(Raylib::ColorDef::White));
 
             virtual ~Text() = default;
 
@@ -309,9 +309,9 @@ namespace Raylib {
 
             virtual void setPixelPosition(Vector2 position) = 0;
 
-            virtual void setColor(Color color) = 0;
+            virtual void setColor(Raylib::Color color) = 0;
 
-            [[nodiscard]] virtual Color getColor() const = 0;
+            [[nodiscard]] virtual Raylib::Color getColor() const = 0;
 
             virtual void setCurrentFontSize(float fontSize) = 0;
 

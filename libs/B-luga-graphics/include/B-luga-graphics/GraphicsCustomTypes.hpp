@@ -72,7 +72,10 @@ namespace Types {
     };
 
     struct Color {
-            Color(Raylib::Color color) : color(color) {};
+            Color(Raylib::Color colorRay)
+            {
+                color = colorRay;
+            }
             Raylib::Color color;
     };
 
