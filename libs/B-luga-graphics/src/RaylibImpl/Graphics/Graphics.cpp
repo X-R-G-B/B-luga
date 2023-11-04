@@ -7,7 +7,7 @@ namespace Raylib {
             ::Texture2D &TextureManagerImpl::getTexture(const std::string &path)
             {
                 std::lock_guard<std::mutex> lock(_mutex);
-                auto fileName = PathResolver::resolve(fileName);
+                auto fileName = PathResolver::resolve(path);
                 auto it = _textures.find(fileName);
 
                 if (it == _textures.end()) {
