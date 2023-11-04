@@ -287,7 +287,7 @@ namespace Raylib {
 
             static int measureText(const std::string text, int fontSize);
 
-            static std::shared_ptr<Text> fromText(const std::string &text, Vector2 position = Vector2(0, 0), float fontSize = 10.0F, Color color = Raylib::White);
+            static std::shared_ptr<Text> fromText(const std::string &text, Vector2 position = Vector2(0, 0), float fontSize = 10.0F, Color color = Color(255, 255, 255, 255));
 
             virtual ~Text() = default;
 
