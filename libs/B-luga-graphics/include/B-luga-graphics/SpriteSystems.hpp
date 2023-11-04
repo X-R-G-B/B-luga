@@ -119,6 +119,7 @@ namespace Systems {
                     Raylib::Color tint        = Raylib::Color(Raylib::ColorDef::White);
                     Raylib::Vector2 spritePos = {0, 0};
                     Types::Origin origin      = {0, 0};
+                    Raylib::Vector2 size = {0, 0};
 
                     rotation = arrRotation.exist(entityId) ? arrRotation[entityId].rotate : rotation;
                     tint     = arrColor.exist(entityId) ? arrColor[entityId].color : tint;
@@ -129,7 +130,7 @@ namespace Systems {
                         Maths::intToFloatConservingDecimals(position.y));
                     size = calculateSize(sprite);
                     sprite.drawPro(
-                        Raylib::Rectangle(rect.x, rect.y, rect.width, rect.height),
+                        Raylib::Rectangle(0.F, 0.F, sprite.getTextureWidth(), sprite.getTextureHeight()),
                         Raylib::Rectangle(pos.x, pos.y, size.x, size.y),
                         Raylib::Vector2(origin.x, origin.y),
                         rotation,

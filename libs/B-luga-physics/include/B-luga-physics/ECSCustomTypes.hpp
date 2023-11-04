@@ -10,9 +10,10 @@
 #include <cstddef>
 #include <functional>
 #include <optional>
+#include <any>
 #include <vector>
+#include "B-luga/Json.hpp"
 #include "B-luga/Clock.hpp"
-#include "nlohmann/json.hpp"
 #include "B-luga/Registry.hpp"
 
 // all values are in percentage of the screen
@@ -199,7 +200,7 @@ namespace Types {
                 }
                 _physicsMap[ZIGZAG] = zigzag;
             }
-            std::unordered_map<physicsType_e, std::any> _physicsMap;
+            std::unordered_map<physicsType, std::any> _physicsMap;
     };
 
     struct Dead {
