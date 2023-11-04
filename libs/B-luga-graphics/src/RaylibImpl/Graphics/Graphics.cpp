@@ -217,8 +217,8 @@ namespace Raylib {
                 Logger::info("draw text: " + _text + " " + std::to_string(_pixelPosition.x) + " " + std::to_string(_pixelPosition.y));
                 DrawText(
                     _text.c_str(),
-                    static_cast<int>(_pixelPosition.x),
-                    static_cast<int>(_pixelPosition.y),
+                    static_cast<int>(50),
+                    static_cast<int>(50),
                     static_cast<int>(_currentFontSize),
                     textColor);
             }
