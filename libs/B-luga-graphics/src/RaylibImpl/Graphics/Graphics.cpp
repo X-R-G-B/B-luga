@@ -221,6 +221,7 @@ namespace Raylib {
                     static_cast<int>(50),
                     static_cast<int>(_currentFontSize),
                     textColor);
+                Raylib::Frame::drawFPS(0, 0);
             }
 
             void TextImpl::drawEx(float spacing)
