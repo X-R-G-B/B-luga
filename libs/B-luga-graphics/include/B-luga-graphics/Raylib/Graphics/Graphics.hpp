@@ -17,21 +17,21 @@
 namespace Raylib {
 
     enum class ConfigFlags : int {
-        VSYNC_HINT                ,
-        FULLSCREEN_MODE           ,
-        WINDOW_RESIZABLE          ,
-        WINDOW_UNDECORATED        ,
-        WINDOW_HIDDEN             ,
-        WINDOW_MINIMIZED          ,
-        WINDOW_MAXIMIZED          ,
-        WINDOW_UNFOCUSED          ,
-        WINDOW_TOPMOST            ,
-        WINDOW_ALWAYS_RUN         ,
-        WINDOW_TRANSPARENT        ,
-        WINDOW_HIGHDPI            ,
-        WINDOW_MOUSE_PASSTHROUGH  ,
-        MSAA_4X_HINT              ,
-        INTERLACED_HINT           ,
+        VSYNC_HINT = 0x00000040   ,
+        FULLSCREEN_MODE = 0x00000002,
+        WINDOW_RESIZABLE = 0x00000004,
+        WINDOW_UNDECORATED = 0x00000008       ,
+        WINDOW_HIDDEN = 0x00000080             ,
+        WINDOW_MINIMIZED = 0x00000200         ,
+        WINDOW_MAXIMIZED = 0x00000400        ,
+        WINDOW_UNFOCUSED = 0x00000800         ,
+        WINDOW_TOPMOST = 0x00001000            ,
+        WINDOW_ALWAYS_RUN = 0x00000100         ,
+        WINDOW_TRANSPARENT = 0x00000010       ,
+        WINDOW_HIGHDPI = 0x00002000            ,
+        WINDOW_MOUSE_PASSTHROUGH = 0x00004000  ,
+        MSAA_4X_HINT = 0x00000020              ,
+        INTERLACED_HINT = 0x00010000          ,
     };
 
     class Graphics {
