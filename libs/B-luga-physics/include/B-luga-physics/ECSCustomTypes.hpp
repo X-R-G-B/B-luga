@@ -28,8 +28,10 @@ namespace Types {
     struct CollisionRect {
             int width;
             int height;
+            int offsetX;
+            int offsetY;
 
-            NLOHMANN_DEFINE_TYPE_INTRUSIVE(CollisionRect, width, height);
+            NLOHMANN_DEFINE_TYPE_INTRUSIVE(CollisionRect, width, height, offsetX, offsetY);
     };
 
     struct Position {
@@ -121,23 +123,6 @@ namespace Types {
                     initBounce(jsonObject, originPos);
                 }
             }
-            void addPhysic(std::string type)
-            {
-                auto it = physicsTypeMap.find(type);
-                if (it == physicsTypeMap.end()) {
-                    Logger::error("Physics type not found");
-                    return;
-                }
-                addPhysic(it->second);
-            }
-            std::optional<std::size_t> getClock(PhysicsType type) const
-            {
-                if (_physicsMap.find(type) == _physicsMap.end()) {
-                    Logger::error("Physics not found");
-                    throw std::runtime_error("Get clock: Physics of type " + std::to_string(type) + " not found");
-                }
-                return _physicsMap.at(type);
-            }
             std::vector<PhysicsType> getPhysics() const
             {
                 std::vector<PhysicsType> physics;
@@ -166,15 +151,6 @@ namespace Types {
             void removePhysics()
             {
                 _physicsMap.clear();
-            }
-            std::size_t getClockId(PhysicsType type) const
-            {
-                auto it = _physicsMap.find(type);
-                if (it == _physicsMap.end()) {
-                    Logger::error("Get clock id: Physics not found");
-                    throw std::runtime_error("Physics of type " + std::to_string(type) + " not found in getClockId");
-                }
-                return it->second.value();
             }
         private:
             void initBounce(nlohmann::json & /*unused*/, const Types::Position &originPos)
