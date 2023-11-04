@@ -26,7 +26,7 @@ namespace Systems {
                     Logger::info("FONTSIZE RESPONSIVE: " + std::to_string(fontSize));
                 }
 
-                static void setPositionResponsive(Raylib::Text text, Types::Position &pos)
+                static void setPositionResponsive(Raylib::TextShared text, Types::Position &pos)
                 {
                     float x = (Maths::intToFloatConservingDecimals(pos.x) * static_cast<float>(Raylib::Window::getScreenWidth()))
                             / denominator;
@@ -54,12 +54,12 @@ namespace Systems {
 
                     Types::Position defaultPosition = {
                         Maths::floatToIntConservingDecimals(text->getPosition().x),
-                        Maths::floatToIntConservingDecimals(text>getPosition().y)};
+                        Maths::floatToIntConservingDecimals(text->getPosition().y)};
                     setPositionResponsive(text, defaultPosition);
                     if (arrPosition.exist(id)) {
                         setPositionResponsive(text, arrPosition[id]);
                     }
-                    text->setColor(text.getColor());
+                    text->setColor(text->getColor());
                     if (arrColor.exist(id)) {
                         text->setColor(arrColor[id]);
                     }
