@@ -105,25 +105,35 @@ namespace Systems {
                     }
                 }
 
-                static void
-                drawSpriteWithoutRect(Types::Position &position, Raylib::Sprite &sprite, std::size_t entityId)
+                static void drawSpriteWithoutRect(
+                    Types::Position &position,
+                    Raylib::Sprite &sprite,
+                    std::size_t entityId)
                 {
                     Registry::components<Types::Rotation> arrRotation =
                         Registry::getInstance().getComponents<Types::Rotation>();
-                    Registry::components<Types::Color> arrColor = Registry::getInstance().getComponents<Types::Color>();
-                    float scale                                 = 1.0F;
-                    float rotation                              = 0;
-                    Raylib::Color tint                          = Raylib::Color(Raylib::ColorDef::White);
-                    Raylib::Vector2 spritePos                   = {0, 0};
+                    Registry::components<Types::Color> arrColor =
+                        Registry::getInstance().getComponents<Types::Color>();
+                    float scale               = 1.0F;
+                    float rotation            = 0;
+                    Raylib::Color tint        = Raylib::Color(Raylib::ColorDef::White);
+                    Raylib::Vector2 spritePos = {0, 0};
+                    Types::Origin origin      = {0, 0};
 
                     rotation = arrRotation.exist(entityId) ? arrRotation[entityId].rotate : rotation;
                     tint     = arrColor.exist(entityId) ? arrColor[entityId].color : tint;
-                    scale    = (sprite.getWidth() * static_cast<float>(Raylib::Window::getScreenWidth())) / denominator
-                            / static_cast<float>(sprite.getTextureWidth());
+                    scale    = (sprite.getWidth() * static_cast<float>(Raylib::Window::getScreenWidth()))
+                        / denominator / static_cast<float>(sprite.getTextureWidth());
                     spritePos = calculatePosition(
                         Maths::intToFloatConservingDecimals(position.x),
                         Maths::intToFloatConservingDecimals(position.y));
-                    sprite.drawEx(spritePos, rotation, scale, tint);
+                    size = calculateSize(sprite);
+                    sprite.drawPro(
+                        Raylib::Rectangle(rect.x, rect.y, rect.width, rect.height),
+                        Raylib::Rectangle(pos.x, pos.y, size.x, size.y),
+                        Raylib::Vector2(origin.x, origin.y),
+                        rotation,
+                        tint);
                 }
 
                 static void drawSpriteWithRect(

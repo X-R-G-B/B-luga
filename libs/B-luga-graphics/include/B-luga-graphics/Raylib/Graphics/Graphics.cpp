@@ -460,9 +460,9 @@ namespace Raylib {
                 return MeasureText(text.c_str(), fontSize);
             }
 
-            std::shared_ptr<Text> Text::fromText(const std::string &text, Vector2 position, float fontSize, Color color)
+            std::shared_ptr<Text> Text::fromText(const std::string &text, Vector2 position, float fontSize, Color color, const std::string &keyword)
             {
-                return std::make_shared<TextImpl>(text, position, fontSize, color);
+                return std::make_shared<TextImpl>(text, position, fontSize, color, keyword);
             }
 
             TextureManager &TextureManager::getInstance()

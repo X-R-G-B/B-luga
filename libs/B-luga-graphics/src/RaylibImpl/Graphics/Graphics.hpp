@@ -105,7 +105,7 @@ namespace Raylib {
     class TextImpl : public Text {
         public:
 
-            TextImpl(std::string text, Vector2 position, float fontSize, Raylib::Color color);
+            TextImpl(std::string text, Vector2 position, float fontSize, Raylib::Color color, const std::string &keyword);
 
             void draw() override;
 
@@ -129,6 +129,8 @@ namespace Raylib {
 
             [[nodiscard]] Raylib::Color getColor() const override;
 
+            [[nodiscard]] const std::string &getKeyword() const override;
+
             [[nodiscard]] const std::string &getCurrentText() const override;
 
             void setCurrentText(const std::string &text) override;
@@ -139,5 +141,6 @@ namespace Raylib {
             Raylib::Color _color;
             Vector2 _position;
             Vector2 _pixelPosition;
+            std::string _keyword;
     };
 } // namespace Raylib

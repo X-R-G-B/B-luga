@@ -288,13 +288,15 @@ namespace Raylib {
 
             static int measureText(const std::string text, int fontSize);
 
-            static std::shared_ptr<Text> fromText(const std::string &text, Vector2 position = Vector2(0, 0), float fontSize = 20.0F, Raylib::Color color = Raylib::Color(Raylib::ColorDef::White));
+            static std::shared_ptr<Text> fromText(const std::string &text, Vector2 position = Vector2(0, 0), float fontSize = 20.0F, Raylib::Color color = Raylib::Color(Raylib::ColorDef::White), const std::string &keyword = "");
 
             virtual ~Text() = default;
 
             virtual void draw() = 0;
 
             virtual void drawEx(float spacing) = 0;
+
+            [[nodiscard]] virtual const std::string &getKeyword() const = 0;
 
             virtual void drawPro(Vector2 origin, float rotation, float spacing) = 0;
 

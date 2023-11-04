@@ -76,29 +76,73 @@ namespace Types {
         BOUNCING
     };
 
+    // These structs are used to store physics data
+
+    struct Zigzag {
+            Zigzag(const Types::Position &originPosition)
+                : clockId(Registry::getInstance().getClock().create(true)),
+                  originPos(originPosition)
+            {
+            }
+            std::size_t clockId;
+            Types::Position originPos;
+            float period     = 400.0F;
+            float amplitude  = 10.0F;
+            float maxScreenY = 100.0F;
+            float minScreenY = 0.0F;
+    };
+
+    struct Bouncing {
+            Bouncing(const Types::Position &originPosition) : originPos(originPosition)
+            {
+            }
+            Types::Position originPos;
+    };
+
     class Physics {
         public:
             inline static const std::map<std::string, PhysicsType> physicsTypeMap = {
                 {"bouncing", BOUNCING},
                 {"zigzag",   ZIGZAG  }
             };
-            Physics(const Types::Position &originPos) : _originPos(originPos)
+
+            Physics()
             {
             }
-
-            void addPhysic(PhysicsType type)
+            void addPhysic(nlohmann::json &jsonObject, const Types::Position &originPos)
             {
-                if (_physicsMap.find(type) != _physicsMap.end()) {
-                    Logger::error("Physics already added");
-                    return;
+                Json &json     = Json::getInstance();
+                std::string id = json.getDataFromJson<std::string>(jsonObject, "id");
+                if (id == "zigzag") {
+                    initZigzag(jsonObject, originPos);
                 }
-                if (type == ZIGZAG) {
-                    _physicsMap[type] = Registry::getInstance().getClock().create(true);
-                } else {
-                    _physicsMap[type] = std::nullopt;
+                if (id == "bouncing") {
+                    initBounce(jsonObject, originPos);
                 }
             }
-
+            void initBounce(nlohmann::json & /*unused*/, const Types::Position &originPos)
+            {
+                Bouncing bounce(originPos);
+                _physicsMap[BOUNCING] = bounce;
+            }
+            void initZigzag(nlohmann::json &jsonObject, const Types::Position &originPos)
+            {
+                Json &json = Json::getInstance();
+                Zigzag zigzag(originPos);
+                if (json.isDataExist(jsonObject, "amplitude")) {
+                    zigzag.amplitude = json.getDataFromJson<float>(jsonObject, "amplitude");
+                }
+                if (json.isDataExist(jsonObject, "period")) {
+                    zigzag.period = json.getDataFromJson<float>(jsonObject, "period");
+                }
+                if (json.isDataExist(jsonObject, "maxScreenY")) {
+                    zigzag.maxScreenY = json.getDataFromJson<float>(jsonObject, "maxScreenY");
+                }
+                if (json.isDataExist(jsonObject, "minScreenY")) {
+                    zigzag.minScreenY = json.getDataFromJson<float>(jsonObject, "minScreenY");
+                }
+                _physicsMap[ZIGZAG] = zigzag;
+            }
             void addPhysic(std::string type)
             {
                 auto it = physicsTypeMap.find(type);
@@ -133,13 +177,17 @@ namespace Types {
             {
                 return !_physicsMap.empty();
             }
-            void removePhysics(PhysicsType type)
+            void removePhysic(PhysicsType type)
             {
                 if (_physicsMap.find(type) == _physicsMap.end()) {
                     Logger::error("Physics not found");
                     return;
                 }
                 _physicsMap.erase(type);
+            }
+            void removePhysics()
+            {
+                _physicsMap.clear();
             }
             std::size_t getClockId(PhysicsType type) const
             {

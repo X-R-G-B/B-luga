@@ -209,12 +209,18 @@ namespace Raylib {
 
     // Text functions and classes
 
-            TextImpl::TextImpl(std::string text, Vector2 position, float fontSize, Raylib::Color color)
+            TextImpl::TextImpl(
+                std::string text,
+                Vector2 position,
+                float fontSize,
+                Raylib::Color color,
+                const std::string &keyword)
                 : _text(std::move(text)),
                   _fontSize(fontSize),
                   _color(color),
                   _position(position),
-                  _pixelPosition(position)
+                  _pixelPosition(position),
+                  _keyword(keyword)
             {
             }
 
@@ -299,6 +305,11 @@ namespace Raylib {
             const std::string &TextImpl::getCurrentText() const
             {
                 return (_text);
+            }
+
+            const std::string &TextImpl::getKeyword() const
+            {
+                return (_keyword);
             }
 
             void TextImpl::setCurrentText(const std::string &text)

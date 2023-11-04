@@ -31,18 +31,18 @@ class Json {
             getJsonData(path);
         }
 
-        nlohmann::json
-        getJsonObjectById(const std::string &dataType, const std::string &id, const std::string &arrayName)
+        template <typename T>
+        nlohmann::json getJsonObjectById(JsonType type, const T &id, const std::string &arrayName)
         {
-            auto objectList = getDataByJsonType(dataType)[arrayName];
+            auto objectList = getDataByJsonType(type)[arrayName];
 
             for (const auto &object : objectList) {
                 auto idField = object.find("id");
-                if (idField != object.end() && idField->is_string() && *idField == id) {
+                if (idField != object.end() && idField->get<T>() == id) {
                     return object;
                 }
             }
-            Logger::fatal(std::string("(getJsonObject) Key : ") + id + std::string(" is not valid"));
+            Logger::fatal(std::string("(getJsonObject) Key : is not valid for array : " + arrayName));
             throw std::runtime_error("Json error");
         }
 
