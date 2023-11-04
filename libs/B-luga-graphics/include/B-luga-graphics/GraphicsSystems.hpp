@@ -82,8 +82,8 @@ namespace Systems::GraphicsSystems {
                     ParallaxSystems::getParallaxSystems();
 
                 graphicsSystems.insert(graphicsSystems.end(), audioSystems.begin(), audioSystems.end());
-                graphicsSystems.insert(graphicsSystems.end(), textSystems.begin(), textSystems.end());
                 graphicsSystems.insert(graphicsSystems.end(), spriteSystems.begin(), spriteSystems.end());
+                graphicsSystems.insert(graphicsSystems.end(), textSystems.begin(), textSystems.end());
                 graphicsSystems.insert(graphicsSystems.end(), parallaxSystems.begin(), parallaxSystems.end());
                 return graphicsSystems;
             }

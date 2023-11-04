@@ -219,7 +219,7 @@ namespace Raylib {
                     "tres dure",
                     static_cast<int>(50),
                     static_cast<int>(50),
-                    static_cast<int>(5),
+                    static_cast<int>(10),
                     ::Color(255, 255, 255, 255));
                 Raylib::Frame::drawFPS(0, 0);
             }
