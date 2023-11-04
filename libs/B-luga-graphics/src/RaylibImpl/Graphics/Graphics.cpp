@@ -217,11 +217,10 @@ namespace Raylib {
                 Logger::info("draw text: " + _text + " " + std::to_string(_pixelPosition.x) + " " + std::to_string(_pixelPosition.y));
                 DrawText(
                     "tres dure",
-                    static_cast<int>(50),
-                    static_cast<int>(50),
-                    static_cast<int>(10),
-                    ::Color(255, 255, 255, 255));
-                Raylib::Frame::drawFPS(0, 0);
+                    static_cast<int>(_pixelPosition.x),
+                    static_cast<int>(_pixelPosition.y),
+                    static_cast<int>(_fontSize),
+                    textColor);
             }
 
             void TextImpl::drawEx(float spacing)
