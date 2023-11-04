@@ -6,6 +6,7 @@ extern "C" {
 #include "B-luga-graphics/Raylib/Events/Inputs.hpp"
 #include "Graphics.hpp"
 #include "B-luga/PathResolver.hpp"
+#include "B-luga-graphics/Raylib/Geometry/Geometry.hpp"
 
 namespace Raylib {
     int Graphics::getEquivalentRaylibConfigFlags(ConfigFlags flags)
@@ -61,7 +62,7 @@ namespace Raylib {
                 return IsCursorOnScreen();
             }
 
-            void Drawing::clearBackground(Color color)
+            void Drawing::clearBackground(Raylib::Color color)
             {
                 ClearBackground({color.r, color.g, color.b, color.a});
             }
@@ -220,21 +221,21 @@ namespace Raylib {
                 SetMouseCursor(cursor);
             }
 
-            void DrawShape::drawPixel(int posX, int posY, Color color)
+            void DrawShape::drawPixel(int posX, int posY, Raylib::Color color)
             {
                 ::Color c = {color.r, color.g, color.b, color.a};
 
                 DrawPixel(posX, posY, c);
             }
 
-            void DrawShape::drawCircle(int centerX, int centerY, float radius, Color color)
+            void DrawShape::drawCircle(int centerX, int centerY, float radius, Raylib::Color color)
             {
                 ::Color c = {color.r, color.g, color.b, color.a};
 
                 DrawCircle(centerX, centerY, radius, c);
             }
 
-            void DrawShape::drawRectangle(int posX, int posY, int width, int height, Color color)
+            void DrawShape::drawRectangle(int posX, int posY, int width, int height, Raylib::Color color)
             {
                 ::Color c = {color.r, color.g, color.b, color.a};
 
@@ -242,37 +243,37 @@ namespace Raylib {
             }
 
 
-            Color RayColor::fade(Color color, float alpha)
+            Raylib::Color RayColor::fade(Raylib::Color color, float alpha)
             {
                 ::Color c = {color.r, color.g, color.b, color.a};
                 ::Color f = Fade(c, alpha);
-                return Color {f.r, f.g, f.b, f.a};
+                return Raylib::Color(f.r, f.g, f.b, f.a);
             }
 
-            int RayColor::colorToInt(Color color)
+            int RayColor::colorToInt(Raylib::Color color)
             {
                 ::Color c = {color.r, color.g, color.b, color.a};
                 return ColorToInt(c);
             }
 
-            Vector4 RayColor::colorNormalize(Color color)
+            Vector4 RayColor::colorNormalize(Raylib::Color color)
             {
                 ::Color c   = {color.r, color.g, color.b, color.a};
                 ::Vector4 v = ColorNormalize(c);
                 return Vector4 {v.x, v.y, v.z, v.w};
             }
 
-            Color RayColor::colorFromNormalized(Vector4 normalized)
+            Raylib::Color RayColor::colorFromNormalized(Vector4 normalized)
             {
                 ::Vector4 v = {normalized.x, normalized.y, normalized.z, normalized.w};
                 ::Color c   = ColorFromNormalized(v);
-                return Color {c.r, c.g, c.b, c.a};
+                return Raylib::Color(c.r, c.g, c.b, c.a);
             }
 
-            Color RayColor::getColor(unsigned int hexValue)
+            Raylib::Color RayColor::getColor(unsigned int hexValue)
             {
                 ::Color c = GetColor(hexValue);
-                return Color {c.r, c.g, c.b, c.a};
+                return Raylib::Color(c.r, c.g, c.b, c.a);
             }
 
             std::unique_ptr<RayImage> RayImage::fromFile(const std::string &fileName)
@@ -280,7 +281,7 @@ namespace Raylib {
                 return std::make_unique<RayImageImpl>(PathResolver::resolve(fileName));
             }
 
-            std::unique_ptr<RayImage> RayImage::fromColor(int width, int height, Color color)
+            std::unique_ptr<RayImage> RayImage::fromColor(int width, int height, Raylib::Color color)
             {
                 return std::make_unique<RayImageImpl>(width, height, color);
             }
@@ -447,7 +448,7 @@ namespace Raylib {
             SetWindowIcon(image);
         }
 
-            void Text::drawText(std::string text, int posX, int posY, int fontSize, Color color)
+            void Text::drawText(std::string text, int posX, int posY, int fontSize, Raylib::Color color)
             {
                 ::Color textColor = {color.r, color.g, color.b, color.a};
 

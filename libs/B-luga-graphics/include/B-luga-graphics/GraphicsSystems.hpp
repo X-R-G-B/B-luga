@@ -31,7 +31,7 @@ namespace Systems::GraphicsSystems {
             static void startLoopRaylib(std::size_t /*unused*/)
             {
                 Raylib::Drawing::beginDrawing();
-                Raylib::Drawing::clearBackground(Raylib::ColorDef::DarkGray);
+                Raylib::Drawing::clearBackground(Raylib::Color(Raylib::ColorDef::DarkGray));
             }
 
             static void beforeLoopRaylib(std::size_t /*unused*/)

@@ -94,13 +94,14 @@ namespace Systems {
 
                         float width  = (rectangle.width * static_cast<float>(Raylib::Window::getScreenWidth())) / denominator;
                         float height = (rectangle.height * static_cast<float>(Raylib::Window::getScreenHeight())) / denominator;
+                        Raylib::Color rectRayColor = Raylib::Color(Raylib::ColorDef::Purple);
 
                         Raylib::DrawShape::drawRectangle(
                             static_cast<int>(x),
                             static_cast<int>(y),
                             static_cast<int>(width),
                             static_cast<int>(height),
-                            Raylib::ColorDef::Purple);
+                            rectRayColor);
                     }
                 }
 
@@ -112,7 +113,7 @@ namespace Systems {
                     Registry::components<Types::Color> arrColor = Registry::getInstance().getComponents<Types::Color>();
                     float scale                                 = 1.0F;
                     float rotation                              = 0;
-                    Raylib::Color tint                          = Raylib::ColorDef::White;
+                    Raylib::Color tint                          = Raylib::Color(Raylib::ColorDef::White);
                     Raylib::Vector2 spritePos                   = {0, 0};
 
                     rotation = arrRotation.exist(entityId) ? arrRotation[entityId].rotate : rotation;
@@ -140,7 +141,7 @@ namespace Systems {
                     Raylib::Vector2 size = {0, 0};
                     Raylib::Vector2 pos  = {0, 0};
                     float rotation       = 0;
-                    Raylib::Color tint   = Raylib::ColorDef::White;
+                    Raylib::Color tint   = Raylib::Color(Raylib::ColorDef::White);
 
                     origin   = arrOrigin.exist(entityId) ? Types::Origin({arrOrigin[entityId].x, arrOrigin[entityId].y})
                                                         : origin;
