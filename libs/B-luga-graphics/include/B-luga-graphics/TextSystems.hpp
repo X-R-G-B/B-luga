@@ -21,6 +21,7 @@ namespace Systems {
                     float fontSize = (fsz.fsz * static_cast<float>(Raylib::Window::getScreenWidth())) / denominator;
 
                     text.setCurrentFontSize(fontSize);
+                    Logger::info("FONTSIZE RESPONSIVE: " + std::to_string(fontSize));
                 }
 
                 static void setPositionResponsive(Raylib::Text &text, Types::Position &pos)
@@ -45,6 +46,7 @@ namespace Systems {
                     Types::FontSize defaultFsz = {text.getFontSize()};
                     setFontSizeResponsive(text, defaultFsz);
                     if (arrFsz.exist(id)) {
+                        Logger::info("Setting font size to " + std::to_string(arrFsz[id].fsz));
                         setFontSizeResponsive(text, arrFsz[id]);
                     }
 
