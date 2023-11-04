@@ -100,7 +100,7 @@ namespace Systems {
                             static_cast<int>(y),
                             static_cast<int>(width),
                             static_cast<int>(height),
-                            Raylib::Purple);
+                            Raylib::ColorDef::Purple);
                     }
                 }
 
@@ -112,7 +112,7 @@ namespace Systems {
                     Registry::components<Types::Color> arrColor = Registry::getInstance().getComponents<Types::Color>();
                     float scale                                 = 1.0F;
                     float rotation                              = 0;
-                    Raylib::Color tint                          = Raylib::White;
+                    Raylib::Color tint                          = Raylib::ColorDef::White;
                     Raylib::Vector2 spritePos                   = {0, 0};
 
                     rotation = arrRotation.exist(entityId) ? arrRotation[entityId].rotate : rotation;
@@ -140,7 +140,7 @@ namespace Systems {
                     Raylib::Vector2 size = {0, 0};
                     Raylib::Vector2 pos  = {0, 0};
                     float rotation       = 0;
-                    Raylib::Color tint   = Raylib::White;
+                    Raylib::Color tint   = Raylib::ColorDef::White;
 
                     origin   = arrOrigin.exist(entityId) ? Types::Origin({arrOrigin[entityId].x, arrOrigin[entityId].y})
                                                         : origin;
