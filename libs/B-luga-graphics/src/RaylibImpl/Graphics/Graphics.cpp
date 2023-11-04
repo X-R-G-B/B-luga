@@ -212,7 +212,7 @@ namespace Raylib {
 
             void TextImpl::draw()
             {
-                ::Color textColor = {_color.r, _color.g, _color.b, _color.a};
+                ::Color textColor = {255, 255, 255, 255};
 
                 DrawText(
                     _text.c_str(),
