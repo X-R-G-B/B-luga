@@ -159,6 +159,7 @@ namespace Raylib {
     class TextureManager {
         public:
             static TextureManager &getInstance();
+            virtual void preloadTexture(const std::string &fileName) = 0;
             virtual void unloadTextures() = 0;
     };
 

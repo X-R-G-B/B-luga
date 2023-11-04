@@ -28,8 +28,7 @@ class Json {
 
         void registerJsonFile(const std::string &path)
         {
-            const std::string path_resolved = PathResolver::resolve(path);
-            _jsonDatas.insert({path_resolved, loadJsonData(path_resolved)});
+            getJsonData(path);
         }
 
         nlohmann::json
@@ -50,8 +49,7 @@ class Json {
         template <typename T>
         T getDataByJsonType(const std::string &dataType, const std::string &index)
         {
-            const std::string path_resolved = PathResolver::resolve(dataType);
-            nlohmann::json finalData(_jsonDatas[path_resolved]);
+            nlohmann::json finalData = getJsonData(dataType);
 
             finalData = finalData[index];
             if (finalData == nullptr) {
@@ -64,16 +62,14 @@ class Json {
 
         nlohmann::json getDataByJsonType(const std::string &dataType)
         {
-            const std::string path_resolved = PathResolver::resolve(dataType);
-            nlohmann::json data(_jsonDatas[path_resolved]);
+            nlohmann::json data = getJsonData(dataType);
 
             return (data);
         }
 
         nlohmann::basic_json<> getDataByJsonType(const std::string &dataType, const std::string &index)
         {
-            const std::string path_resolved = PathResolver::resolve(dataType);
-            nlohmann::basic_json<> finalData(_jsonDatas[path_resolved]);
+            nlohmann::basic_json<> finalData = getJsonData(dataType);
 
             finalData = finalData[index];
             if (finalData == nullptr) {
@@ -228,6 +224,16 @@ private:
             }
         }
         return jsonData;
+    }
+
+    nlohmann::json getJsonData(const std::string &path)
+    {
+        const std::string path_resolved = PathResolver::resolve(dataType);
+
+        if (_jsonDatas.find(path_resolved) == _jsonDatas.end()) {
+            _jsonDatas.insert({path_resolved, loadJsonData(path_resolved)});
+        }
+        return _jsonDatas[path_resolved];
     }
 
     std::unordered_map<std::string, nlohmann::json> _jsonDatas;

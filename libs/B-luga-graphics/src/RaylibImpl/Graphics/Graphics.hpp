@@ -51,6 +51,7 @@ namespace Raylib {
             static TextureManagerImpl &getInstance();
             ::Texture2D &getTexture(const std::string &fileName);
             void unloadTextures() override;
+            void preloadTexture(const std::string &path) override;
 
         private:
             std::map<std::string, ::Texture2D> _textures;

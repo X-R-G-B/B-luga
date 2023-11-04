@@ -1,18 +1,27 @@
 #include "Graphics.hpp"
+#include "B-luga/PathResolver.hpp"
 #include <mutex>
 
 namespace Raylib {
 
-            ::Texture2D &TextureManagerImpl::getTexture(const std::string &fileName)
+            ::Texture2D &TextureManagerImpl::getTexture(const std::string &path)
             {
                 std::lock_guard<std::mutex> lock(_mutex);
-                auto it = _textures.find(fileName);
+                preloadTexture(path);
+                auto fileName = PathResolver::resolve(path);
 
-                if (it == _textures.end()) {
-                    _textures[fileName] = LoadTexture(fileName.c_str());
-                }
                 return _textures[fileName];
             }
+
+            void preloadTexture(const std::string &path)
+        {
+                std::lock_guard<std::mutex> lock(_mutex);
+                auto fileName = PathResolver::resolve(path);
+
+                if (_textures.find(fileName) == _textures.end()) {
+                    _textures[fileName] = LoadTexture(fileName.c_str());
+                }
+        }
 
             void TextureManagerImpl::unloadTextures()
         {
