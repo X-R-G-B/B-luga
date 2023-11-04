@@ -214,9 +214,8 @@ namespace Raylib {
             {
                 ::Color textColor = {_color.r, _color.g, _color.b, _color.a};
 
-                Logger::info("draw text: " + _text + " " + std::to_string(_pixelPosition.x) + " " + std::to_string(_pixelPosition.y));
                 DrawText(
-                    "tres dure",
+                    _text.c_str(),
                     static_cast<int>(_pixelPosition.x),
                     static_cast<int>(_pixelPosition.y),
                     static_cast<int>(_fontSize),
