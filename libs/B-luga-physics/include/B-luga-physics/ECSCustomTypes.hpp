@@ -200,7 +200,7 @@ namespace Types {
                 }
                 _physicsMap[ZIGZAG] = zigzag;
             }
-            std::unordered_map<physicsType, std::any> _physicsMap;
+            std::unordered_map<PhysicsType, std::any> _physicsMap;
     };
 
     struct Dead {
