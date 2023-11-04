@@ -314,6 +314,8 @@ namespace Raylib {
 
             virtual void setPixelPosition(Vector2 position) = 0;
 
+            virtual void setPosition(const Vector2 &position) = 0;
+
             virtual void setColor(Raylib::Color color) = 0;
 
             [[nodiscard]] virtual Raylib::Color getColor() const = 0;

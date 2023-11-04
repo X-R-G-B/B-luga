@@ -294,6 +294,11 @@ namespace Raylib {
                 _pixelPosition = position;
             }
 
+            void TextImpl::setPosition(const Vector2 &position)
+            {
+                _position = position;
+            }
+
             void TextImpl::setColor(Raylib::Color color)
             {
                 _color = color;

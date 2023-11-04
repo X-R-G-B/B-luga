@@ -126,6 +126,8 @@ namespace Raylib {
 
             void setPixelPosition(Vector2 position) override;
 
+            void setPosition(const Vector2 &position) override;
+
             void setColor(Raylib::Color color) override;
 
             [[nodiscard]] Raylib::Color getColor() const override;
