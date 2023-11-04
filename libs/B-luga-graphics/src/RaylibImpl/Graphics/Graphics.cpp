@@ -214,7 +214,7 @@ namespace Raylib {
             {
                 ::Color textColor = {_color.r, _color.g, _color.b, _color.a};
 
-                Logger::info("Drawing text: " + std::to_string(_color.r) + " " + std::to_string(_color.g) + " " + std::to_string(_color.b) + " " + std::to_string(_color.a));
+                Logger::info("Drawing text: " + std::to_string(_fontSize));
 
                 DrawText(
                     _text.c_str(),
