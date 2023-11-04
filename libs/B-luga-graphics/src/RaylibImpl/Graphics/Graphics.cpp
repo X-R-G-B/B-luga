@@ -6,7 +6,7 @@ namespace Raylib {
 
             ::Texture2D &TextureManagerImpl::getTexture(const std::string &path)
             {
-                return _loadTexture(path);
+                return loadTexture(path);
             }
 
         ::Texture2D TextureManagerImpl::loadTexture(const std::string &path)
