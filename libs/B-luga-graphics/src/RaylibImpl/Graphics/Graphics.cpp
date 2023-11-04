@@ -290,11 +290,6 @@ namespace Raylib {
                 return _color;
             }
 
-            void TextImpl::setCurrentFontSize(float fontSize)
-            {
-                _currentFontSize = fontSize;
-            }
-
             const std::string &TextImpl::getCurrentText() const
             {
                 return (_text);

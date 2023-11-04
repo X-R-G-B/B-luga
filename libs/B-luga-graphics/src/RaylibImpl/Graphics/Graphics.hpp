@@ -128,8 +128,6 @@ namespace Raylib {
 
             [[nodiscard]] Raylib::Color getColor() const override;
 
-            void setCurrentFontSize(float fontSize) override;
-
             [[nodiscard]] const std::string &getCurrentText() const override;
 
             void setCurrentText(const std::string &text) override;
