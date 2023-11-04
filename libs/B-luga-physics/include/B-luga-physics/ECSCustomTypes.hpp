@@ -153,7 +153,7 @@ namespace Types {
                 _physicsMap.clear();
             }
             template <typename T>
-            T &getPhysicData(physicsType_e type)
+            T &getPhysicData(PhysicsType type)
             {
                 return std::any_cast<T &>(_physicsMap[type]);
             }
