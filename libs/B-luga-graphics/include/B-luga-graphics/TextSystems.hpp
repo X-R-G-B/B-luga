@@ -7,6 +7,8 @@
 
 #pragma once
 
+#include <cstddef>
+#include <functional>
 #include "B-luga-graphics/GraphicsCustomTypes.hpp"
 #include "B-luga/Maths/Maths.hpp"
 #include "B-luga-graphics/Raylib/Raylib.hpp"
@@ -16,25 +18,25 @@ namespace Systems {
     namespace GraphicsSystems {
         class TextSystems {
             public:
-                static void setFontSizeResponsive(Raylib::Text &text, Types::FontSize &fsz)
+                static void setFontSizeResponsive(Raylib::TextShared text, Types::FontSize &fsz)
                 {
                     float fontSize = (fsz.fsz * static_cast<float>(Raylib::Window::getScreenWidth())) / denominator;
 
-                    text.setCurrentFontSize(fontSize);
+                    text->setCurrentFontSize(fontSize);
                     Logger::info("FONTSIZE RESPONSIVE: " + std::to_string(fontSize));
                 }
 
-                static void setPositionResponsive(Raylib::Text &text, Types::Position &pos)
+                static void setPositionResponsive(Raylib::Text text, Types::Position &pos)
                 {
                     float x = (Maths::intToFloatConservingDecimals(pos.x) * static_cast<float>(Raylib::Window::getScreenWidth()))
                             / denominator;
                     float y = (Maths::intToFloatConservingDecimals(pos.y) * static_cast<float>(Raylib::Window::getScreenHeight()))
                             / denominator;
 
-                    text.setPixelPosition({x, y});
+                    text->setPixelPosition({x, y});
                 }
 
-                static void drawTextResponsive(std::size_t id, Raylib::Text &text)
+                static void drawTextResponsive(std::size_t id, Raylib::TextShared text)
                 {
                     Registry::components<Raylib::Color> arrColor =
                         Registry::getInstance().getComponents<Raylib::Color>();
@@ -43,7 +45,7 @@ namespace Systems {
                     Registry::components<Types::FontSize> arrFsz =
                         Registry::getInstance().getComponents<Types::FontSize>();
 
-                    Types::FontSize defaultFsz = {text.getFontSize()};
+                    Types::FontSize defaultFsz = {text->getFontSize()};
                     setFontSizeResponsive(text, defaultFsz);
                     if (arrFsz.exist(id)) {
                         Logger::info("Setting font size to " + std::to_string(arrFsz[id].fsz));
@@ -51,17 +53,17 @@ namespace Systems {
                     }
 
                     Types::Position defaultPosition = {
-                        Maths::floatToIntConservingDecimals(text.getPosition().x),
-                        Maths::floatToIntConservingDecimals(text.getPosition().y)};
+                        Maths::floatToIntConservingDecimals(text->getPosition().x),
+                        Maths::floatToIntConservingDecimals(text>getPosition().y)};
                     setPositionResponsive(text, defaultPosition);
                     if (arrPosition.exist(id)) {
                         setPositionResponsive(text, arrPosition[id]);
                     }
-                    text.setColor(text.getColor());
+                    text->setColor(text.getColor());
                     if (arrColor.exist(id)) {
-                        text.setColor(arrColor[id]);
+                        text->setColor(arrColor[id]);
                     }
-                    text.draw();
+                    text->draw();
                 }
 
                 static void textRenderer(std::size_t /*unused*/, std::size_t /*unused*/)
@@ -72,7 +74,7 @@ namespace Systems {
                     std::vector<std::size_t> ids = arrText.getExistingsId();
 
                     for (auto &id : ids) {
-                        drawTextResponsive(id, *arrText[id]);
+                        drawTextResponsive(id, arrText[id]);
                     }
                 }
 
