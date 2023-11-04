@@ -4,30 +4,28 @@ extern "C" {
 #include "Geometry.hpp"
 
 namespace Raylib {
-
-    const Color DarkGray   = static_cast<Color>(DARKGRAY);
-    const Color Yellow     = static_cast<Color>(YELLOW);
-    const Color Gold       = static_cast<Color>(GOLD);
-    const Color Orange     = static_cast<Color>(ORANGE);
-    const Color Pink       = static_cast<Color>(PINK);
-    const Color Red        = static_cast<Color>(RED);
-    const Color Maroon     = static_cast<Color>(MAROON);
-    const Color Green      = static_cast<Color>(GREEN);
-    const Color Lime       = static_cast<Color>(LIME);
-    const Color DarkGreen  = static_cast<Color>(DARKGREEN);
-    const Color SkyBlue    = static_cast<Color>(SKYBLUE);
-    const Color Blue       = static_cast<Color>(BLUE);
-    const Color DarkBlue   = static_cast<Color>(DARKBLUE);
-    const Color Purple     = static_cast<Color>(PURPLE);
-    const Color Violet     = static_cast<Color>(VIOLET);
-    const Color DarkPurple = static_cast<Color>(DARKPURPLE);
-    const Color Beige      = static_cast<Color>(BEIGE);
-    const Color Brown      = static_cast<Color>(BROWN);
-    const Color DarkBrown  = static_cast<Color>(DARKBROWN);
-    const Color White      = static_cast<Color>(WHITE);
-    const Color Black      = static_cast<Color>(BLACK);
-    const Color Blank      = static_cast<Color>(BLANK);
-    const Color Magenta    = static_cast<Color>(MAGENTA);
-    const Color RayWhite   = static_cast<Color>(RAYWHITE);
-
+    const Color DarkGray   = Raylib::Color::Color(80, 80, 80, 255);
+    const Color Yellow     = Raylib::Color::Color(253, 249, 0, 255);
+    const Color Gold       = Raylib::Color::Color(255, 203, 0, 255);
+    const Color Orange     = Raylib::Color::Color(255, 161, 0, 255);
+    const Color Pink       = Raylib::Color::Color(255, 109, 194, 255);
+    const Color Red        = Raylib::Color::Color(230, 41, 55, 255);
+    const Color Maroon     = Raylib::Color::Color(190, 33, 55, 255);
+    const Color Green      = Raylib::Color::Color(0, 228, 48, 255);
+    const Color Lime       = Raylib::Color::Color(0, 158, 47, 255);
+    const Color DarkGreen  = Raylib::Color::Color(0, 117, 44, 255);
+    const Color SkyBlue    = Raylib::Color::Color(102, 191, 255, 255);
+    const Color Blue       = Raylib::Color::Color(0, 121, 241, 255);
+    const Color DarkBlue   = Raylib::Color::Color(0, 82, 172, 255);
+    const Color Purple     = Raylib::Color::Color(200, 122, 255, 255);
+    const Color Violet     = Raylib::Color::Color(135, 60, 190, 255);
+    const Color DarkPurple = Raylib::Color::Color(112, 31, 126, 255);
+    const Color Beige      = Raylib::Color::Color(211, 176, 131, 255);
+    const Color Brown      = Raylib::Color::Color(127, 106, 79, 255);
+    const Color DarkBrown  = Raylib::Color::Color(76, 63, 47, 255);
+    const Color White      = Raylib::Color::Color(255, 255, 255, 255);
+    const Color Black      = Raylib::Color::Color(0, 0, 0, 255);
+    const Color Blank      = Raylib::Color::Color(0, 0, 0, 0);
+    const Color Magenta    = Raylib::Color::Color(255, 0, 255, 255);
+    const Color RayWhite   = Raylib::Color::Color(245, 245, 245, 255);
 }
