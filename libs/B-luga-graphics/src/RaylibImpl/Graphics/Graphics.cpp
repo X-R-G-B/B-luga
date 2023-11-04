@@ -218,8 +218,8 @@ namespace Raylib {
                     _text.c_str(),
                     static_cast<int>(_pixelPosition.x),
                     static_cast<int>(_pixelPosition.y),
-                    static_cast<int>(_currentFontSize),
-                    textColor);
+                    static_cast<int>(_fontSize),
+                    ::Color(255, 255, 255, 255));
             }
 
             void TextImpl::drawEx(float spacing)
