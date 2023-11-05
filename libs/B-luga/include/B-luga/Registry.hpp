@@ -232,7 +232,6 @@ class Registry {
             for (auto group : _allies) {
                 std::vector<std::size_t> ids = registry.getEntitiesWithOneOfComponents({group.second});
                 if (std::find(ids.begin(), ids.end(), fstId) != ids.end() && std::find(ids.begin(), ids.end(), scdId) != ids.end()) {
-                    Logger::fatal("This is an ally");
                     return true;
                 }
             }
