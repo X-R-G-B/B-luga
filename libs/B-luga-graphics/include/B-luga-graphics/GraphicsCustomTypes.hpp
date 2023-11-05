@@ -51,7 +51,7 @@ namespace Types {
     };
 
     struct Button {
-        Button(std::function<void()> &fct, const std::string &name = "") : callback(fct), _name(name){};
+        Button(std::function<void()> &fct, const std::string &name = "") : callback(fct), name(name){};
         std::function<void()> callback;
         std::string name;
     };
