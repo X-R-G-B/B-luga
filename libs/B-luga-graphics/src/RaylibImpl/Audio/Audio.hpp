@@ -20,6 +20,8 @@ namespace Raylib {
         public:
             SoundImpl(const std::string& fileName, float volume);
 
+            ~SoundImpl();
+
             bool isReady() const override;
 
             void unload() override;
@@ -55,6 +57,8 @@ namespace Raylib {
     class MusicImpl : public Music {
         public:
             MusicImpl(const std::string& fileName, float volume);
+
+            ~MusicImpl();
 
             void unload() override;
 
