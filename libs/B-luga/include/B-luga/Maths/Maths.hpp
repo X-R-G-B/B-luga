@@ -8,6 +8,7 @@
 #pragma once
 
 #define _USE_MATH_DEFINES
+#include <numbers>
 #include <cmath>
 #include <stdexcept>
 
@@ -210,7 +211,7 @@ class Maths {
          */
         static float getAngleFromVector(const float x, const float y)
         {
-            float angle = atan2(y, x) * 180.0F / static_cast<float>(M_PI);
+            float angle = atan2(y, x) * 180.0F / std::numbers::pi_v<float>;
             if (angle < 0) {
                 angle += 360;
             }
@@ -224,6 +225,6 @@ class Maths {
          */
         static float degreesToRadians(const float degrees)
         {
-            return degrees * static_cast<float>(M_PI) / 180;
+            return degrees * std::numbers::pi_v<float> / 180;
         }
 };
