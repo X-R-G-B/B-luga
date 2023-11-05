@@ -1,7 +1,9 @@
 #pragma once
 
 #include <fstream>
+#include <functional>
 #include <string>
+#include <vector>
 #include "B-luga-graphics/GraphicsCustomTypes.hpp"
 #include "B-luga/Json.hpp"
 #include "B-luga/Maths/Maths.hpp"
@@ -18,7 +20,7 @@ namespace Systems::GraphicsSystems {
 
     class ParallaxSystems {
         public:
-            static std::vector<std::function<void(std::size_t, std::size_t)>> getParallaxSystems()
+            static std::vector<std::function<void(std::size_t /* unused */, std::size_t /* unused */)>> getParallaxSystems()
             {
                 return {
                     manageParallax,
@@ -30,10 +32,11 @@ namespace Systems::GraphicsSystems {
                 Registry::components<Types::Parallax> &arrParallax,
                 Registry::components<Types::Position> &arrPosition)
             {
+                Logger::info("UwU :" + std::to_string(id) + " :: " + std::to_string(arrPosition[id].x));
                 if (Maths::intToFloatConservingDecimals(arrPosition[id].x) <= maxOutParallaxLeft) {
                     Maths::addNormalIntToDecimalInt(arrPosition[id].x, maxOutParallaxRight * 2);
-                    arrPosition[id].y = Maths::floatToIntConservingDecimals(arrParallax[id].y);
-                    Logger::info("Parallax reset :" + std::to_string(id) + " :: " + std::to_string(arrPosition[id].x));
+                    // arrPosition[id].y = Maths::floatToIntConservingDecimals(arrParallax[id].y);
+                    Logger::error("Parallax reset :" + std::to_string(id) + " :: " + std::to_string(arrPosition[id].x));
                 }
             }
 
