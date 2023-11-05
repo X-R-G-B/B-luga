@@ -7,16 +7,14 @@
 
 #pragma once
 
-#define _USE_MATH_DEFINES
-#include <cmath>
 #include <cstddef>
 #include <functional>
 #include <string>
 #include <vector>
+#include "B-luga/Maths/Maths.hpp"
 #include "nlohmann/json.hpp"
 #include "B-luga/Json.hpp"
 #include "B-luga-physics/ECSCustomTypes.hpp"
-#include "B-luga/Maths/Maths.hpp"
 #include "B-luga/Registry.hpp"
 #include "B-luga/SystemManagers/SystemManagersDirector.hpp"
 #include "B-luga/IPlugin.hpp"
