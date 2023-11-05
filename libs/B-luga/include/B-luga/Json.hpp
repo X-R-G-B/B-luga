@@ -175,6 +175,20 @@ class Json {
     }
 
     template <typename T>
+    std::vector<T> getObjectsIdInArray(const std::string &dataType, const std::string &arrayName)
+    {
+        std::vector<T> ids;
+        auto data = getDataByJsonType(dataType)[arrayName];
+
+        for (const auto &object : data) {
+            if (isDataExist(object, "id")) {
+                ids.push_back(object["id"].get<T>());
+            }
+        }
+        return ids;
+    }
+
+    template <typename T>
     T getDataByVector(const std::string &dataType, const std::vector<std::string> &indexes)
     {
         auto datas = getDataByJsonType(dataType);
