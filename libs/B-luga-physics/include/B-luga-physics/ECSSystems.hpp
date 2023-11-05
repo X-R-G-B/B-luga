@@ -292,7 +292,7 @@ namespace Systems {
             // Time for the complete zigzag cycle
             float period = zigzagData.period;
             float WavePosY =
-                amplitude * std::sin(2.0F * static_cast<float>(std::M_PI) * elapsedTimeInMs / period);
+                amplitude * std::sin(2.0F * static_cast<float>(M_PI) * elapsedTimeInMs / period);
             positionComp[id].y = zigzagData.originPos.y + Maths::floatToIntConservingDecimals(WavePosY);
             if (positionComp[id].y < minY) {
                 positionComp[id].y = minY;

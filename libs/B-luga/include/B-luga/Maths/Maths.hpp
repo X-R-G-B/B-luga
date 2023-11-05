@@ -210,7 +210,7 @@ class Maths {
          */
         static float getAngleFromVector(const float x, const float y)
         {
-            float angle = atan2(y, x) * 180.0F / static_cast<float>(std::M_PI);
+            float angle = atan2(y, x) * 180.0F / static_cast<float>(M_PI);
             if (angle < 0) {
                 angle += 360;
             }
@@ -224,6 +224,6 @@ class Maths {
          */
         static float degreesToRadians(const float degrees)
         {
-            return degrees * static_cast<float>(std::M_PI) / 180;
+            return degrees * static_cast<float>(M_PI) / 180;
         }
 };
