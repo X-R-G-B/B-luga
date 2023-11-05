@@ -30,7 +30,7 @@ namespace Scene {
             {
                 try {
                     Registry::getInstance().callback(Events::BEFORE_LOOP);
-                    while (!_stop && !Raylib::Window::windowShouldClose()) {
+                    while (!_stop) {
                         Registry::getInstance().callback(Events::START_LOOP);
                         auto scene = _scenes.at(static_cast<std::size_t>(_currentScene));
                         updateSystemManagers(scene);
