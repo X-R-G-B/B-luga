@@ -174,14 +174,14 @@ namespace Raylib {
                 return _path;
             }
 
-            ~SoundImpl::SoundImpl()
+            SoundImpl::~SoundImpl()
             {
                 if (isReady()) {
                     unload();
                 }
             }
 
-            ~MusicImpl::MusicImpl()
+            MusicImpl::~MusicImpl()
             {
                 if (isReady()) {
                     unload();
