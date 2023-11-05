@@ -81,7 +81,6 @@ namespace Systems {
         if (Registry::getInstance().checkAllies(firstEntity, secondEntity)) {
             return;
         }
-        Logger::error("Why is it there " + std::to_string(firstEntity) + " and " + std::to_string(secondEntity));
         giveDamages(firstEntity, secondEntity);
         giveDamages(secondEntity, firstEntity);
     }
