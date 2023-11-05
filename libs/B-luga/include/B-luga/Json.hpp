@@ -73,6 +73,35 @@ class Json {
             return (data);
         }
 
+        void findKeyRecursively(
+            const nlohmann::json &data,
+            const std::string &key,
+            std::vector<std::string> &results)
+        {
+            if (data.is_object()) {
+                for (auto it = data.begin(); it != data.end(); ++it) {
+                    if (it.key() == key) {
+                        results.push_back(it.value().dump());
+                    }
+                    findKeyRecursively(it.value(), key, results);
+                }
+            } else if (data.is_array()) {
+                for (const auto &item : data) {
+                    findKeyRecursively(item, key, results);
+                }
+            }
+        }
+
+        std::vector<std::string> getDatasByKey(std::vector<std::string> dataTypes, const std::string &key)
+        {
+            std::vector<std::string> datas;
+            for (const auto &dataType : dataTypes) {
+                auto jsonData = getDataByJsonType(dataType);
+                findKeyRecursively(jsonData, key, datas);
+            }
+            return datas;
+        }
+
         nlohmann::basic_json<> getDataByJsonType(const std::string &dataType, const std::string &index)
         {
             const std::string path_resolved = PathResolver::resolve(dataType);
