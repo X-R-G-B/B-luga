@@ -124,7 +124,6 @@ class Registry {
             _addComponentPlaceFunctions.clear();
             _removeComponentFunctions.clear();
             _getExistingsId.clear();
-            clearAllies();
             _entitiesNb = 0;
             _toRemove.clear();
 
