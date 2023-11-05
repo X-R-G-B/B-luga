@@ -208,9 +208,9 @@ class Maths {
          * @param y the y of the vector
          * @return float
          */
-        float getAngleFromVector(const float x, const float y)
+        static float getAngleFromVector(const float x, const float y)
         {
-            float angle = atan2(y, x) * 180.0F / static_cast<float>(M_PI);
+            float angle = atan2(y, x) * 180.0F / static_cast<float>(std::M_PI);
             if (angle < 0) {
                 angle += 360;
             }
@@ -222,8 +222,8 @@ class Maths {
          * @param degrees the degrees to convert
          * @return float
          */
-        float degreesToRadians(const float degrees)
+        static float degreesToRadians(const float degrees)
         {
-            return degrees * static_cast<float>(M_PI) / 180;
+            return degrees * static_cast<float>(std::M_PI) / 180;
         }
 };
