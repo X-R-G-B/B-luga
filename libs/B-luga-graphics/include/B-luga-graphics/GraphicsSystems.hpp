@@ -39,6 +39,7 @@ namespace Systems::GraphicsSystems {
                 Raylib::Window::initWindow(screenWidth, screenHeight, "R-Bus");
                 Raylib::Window::setWindowState(Raylib::ConfigFlags::WINDOW_RESIZABLE);
                 Raylib::Frame::setTargetFPS(Raylib::Window::getMonitorRefreshRate(Raylib::Window::getCurrentMonitor()));
+                Raylib::KeyboardInput::setExitKey(Raylib::KeyboardKey::KB_F4);
                 Raylib::Audio::initAudioDevice();
             }
 
