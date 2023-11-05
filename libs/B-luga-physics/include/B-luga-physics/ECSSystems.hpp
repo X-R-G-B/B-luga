@@ -11,6 +11,7 @@
 #include <functional>
 #include <string>
 #include <vector>
+#include <numbers>
 #include "B-luga/Maths/Maths.hpp"
 #include "nlohmann/json.hpp"
 #include "B-luga/Json.hpp"
@@ -290,7 +291,7 @@ namespace Systems {
             // Time for the complete zigzag cycle
             float period = zigzagData.period;
             float WavePosY =
-                amplitude * std::sin(2.0F * static_cast<float>(M_PI) * elapsedTimeInMs / period);
+                amplitude * std::sin(2.0F * std::numbers::pi_v<float> * elapsedTimeInMs / period);
             positionComp[id].y = zigzagData.originPos.y + Maths::floatToIntConservingDecimals(WavePosY);
             if (positionComp[id].y < minY) {
                 positionComp[id].y = minY;
