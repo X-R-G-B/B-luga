@@ -20,6 +20,10 @@
 namespace Types {
 
     struct Health {
+            Health(int hp) : hp(hp)
+            {
+            }
+
             int hp;
 
             NLOHMANN_DEFINE_TYPE_INTRUSIVE(Health, hp);
