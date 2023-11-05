@@ -211,6 +211,7 @@ namespace Systems {
 
                     auto ids = arrSpriteDatas.getExistingsId();
                     for (auto id : ids) {
+                        Logger::fatal("Creating sprite with id: " + std::to_string(id) + " and path: " + arrSpriteDatas[id].fileName);
                         auto &spriteDatas = arrSpriteDatas[id];
                         Raylib::SpriteShared sprite = Raylib::Sprite::fromFile(
                             spriteDatas.fileName,
