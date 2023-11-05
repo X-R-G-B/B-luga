@@ -32,11 +32,9 @@ namespace Systems::GraphicsSystems {
                 Registry::components<Types::Parallax> &arrParallax,
                 Registry::components<Types::Position> &arrPosition)
             {
-                Logger::info("UwU :" + std::to_string(id) + " :: " + std::to_string(arrPosition[id].x));
                 if (Maths::intToFloatConservingDecimals(arrPosition[id].x) <= maxOutParallaxLeft) {
                     Maths::addNormalIntToDecimalInt(arrPosition[id].x, maxOutParallaxRight * 2);
-                    // arrPosition[id].y = Maths::floatToIntConservingDecimals(arrParallax[id].y);
-                    Logger::error("Parallax reset :" + std::to_string(id) + " :: " + std::to_string(arrPosition[id].x));
+                    arrPosition[id].y = Maths::floatToIntConservingDecimals(arrParallax[id].y);
                 }
             }
 
