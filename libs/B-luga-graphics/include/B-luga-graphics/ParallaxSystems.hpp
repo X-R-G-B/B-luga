@@ -11,8 +11,8 @@
 
 namespace Systems::GraphicsSystems {
 
-    static constexpr int maxOutParallaxLeft  = -10;
-    static constexpr int maxOutParallaxRight = 10;
+    static constexpr int maxOutParallaxLeft  = -100;
+    static constexpr int maxOutParallaxRight = 100;
 
 
 
