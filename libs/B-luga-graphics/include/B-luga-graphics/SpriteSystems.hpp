@@ -176,7 +176,6 @@ namespace Systems {
                     Registry::components<Types::Position> arrPosition = registry.getComponents<Types::Position>();
 
                     for (auto id : list) {
-                        Logger::debug(std::to_string(id));
                         if (arrPosition.exist(id) && arrSprite.exist(id)) {
                             if (arrRect.exist(id)) {
                                 drawSpriteWithRect(arrPosition[id], *arrSprite[id], arrRect[id], id);
