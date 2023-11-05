@@ -128,7 +128,7 @@ namespace Systems {
                     size = calculateSize(sprite);
                     sprite.drawPro(
                         Raylib::Rectangle(0.F, 0.F, sprite.getTextureWidth(), sprite.getTextureHeight()),
-                        Raylib::Rectangle(position.x, position.y, size.x, size.y),
+                        Raylib::Rectangle(spritePos.x, spritePos.y, size.x, size.y),
                         Raylib::Vector2(origin.x, origin.y),
                         rotation,
                         tint);
