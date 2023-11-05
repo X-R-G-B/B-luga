@@ -33,6 +33,7 @@ namespace Systems::GraphicsSystems {
                 if (Maths::intToFloatConservingDecimals(arrPosition[id].x) <= maxOutParallaxLeft) {
                     Maths::addNormalIntToDecimalInt(arrPosition[id].x, maxOutParallaxRight * 2);
                     arrPosition[id].y = Maths::floatToIntConservingDecimals(arrParallax[id].y);
+                    Logger::info("Parallax reset :" + std::to_string(id) + " :: " + std::to_string(arrPosition[id].x));
                 }
             }
 
