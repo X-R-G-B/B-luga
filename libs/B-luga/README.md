@@ -36,3 +36,8 @@ This will dowload the latest version of b-luga, and link it + add headers to the
 
 [documentation](./Documentation)
 
+## Authors
+
+Xavier mitault,
+Guillaume abel,
+Leonore.clos-manescau
