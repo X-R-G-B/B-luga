@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.20)
 
-include(GetSteamSdk)
+include(GetSteamSdk.cmake)
 
 target_include_directories(
     ${PROJECT_NAME}

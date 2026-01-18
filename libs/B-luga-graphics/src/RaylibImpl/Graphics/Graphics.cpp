@@ -58,7 +58,7 @@ namespace Raylib {
 
             bool RayImageImpl::isImageReady()
             {
-                return IsImageReady(_image);
+                return IsImageValid(_image);
             }
 
             void RayImageImpl::unloadImage()
@@ -104,7 +104,7 @@ namespace Raylib {
                   _width(width),
                   _height(height)
             {
-                if (!IsTextureReady(_texture)) {
+                if (!IsTextureValid(_texture)) {
                     static const ::Color badTexture   = {255, 16, 240, 255};
                     static constexpr int badImageSize = 50;
                     _texture = LoadTextureFromImage(GenImageColor(badImageSize, badImageSize, badTexture));
