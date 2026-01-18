@@ -54,7 +54,7 @@ echo "-----------------------------------------------------------------------"
 echo "-----------------------------------------------------------------------"
 ./scripts/test.sh
 if [[ $? -ne 0 ]]; then
-    ERRORS="$ERRORS BLUGA-PHYSICS"
+    ERRORS="$ERRORS BLUGA-STEAM"
     echo "ERRORS"
 fi
 

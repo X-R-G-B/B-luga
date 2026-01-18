@@ -24,7 +24,7 @@ namespace Raylib {
 
             bool SoundImpl::isReady() const
             {
-                return IsSoundReady(_sound);
+                return IsSoundValid(_sound);
             }
 
             void SoundImpl::unload()
@@ -101,7 +101,7 @@ namespace Raylib {
 
             bool MusicImpl::isReady() const
             {
-                return IsMusicReady(_music);
+                return IsMusicValid(_music);
             }
 
             void MusicImpl::play() const
