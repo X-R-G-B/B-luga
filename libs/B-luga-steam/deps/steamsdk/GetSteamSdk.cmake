@@ -7,6 +7,6 @@ set(STEAMAPI_SOURCE_DIR "${STEAMAPI_LOCATION}/sdk/public/steam")
 set(STEAMAPI_SHARED_DIR "${STEAMAPI_LOCATION}/sdk/redistributable_bin/win64/steam_api64.dll")
 
 if(NOT(EXISTS ${STEAMAPI_LOCATION}))
-    message(STATUS "Unzipping Steam SDK to ${STEAMAPI_ZIP_LOCATION}")
+    message(STATUS "Unzipping Steam SDK from ${STEAMAPI_ZIP_LOCATION} to ${STEAMAPI_LOCATION}")
     file(ARCHIVE_EXTRACT INPUT "${STEAMAPI_ZIP_LOCATION}" DESTINATION "${STEAMAPI_LOCATION}")
 endif()
