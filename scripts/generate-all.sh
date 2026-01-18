@@ -18,4 +18,9 @@ cd ./B-luga-physics
 
 cd ..
 
+cd ./B-luga-steam
+./scripts/create-tar.sh
+
+cd ..
+
 cd ..
